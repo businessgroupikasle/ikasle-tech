@@ -1,0 +1,51 @@
+/* Services hero background: light pulses travelling along the blueprint grid (44px, like .bg-grid). */
+.svc-pulses {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at 60% 30%, #000 15%, transparent 70%);
+}
+.svc-pulses span {
+  position: absolute;
+  background-repeat: no-repeat;
+  animation: svc-pulse-x 9s linear infinite;
+}
+.svc-pulses span[data-axis="x"] {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-image: linear-gradient(90deg, transparent, rgb(0 140 248 / 0.55), transparent);
+  background-size: 22% 100%;
+}
+.svc-pulses span[data-axis="y"] {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-image: linear-gradient(180deg, transparent, rgb(0 140 248 / 0.45), transparent);
+  background-size: 100% 26%;
+  animation-name: svc-pulse-y;
+}
+@keyframes svc-pulse-x {
+  from {
+    background-position: -30% 0;
+  }
+  to {
+    background-position: 130% 0;
+  }
+}
+@keyframes svc-pulse-y {
+  from {
+    background-position: 0 -30%;
+  }
+  to {
+    background-position: 0 130%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-pulses span {
+    animation: none;
+    background-image: none;
+  }
+}

@@ -1,0 +1,147 @@
+/* Pages inside the Works folders. Sizes scale with the folder (--folder-scale comes from <Folder />). */
+
+.works-shot {
+  position: absolute;
+  inset: calc(5px * var(--folder-scale));
+  overflow: hidden;
+  border-radius: calc(4px * var(--folder-scale));
+  background: var(--bg-soft);
+}
+.works-shot img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.works-brief {
+  position: relative;
+}
+.works-brief-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(3px * var(--folder-scale));
+  margin-top: calc(4px * var(--folder-scale));
+}
+.works-brief-tags span {
+  padding: calc(1.5px * var(--folder-scale)) calc(5px * var(--folder-scale));
+  border-radius: 999px;
+  background: #eaf6ff;
+  color: #0072d1;
+  font-size: calc(7.5px * var(--folder-scale));
+  font-weight: 600;
+  line-height: 1.3;
+}
+.works-brief-foot {
+  margin-top: auto;
+  color: var(--folder-paper-ink-strong);
+  font-family: var(--font-mono);
+  font-size: calc(7.5px * var(--folder-scale));
+}
+
+/* Illustrative phone mockup (projects without screenshots). */
+.works-phone {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(5px * var(--folder-scale));
+  background: linear-gradient(160deg, #f6fafd, #eaf6ff);
+}
+.works-phone-frame {
+  width: 50%;
+  aspect-ratio: 9 / 18.5;
+  padding: calc(3px * var(--folder-scale));
+  border-radius: calc(12px * var(--folder-scale));
+  background: linear-gradient(160deg, #1a3a52, #08283c);
+  box-shadow: 0 calc(6px * var(--folder-scale)) calc(14px * var(--folder-scale)) -6px rgb(8 40 60 / 0.45);
+}
+.works-phone-screen {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: calc(4px * var(--folder-scale));
+  overflow: hidden;
+  padding: calc(9px * var(--folder-scale)) calc(5px * var(--folder-scale)) calc(5px * var(--folder-scale));
+  border-radius: calc(9px * var(--folder-scale));
+  background: #ffffff;
+}
+.works-phone-notch {
+  position: absolute;
+  top: calc(2.5px * var(--folder-scale));
+  left: 50%;
+  width: 30%;
+  height: calc(3.5px * var(--folder-scale));
+  border-radius: 999px;
+  background: #08283c;
+  transform: translateX(-50%);
+}
+.works-phone-title {
+  color: #08283c;
+  font-size: calc(8px * var(--folder-scale));
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.works-phone-hero {
+  height: 30%;
+  flex: none;
+  border-radius: calc(5px * var(--folder-scale));
+  background: linear-gradient(135deg, #4db3ff, #0072d1);
+}
+.works-phone-row {
+  width: 92%;
+  height: calc(4px * var(--folder-scale));
+  flex: none;
+  border-radius: 999px;
+  background: #dfeaf3;
+}
+.works-phone-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(3px * var(--folder-scale));
+}
+.works-phone-tiles span {
+  aspect-ratio: 1;
+  border-radius: calc(4px * var(--folder-scale));
+  background: #eaf6ff;
+}
+.works-phone-tiles span:first-child {
+  background: linear-gradient(135deg, #4db3ff, #0072d1);
+}
+.works-phone-tabbar {
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+  padding-top: calc(3px * var(--folder-scale));
+  border-top: 1px solid #dfeaf3;
+}
+.works-phone-tabbar span {
+  width: calc(4px * var(--folder-scale));
+  height: calc(4px * var(--folder-scale));
+  border-radius: 50%;
+  background: #c3d6e6;
+}
+.works-phone-tabbar span:first-child {
+  background: #008cf8;
+}
+.works-phone-note {
+  color: #5b7084;
+  font-family: var(--font-mono);
+  font-size: calc(6.5px * var(--folder-scale));
+}
+
+/* Folder cards: lift on hover, like the other cards on the page. */
+.works-card {
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+@media (hover: hover) {
+  .works-card:hover {
+    border-color: rgb(0 140 248 / 0.3);
+    box-shadow:
+      0 30px 54px -30px rgb(0 70 130 / 0.4),
+      0 0 30px -14px rgb(0 140 248 / 0.3);
+  }
+}
