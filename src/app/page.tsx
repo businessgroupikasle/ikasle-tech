@@ -5,6 +5,7 @@ import { TechStack } from "@/components/home/TechStack";
 import { DevelopmentPhilosophy } from "@/components/home/DevelopmentPhilosophy";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { WorksSection } from "@/components/home/WorksSection";
+import { ClientsSection } from "@/components/home/ClientsSection";
 import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { ArchitectureSection } from "@/components/home/ArchitectureSection";
 import { DevExperience } from "@/components/home/DevExperience";
@@ -35,6 +36,9 @@ export default function HomePage() {
       </Suspense>
       <Suspense>
         <WorksSection />
+      </Suspense>
+      <Suspense>
+        <ClientsSection />
       </Suspense>
       <Suspense>
         <ProcessTimeline />
