@@ -86,11 +86,6 @@ export function DevelopmentPhilosophy() {
               <span key={word}>
                 <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
                   <span data-ph-word className="inline-block">
-                    {i === 0 && (
-                      <span className="text-accent" aria-hidden="true">
-                        /
-                      </span>
-                    )}
                     {word}
                   </span>
                 </span>

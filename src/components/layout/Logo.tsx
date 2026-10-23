@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
@@ -19,14 +20,20 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
+/** Official IKASLE Technologies wordmark (transparent WebP, trimmed: 720 × 238). */
 export function Logo({ className }: { className?: string }) {
   return (
-    <Link href="/" className={cn("group inline-flex items-center gap-2.5 rounded-lg", className)} aria-label="IKASLE Technologies — home">
-      <LogoMark className="size-8 shrink-0 transition-transform duration-300 group-hover:rotate-[-6deg]" />
-      <span className="flex items-baseline gap-1.5 leading-none">
-        <span className="text-[17px] font-bold tracking-[-0.02em] text-ink">IKASLE</span>
-        <span className="font-mono text-[12px] font-medium text-ink-soft">Technologies</span>
-      </span>
+    <Link href="/" className={cn("inline-flex items-center rounded-lg", className)} aria-label="IKASLE Technologies — home">
+      <Image
+        src="/brand/ikasle-logo-flat.webp"
+        alt="IKASLE Technologies"
+        width={720}
+        height={238}
+        priority
+        sizes="150px"
+        className="h-10 w-auto select-none sm:h-11"
+        draggable={false}
+      />
     </Link>
   );
 }

@@ -3,6 +3,7 @@ import { siGithub } from "simple-icons";
 import { footerNav } from "@/data/navigation";
 import { siteConfig } from "@/lib/site";
 import { LogoMark } from "./Logo";
+import { FooterMetaBalls } from "./FooterMetaBalls";
 
 export function Footer() {
   const { contact, social } = siteConfig;
@@ -10,7 +11,8 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-line bg-bg-soft">
-      <div className="container-x grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:py-20">
+      <FooterMetaBalls />
+      <div className="container-x relative grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:py-20">
         <div className="flex flex-col gap-5">
           <Link href="/" className="inline-flex items-center gap-2.5 self-start rounded-lg">
             <LogoMark className="size-9" />
@@ -83,7 +85,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-line">
+      <div className="relative border-t border-line">
         <div className="container-x flex flex-col gap-2 py-6 text-[13px] text-ink-soft sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} IKASLE Technologies. All rights reserved.</p>
           <p className="font-mono text-[12px]">
