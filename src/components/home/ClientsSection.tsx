@@ -70,15 +70,15 @@ function ClientCard({ client, index }: { client: Client; index: number }) {
   const motionProps = reduced
     ? {}
     : {
-        initial: { opacity: 0, y: 18 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: "-40px" },
-        transition: {
-          duration: 0.5,
-          ease: [0.21, 0.47, 0.32, 0.98] as const,
-          delay: index * 0.08,
-        },
-      };
+      initial: { opacity: 0, y: 18 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true, margin: "-40px" },
+      transition: {
+        duration: 0.5,
+        ease: [0.21, 0.47, 0.32, 0.98] as const,
+        delay: index * 0.08,
+      },
+    };
 
   if (client.url) {
     return (
@@ -112,17 +112,17 @@ export function ClientsSection() {
   const headerMotionProps = reduced
     ? {}
     : {
-        initial: { opacity: 0, y: 18 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: "-40px" },
-        transition: { duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] as const },
-      };
+      initial: { opacity: 0, y: 18 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true, margin: "-40px" },
+      transition: { duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] as const },
+    };
 
   return (
     <section
       id="clients"
       aria-labelledby="clients-heading"
-      className="relative overflow-hidden border-t border-line/60 bg-white py-24 sm:py-32"
+      className="relative overflow-hidden border-t border-line/60 bg-white py-20 sm:py-24"
     >
       {/* Subtle background technical grid accent */}
       <div
@@ -142,7 +142,7 @@ export function ClientsSection() {
           className="mx-auto mb-14 flex max-w-3xl flex-col items-center text-center sm:mb-18"
           {...headerMotionProps}
         >
-          <Eyebrow>// TRUSTED PARTNERS</Eyebrow>
+
 
           <h2
             id="clients-heading"

@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { HeartHandshake, Layers, Scaling, type LucideIcon } from "lucide-react";
 import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { AnimatedTerminal, type TerminalScriptLine } from "@/components/ui/AnimatedTerminal";
+import { Reveal } from "@/components/animations/Reveal";
 
 const SCRIPT: TerminalScriptLine[] = [
   { kind: "cmd", text: "git clone ikasle/technology" },
@@ -70,14 +71,21 @@ export function DevelopmentPhilosophy() {
   );
 
   return (
-    <section ref={root} aria-labelledby="philosophy-title" className="relative overflow-hidden bg-gradient-to-b from-white via-bg-blue/40 to-white py-20 sm:py-28 lg:py-32">
+    // Stacking layer 2: slides over the tech stack, then holds under Services. Opaque white under the gradient
+    // (its middle stop is translucent); full screen from tablet up, with the header counted in the top padding.
+    <section
+      ref={root}
+      data-stack-layer="2"
+      aria-labelledby="philosophy-title"
+      className="stack-sticky stack-sheet relative z-20 overflow-hidden bg-white bg-gradient-to-b from-white via-bg-blue/40 to-white py-20 sm:py-24 md:flex md:min-h-svh md:flex-col md:justify-center md:pt-[calc(var(--header-h)+40px)] md:pb-16"
+    >
       {/* Technical blueprint: fine grid + soft brand glow (static, CSS only) */}
       <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_80%_70%_at_50%_45%,#000_35%,transparent_80%)]" aria-hidden="true" />
       <div className="pointer-events-none absolute top-1/3 left-[18%] size-[46rem] max-w-[120vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(0_140_248/0.12),transparent_65%)]" aria-hidden="true" />
 
       <div className="container-x relative">
         <div data-ph-heading className="flex flex-col gap-4">
-          <p className="font-mono text-[12px] tracking-[0.18em] text-accent-strong uppercase">{"// How we think & build"}</p>
+
           <h2
             id="philosophy-title"
             className="font-semibold tracking-[-0.04em] text-balance text-ink [font-size:clamp(2.1rem,1.2rem+3.6vw,4.25rem)] leading-[1.04]"
@@ -95,7 +103,7 @@ export function DevelopmentPhilosophy() {
           </h2>
         </div>
 
-        <div className="mt-12 grid items-center gap-12 sm:mt-14 lg:mt-16 lg:grid-cols-[42fr_58fr] lg:gap-14 xl:gap-20">
+        <Reveal className="mt-12 grid items-center gap-12 sm:mt-14 lg:mt-16 lg:grid-cols-[42fr_58fr] lg:gap-14 xl:gap-20">
           <AnimatedTerminal
             title="ikasle@development: ~/workspace"
             lines={SCRIPT}
@@ -144,7 +152,7 @@ export function DevelopmentPhilosophy() {
               ))}
             </ul>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

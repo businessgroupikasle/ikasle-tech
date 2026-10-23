@@ -1,8 +1,5 @@
 import { ServicesHero } from "@/components/services/ServicesHero";
 import { ServicesOverview } from "@/components/services/ServicesOverview";
-import { ServiceDetails } from "@/components/services/ServiceDetails";
-import { ServicesProcess } from "@/components/services/ServicesProcess";
-import { ContactCta } from "@/components/home/ContactCta";
 import { servicePages } from "@/data/service-pages";
 import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, siteConfig } from "@/lib/site";
@@ -24,7 +21,7 @@ const servicesJsonLd = {
       "@type": "Service",
       name: s.name,
       description: s.intro,
-      url: absoluteUrl(`/services#${s.slug}`),
+      url: absoluteUrl(`/services/${s.slug}`),
       provider: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     },
   })),
@@ -35,17 +32,8 @@ export default function ServicesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd).replace(/</g, "\\u003c") }} />
       <ServicesHero />
+      {/* Six cards only: each opens its own page at /services/[slug] (details live there, not here). */}
       <ServicesOverview />
-      <ServiceDetails />
-      <ServicesProcess />
-      <ContactCta
-        eyebrow="// let's talk"
-        title="Have a Challenge? Let's Build the Solution."
-        highlight={["Solution."]}
-        text="Tell us what you want to achieve. We'll help you explore the right technology approach for your business."
-        primary={{ label: "Talk to an Engineer", href: "/contact" }}
-        secondary={{ label: "View Our Work", href: "/work" }}
-      />
     </>
   );
 }

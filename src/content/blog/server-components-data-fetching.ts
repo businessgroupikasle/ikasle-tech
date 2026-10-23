@@ -87,7 +87,7 @@ export const post: BlogPost = {
       type: "paragraph",
       content: [
         "Read more about how we approach ",
-        { text: "web application development", href: "/services#web-applications" },
+        { text: "web application development", href: "/services/web-application-development" },
         ".",
       ],
     },

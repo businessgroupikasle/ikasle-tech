@@ -7,12 +7,15 @@ export function PageHero({
   path,
   title,
   description,
+  heading,
   children,
 }: {
-  eyebrow: string;
-  path: string;
+  eyebrow?: string;
+  path?: string;
   title: string;
   description: ReactNode;
+  /** Custom H1 element, replacing the default animated title. */
+  heading?: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -20,7 +23,7 @@ export function PageHero({
       <div className="ambient" aria-hidden="true" />
       <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_50%_0%,#000_10%,transparent_65%)]" aria-hidden="true" />
       <div className="container-x relative">
-        <SectionHeading as="h1" eyebrow={eyebrow} path={path} title={title} description={description} />
+        <SectionHeading as="h1" eyebrow={eyebrow} path={path} title={title} description={description} heading={heading} />
         {children}
       </div>
     </section>

@@ -1,8 +1,10 @@
 import { Clock3, FileText, Mail, MapPin, MessagesSquare, Phone } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { ContactExperience } from "@/components/contact/ContactExperience";
+import { ContactHeadline } from "@/components/contact/ContactHeadline";
 import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
+import { companyContact } from "@/data/company-contact";
 
 export const metadata = pageMetadata({
   title: "Contact",
@@ -17,8 +19,7 @@ const NEXT_STEPS = [
 ];
 
 export default function ContactPage() {
-  const { email, phone, address } = siteConfig.contact;
-  const hasDetails = Boolean(email || phone || address);
+  const { email } = siteConfig.contact;
 
   return (
     <>
@@ -26,6 +27,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         path="/contact"
         title="Let's Turn Your Vision Into Software."
+        heading={<ContactHeadline id="contact-title" />}
         description="Share a few details about what you want to build. The more context you give, the more useful our first reply will be."
       >
         <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
@@ -43,38 +45,69 @@ export default function ContactPage() {
               </li>
             ))}
           </ul>
-          <div className="flex flex-col justify-center gap-4 rounded-3xl border border-line bg-bg-soft p-6">
-            <p className="font-mono text-[12px] text-accent-strong">contact.config</p>
-            {hasDetails ? (
-              <ul className="space-y-3 text-[15px]">
-                {email && (
-                  <li className="flex items-center gap-3">
-                    <Mail className="size-4 text-ink-soft" aria-hidden="true" />
-                    <a href={`mailto:${email}`} className="font-medium text-ink hover:text-accent-strong">
-                      {email}
-                    </a>
-                  </li>
-                )}
-                {phone && (
-                  <li className="flex items-center gap-3">
-                    <Phone className="size-4 text-ink-soft" aria-hidden="true" />
-                    <a href={`tel:${phone.replace(/\s/g, "")}`} className="font-medium text-ink hover:text-accent-strong">
-                      {phone}
-                    </a>
-                  </li>
-                )}
-                {address && (
-                  <li className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 size-4 text-ink-soft" aria-hidden="true" />
-                    <span className="text-ink">{address}</span>
-                  </li>
-                )}
-              </ul>
-            ) : (
-              <p className="text-[15px] leading-relaxed text-ink-soft">
-                The quickest way to reach our team is the project form below — it goes straight to the engineers who will scope your project.
-              </p>
-            )}
+          {/* Contact details: real text and links (no image), in IKASLE blue. */}
+          <div className="rounded-3xl border border-line bg-bg-soft p-6 shadow-[0_18px_40px_-30px_rgb(8_43_69/0.35)] sm:p-7">
+            <h2 className="text-lg font-semibold tracking-tight text-ink sm:text-xl">Get in Touch</h2>
+            <dl className="mt-5 divide-y divide-line">
+              <div className="flex gap-4 pb-5">
+                <dt className="contents">
+                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-white text-[#009CFF] shadow-sm ring-1 ring-line">
+                    <MapPin className="size-4.5" aria-hidden="true" />
+                  </span>
+                  <span className="sr-only">Address</span>
+                </dt>
+                <dd className="min-w-0">
+                  <p className="font-mono text-[11.5px] tracking-wide text-ink-soft uppercase" aria-hidden="true">
+                    Address
+                  </p>
+                  <address className="mt-1 text-[15px] leading-relaxed text-ink not-italic">
+                    {companyContact.address.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </address>
+                </dd>
+              </div>
+              <div className="flex gap-4 py-5">
+                <dt className="contents">
+                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-white text-[#009CFF] shadow-sm ring-1 ring-line">
+                    <Phone className="size-4.5" aria-hidden="true" />
+                  </span>
+                  <span className="sr-only">Phone</span>
+                </dt>
+                <dd className="min-w-0">
+                  <p className="font-mono text-[11.5px] tracking-wide text-ink-soft uppercase" aria-hidden="true">
+                    Phone
+                  </p>
+                  <ul className="mt-1 flex flex-col gap-0.5">
+                    {companyContact.phones.map((p) => (
+                      <li key={p.tel}>
+                        <a href={`tel:${p.tel}`} className="text-[15px] font-medium text-ink transition-colors hover:text-accent-strong">
+                          {p.display}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+              <div className="flex gap-4 pt-5">
+                <dt className="contents">
+                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-white text-[#009CFF] shadow-sm ring-1 ring-line">
+                    <Mail className="size-4.5" aria-hidden="true" />
+                  </span>
+                  <span className="sr-only">Email</span>
+                </dt>
+                <dd className="min-w-0">
+                  <p className="font-mono text-[11.5px] tracking-wide text-ink-soft uppercase" aria-hidden="true">
+                    Email
+                  </p>
+                  <a href={`mailto:${companyContact.email}`} className="mt-1 inline-block text-[15px] font-medium break-all text-ink transition-colors hover:text-accent-strong">
+                    {companyContact.email}
+                  </a>
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
       </PageHero>

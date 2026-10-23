@@ -1,8 +1,10 @@
 import type { Service } from "@/types";
+import { SERVICE_SLUGS } from "./service-slugs";
 
+/** The six services. Each slug is also its detail-page route: /services/[slug] (see src/app/services/[slug]). */
 export const services: Service[] = [
   {
-    slug: "custom-software",
+    slug: SERVICE_SLUGS.customSoftware,
     title: "Custom Software Development",
     shortTitle: "Custom Software",
     icon: "code",
@@ -25,13 +27,15 @@ export const services: Service[] = [
     technologies: ["TypeScript", "Node.js", "PostgreSQL", "Prisma", "Docker", "GitHub Actions"],
     image: {
       src: "/images/services/custom-software-code-laptop.jpg",
+      width: 1280,
+      height: 852,
       alt: "Laptop on a desk showing HTML and CSS source code in a split-screen code editor",
       position: "55% 50%",
     },
     projectType: "Software Development",
   },
   {
-    slug: "web-applications",
+    slug: SERVICE_SLUGS.webApplications,
     title: "Web Application Development",
     shortTitle: "Web Applications",
     icon: "globe",
@@ -54,13 +58,15 @@ export const services: Service[] = [
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Vercel"],
     image: {
       src: "/images/services/web-app-saas-dashboard.jpg",
+      width: 1024,
+      height: 1024,
       alt: "Desktop monitor displaying a SaaS analytics dashboard with charts and user activity",
       position: "50% 45%",
     },
     projectType: "Web Application",
   },
   {
-    slug: "mobile-apps",
+    slug: SERVICE_SLUGS.mobileApps,
     title: "Mobile App Development",
     shortTitle: "Mobile Apps",
     icon: "smartphone",
@@ -83,13 +89,15 @@ export const services: Service[] = [
     technologies: ["React", "Expo", "Flutter", "TypeScript", "Firebase", "Node.js"],
     image: {
       src: "/images/services/mobile-app-phone-mockups.jpg",
+      width: 1280,
+      height: 1115,
       alt: "Two smartphones displaying mobile application screens",
       position: "50% 45%",
     },
     projectType: "Mobile Application",
   },
   {
-    slug: "erp-solutions",
+    slug: SERVICE_SLUGS.erp,
     title: "ERP Solutions",
     shortTitle: "ERP & Automation",
     icon: "boxes",
@@ -112,13 +120,15 @@ export const services: Service[] = [
     technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Docker"],
     image: {
       src: "/images/services/erp-warehouse-inventory.jpg",
+      width: 1280,
+      height: 720,
       alt: "Warehouse with an inventory management dashboard on a laptop and stock, order and alert panels",
       position: "62% 50%",
     },
     projectType: "ERP Solution",
   },
   {
-    slug: "ai-automation",
+    slug: SERVICE_SLUGS.ai,
     title: "AI & Automation",
     shortTitle: "AI & Intelligent Solutions",
     icon: "sparkles",
@@ -141,13 +151,15 @@ export const services: Service[] = [
     technologies: ["Python", "TypeScript", "Node.js", "FastAPI", "PostgreSQL", "Redis"],
     image: {
       src: "/images/services/ai-workflow-automation-robot.jpg",
+      width: 1280,
+      height: 714,
       alt: "Friendly robot presenting a task decomposition, execution and feedback-loop workflow",
       position: "48% 50%",
     },
     projectType: "AI & Automation",
   },
   {
-    slug: "product-design",
+    slug: SERVICE_SLUGS.productDesign,
     title: "UI/UX & Product Design",
     shortTitle: "UI/UX & Product Engineering",
     icon: "pen",
@@ -170,6 +182,8 @@ export const services: Service[] = [
     technologies: ["Figma", "Framer", "Tailwind CSS", "React", "Rive", "GSAP"],
     image: {
       src: "/images/services/ui-ux-design-workstation.jpg",
+      width: 1024,
+      height: 1024,
       alt: "Designer's workstation with app wireframes and UI screens on a monitor and laptop",
       position: "50% 40%",
     },

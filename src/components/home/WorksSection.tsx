@@ -7,6 +7,7 @@ import { ArrowUpRight, FolderOpen } from "lucide-react";
 import { works, type Work } from "@/data/works";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import "./WorksSection.css";
+import { Reveal } from "@/components/animations/Reveal";
 
 // Client-only: Folder derives its colour shades with a canvas, which the server can't, so a server render
 // would never match. The stage reserves the folder's exact space, so nothing shifts when it mounts.
@@ -196,12 +197,10 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
 
 export function WorksSection() {
   return (
-    <section aria-labelledby="works-title" className="relative overflow-hidden bg-white py-24 sm:py-32">
+    <section aria-labelledby="works-title" className="relative overflow-hidden bg-white py-20 sm:py-24">
       <div className="container-x">
         <SectionHeading
           id="works-title"
-          eyebrow="Works"
-          path="/work"
           title="Works"
           description="Real products we’ve designed, built, and launched across e-commerce, ERP, and mobile."
         />
@@ -209,11 +208,11 @@ export function WorksSection() {
           <FolderOpen className="size-3.5 text-accent-strong" aria-hidden="true" />
           Open a folder to look inside · select a page to zoom
         </p>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
+        <Reveal className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
           {works.map((w, i) => (
             <WorkCard key={w.slug} work={w} index={i} />
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -7,6 +7,8 @@
 // - cleanup no longer calls WEBGL_lose_context. React Strict Mode runs effects twice on the same <canvas>;
 //   a lost context is handed straight back by getContext(), so the second run could never draw. All textures,
 //   buffers and programs are still deleted explicitly, and the browser frees the context with the canvas.
+// - `paused` prop: no frames while set (the hero logo is covered by the next section but still "in view" to the
+//   IntersectionObserver, so window pointer moves would otherwise keep waking it). Clearing it wakes the sticker.
 
 import { useEffect, useRef } from 'react';
 import './StickerPeel.css';
@@ -317,6 +319,7 @@ const StickerPeel = ({
   onDragStart,
   onDragEnd,
   dpr,
+  paused = false,
   className = '',
   style,
   ...rest
@@ -346,7 +349,8 @@ const StickerPeel = ({
     initialPosition,
     onDragStart,
     onDragEnd,
-    dpr
+    dpr,
+    paused
   };
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
@@ -777,7 +781,7 @@ const StickerPeel = ({
 
     const frame = now => {
       raf = 0;
-      if (!visible || document.hidden) return;
+      if (!visible || document.hidden || settingsRef.current.paused) return;
       const s = settingsRef.current;
       const dt = last ? clamp((now - last) / 1000, 0.001, 1 / 30) : 1 / 60;
       last = now;
@@ -865,7 +869,7 @@ const StickerPeel = ({
     };
 
     function wake() {
-      if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame);
+      if (!raf && visible && !document.hidden && !settingsRef.current.paused) raf = requestAnimationFrame(frame);
     }
 
     const updateHover = event => {

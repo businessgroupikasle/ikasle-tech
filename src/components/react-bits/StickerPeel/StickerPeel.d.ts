@@ -23,6 +23,8 @@ export type StickerPeelProps = Omit<HTMLAttributes<HTMLDivElement>, "style" | "c
   onDragStart?: () => void;
   onDragEnd?: () => void;
   dpr?: number;
+  /** IKASLE: render no frames while true. */
+  paused?: boolean;
   className?: string;
   style?: CSSProperties;
 };

@@ -9,6 +9,7 @@ import { ArchitectureStack } from "./ArchitectureStack";
 import { usePrefersReducedMotion } from "@/hooks/useReducedMotion";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/cn";
+import { Reveal } from "@/components/animations/Reveal";
 
 export function ArchitectureSection() {
   const [selected, setSelected] = useState(0);
@@ -17,14 +18,12 @@ export function ArchitectureSection() {
   const layer = architectureLayers[selected]!;
 
   return (
-    <section aria-labelledby="arch-title" className="relative overflow-hidden py-24 sm:py-32">
+    <section aria-labelledby="arch-title" className="relative overflow-hidden py-20 sm:py-24">
       <div className="ambient opacity-60" aria-hidden="true" />
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
-        <div className="flex min-w-0 flex-col gap-8">
+        <Reveal className="flex min-w-0 flex-col gap-8">
           <SectionHeading
             id="arch-title"
-            eyebrow="Architecture"
-            path="system.design"
             title="Technology That Scales With Your Vision."
             description="Every product we ship is built on clear, layered architecture. Select a layer to see what it does."
           />
@@ -81,7 +80,7 @@ export function ArchitectureSection() {
               </motion.div>
             </AnimatePresence>
           </div>
-        </div>
+        </Reveal>
 
         <motion.div
           className="relative min-w-0"

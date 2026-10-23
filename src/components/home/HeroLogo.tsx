@@ -9,6 +9,8 @@ import { useWebGL2Support } from "@/hooks/useWebGL2Support";
 import { cn } from "@/lib/cn";
 
 // WebGL2 effect, loaded only where it runs (desktop pointer, motion allowed).
+import { useLayerCovered } from "./StackingSections";
+
 const StickerPeel = dynamic(() => import("@/components/react-bits/StickerPeel/StickerPeel"), { ssr: false });
 
 /** The 3D logo, trimmed to its content, with a true alpha channel (1200 × 564). */
@@ -24,6 +26,7 @@ const LOGO = { src: "/brand/ikasle-logo-3d.webp", w: 1200, h: 564 };
  * image is decoded and the sticker has drawn, so there is no blank frame.
  */
 export function HeroLogo() {
+  const covered = useLayerCovered(0);
   const slotRef = useRef<HTMLDivElement>(null);
   const webgl2 = useWebGL2Support();
   const finePointer = useMediaQuery("(hover: hover) and (pointer: fine)");
@@ -110,6 +113,7 @@ export function HeroLogo() {
         />
         {sticker && (
           <StickerPeel
+            paused={covered}
             imageSrc={LOGO.src}
             width={width}
             finish="gloss"

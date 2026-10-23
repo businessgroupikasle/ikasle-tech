@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDownRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { AnimatedHeading } from "@/components/animations/AnimatedHeading";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { ButtonLink } from "@/components/ui/Button";
@@ -16,7 +16,7 @@ const PULSES = [
   { axis: "y", at: 1188, duration: 13, delay: 5 },
 ] as const;
 
-/** Services page hero: GSAP word-stagger heading, CSS entrances, grid pulses, quick links to each service. */
+/** Services page hero: GSAP word-stagger heading, CSS entrances, grid pulses, quick links to each service page. */
 export function ServicesHero() {
   return (
     <section aria-labelledby="services-title" className="relative overflow-hidden pt-[calc(var(--header-h)+56px)] pb-16 sm:pb-24 lg:pt-[calc(var(--header-h)+88px)]">
@@ -66,14 +66,14 @@ export function ServicesHero() {
               {servicePages.map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`#${s.slug}`}
+                    href={`/services/${s.slug}`}
                     className="group flex h-full items-center gap-3 rounded-2xl border border-line bg-white px-3.5 py-3 text-[14px] font-medium text-ink transition-colors hover:border-accent/40 hover:text-accent-strong"
                   >
                     <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-bg-blue text-accent-strong">
                       <Icon name={s.icon} className="size-4" />
                     </span>
                     <span className="min-w-0 flex-1 leading-snug">{s.name}</span>
-                    <ArrowDownRight className="size-4 shrink-0 text-ink-soft transition-colors group-hover:text-accent-strong" aria-hidden="true" />
+                    <ArrowUpRight className="size-4 shrink-0 text-ink-soft transition-colors group-hover:text-accent-strong" aria-hidden="true" />
                   </Link>
                 </li>
               ))}

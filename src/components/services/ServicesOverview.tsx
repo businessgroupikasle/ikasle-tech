@@ -7,8 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealGroup, RevealItem } from "@/components/animations/ScrollReveal";
 import { Icon } from "@/components/ui/Icon";
-import { getService } from "@/data/services";
-import { servicePages } from "@/data/service-pages";
+import { getServiceDetail, servicePages } from "@/data/service-pages";
 
 const lift = { rest: { y: 0 }, hover: { y: -6 } };
 const zoom = { rest: { scale: 1 }, hover: { scale: 1.05 } };
@@ -30,7 +29,7 @@ export function ServicesOverview() {
         />
         <RevealGroup className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7" stagger={0.07}>
           {servicePages.map((s, i) => {
-            const image = getService(s.slug)!.image;
+            const image = getServiceDetail(s.slug)!.service.image;
             return (
               <RevealItem key={s.slug} className="h-full">
                 <motion.article
@@ -64,7 +63,7 @@ export function ServicesOverview() {
                     <p className="mt-2 flex-1 text-[15px] leading-relaxed text-ink-soft">{s.card}</p>
                     {/* Stretched link: the whole card is clickable, the label stays the visible CTA. */}
                     <Link
-                      href={`#${s.slug}`}
+                      href={`/services/${s.slug}`}
                       className="mt-5 inline-flex items-center gap-2 text-[14.5px] font-semibold text-accent-strong after:absolute after:inset-0 after:rounded-[22px] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-accent"
                     >
                       Explore Service

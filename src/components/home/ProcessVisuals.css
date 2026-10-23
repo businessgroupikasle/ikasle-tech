@@ -1,0 +1,63 @@
+/* ---------- Automate preview: CI/CD pipeline ----------
+   Static by default (fully lit: no JS, inactive phases, reduced motion). Whenever the Automate preview becomes the
+   active phase (desktop: the shown sticky preview; below 1024px: the current step) the selectors below start to
+   match and the steps light up in order — CSS only, so no extra JS or ScrollTrigger. */
+.ci-node-pass {
+  background: rgb(74 222 128 / 0.16);
+  color: #4ade80;
+}
+.ci-node-ready {
+  background: #009cff;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgb(0 156 255 / 0.2);
+}
+.ci-link {
+  background: rgb(74 222 128 / 0.35);
+}
+
+[data-preview][aria-hidden="false"] .ci-step,
+li[aria-current="step"] .ci-step {
+  animation: ci-step 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i) * 0.16s);
+}
+[data-preview][aria-hidden="false"] .ci-node,
+li[aria-current="step"] .ci-node {
+  animation: ci-node 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i) * 0.16s + 0.05s);
+}
+[data-preview][aria-hidden="false"] .ci-link,
+li[aria-current="step"] .ci-link {
+  transform-origin: top;
+  animation: ci-link 0.3s ease-out both;
+  animation-delay: calc(var(--i) * 0.16s + 0.2s);
+}
+[data-preview][aria-hidden="false"] .ci-node-ready,
+li[aria-current="step"] .ci-node-ready {
+  animation:
+    ci-node 0.5s cubic-bezier(0.22, 1, 0.36, 1) both calc(var(--i) * 0.16s + 0.05s),
+    ci-ready 1.8s ease-in-out calc(var(--i) * 0.16s + 0.6s) infinite;
+}
+
+@keyframes ci-step {
+  from {
+    opacity: 0.3;
+  }
+}
+@keyframes ci-node {
+  from {
+    transform: scale(0.6);
+    background: rgb(255 255 255 / 0.08);
+    color: rgb(255 255 255 / 0.3);
+    box-shadow: none;
+  }
+}
+@keyframes ci-link {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes ci-ready {
+  50% {
+    box-shadow: 0 0 0 7px rgb(0 156 255 / 0.12);
+  }
+}

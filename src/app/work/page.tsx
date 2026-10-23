@@ -21,8 +21,6 @@ export default function WorkPage() {
   return (
     <>
       <PageHero
-        eyebrow="Case studies"
-        path="/work"
         title="Ideas Engineered Into Reality."
         description="Selected software we have designed and built — business systems, web platforms and mobile apps solving real operational problems."
       />

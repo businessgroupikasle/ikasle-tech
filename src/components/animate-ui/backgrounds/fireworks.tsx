@@ -1,7 +1,8 @@
 'use client';
 
 // From the Animate UI shadcn registry (@animate-ui/backgrounds-fireworks), added by hand to avoid
-// `shadcn init` rewriting globals.css. Only change: `cn` comes from @/lib/cn instead of the `cn` package.
+// `shadcn init` rewriting globals.css. IKASLE changes: `cn` comes from @/lib/cn instead of the `cn` package, and a
+// `paused` prop stops the loop while the hero is covered by the next section (still in view to an IntersectionObserver).
 
 import * as React from 'react';
 import { useInView } from 'motion/react';
@@ -215,6 +216,7 @@ type FireworksBackgroundProps = Omit<React.ComponentProps<'div'>, 'color'> & {
   fireworkSize?: { min: number; max: number } | number;
   particleSpeed?: { min: number; max: number } | number;
   particleSize?: { min: number; max: number } | number;
+  paused?: boolean;
 };
 
 function FireworksBackgroundContent({
@@ -227,6 +229,7 @@ function FireworksBackgroundContent({
   fireworkSize = { min: 2, max: 5 },
   particleSpeed = { min: 2, max: 7 },
   particleSize = { min: 1, max: 5 },
+  paused = false,
   ...props
 }: FireworksBackgroundProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -236,7 +239,7 @@ function FireworksBackgroundContent({
   const inView = useInView(containerRef);
   const pageVisible = usePageVisible();
   const reduce = useShouldReduceMotion();
-  const playing = inView && pageVisible && !reduce;
+  const playing = inView && pageVisible && !reduce && !paused;
   const stillKey = reduce
     ? JSON.stringify([color, particleSpeed, particleSize])
     : null;

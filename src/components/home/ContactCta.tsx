@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { AnimatedHeading } from "@/components/animations/AnimatedHeading";
+import { Reveal } from "@/components/animations/Reveal";
 
 const CODE_LINES = [
   "const idea = await discover(goals);",
@@ -36,9 +37,9 @@ export function ContactCta({
 }) {
   const rain = [...CODE_LINES, ...CODE_LINES, ...CODE_LINES, ...CODE_LINES].join("\n");
   return (
-    <section aria-labelledby="cta-title" className="py-20 sm:py-28">
+    <section aria-labelledby="cta-title" className="py-20 sm:py-24">
       <div className="container-x">
-        <div className="on-dark relative overflow-hidden rounded-[32px] bg-editor px-6 py-16 text-center sm:px-12 sm:py-24">
+        <Reveal className="on-dark relative overflow-hidden rounded-[32px] bg-editor px-6 py-16 text-center sm:px-12 sm:py-24">
           {/* decorative code scroll */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-70 [mask-image:radial-gradient(ellipse_at_center,transparent_25%,#000_80%)]" aria-hidden="true">
             <pre className="code-rain absolute top-0 left-6 text-[#4db3ff]/20!">{rain}</pre>
@@ -79,7 +80,7 @@ export function ContactCta({
               </ButtonLink>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

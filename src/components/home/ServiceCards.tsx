@@ -10,7 +10,7 @@ import type { Service } from "@/types";
 
 function CardInner({ service, index }: { service: Service; index: number }) {
   return (
-    <Link href={`/services#${service.slug}`} className="svc-card-link group/svc flex h-full flex-col">
+    <Link href={`/services/${service.slug}`} className="svc-card-link group/svc flex h-full flex-col">
       <div className="svc-card-media relative aspect-[4/3] overflow-hidden bg-bg-soft">
         <Image
           src={service.image.src}

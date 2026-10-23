@@ -2,20 +2,24 @@ import { CircleCheck } from "lucide-react";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/SectionHeading";
-import { FireworksBackground } from "@/components/animate-ui/backgrounds/fireworks";
 import { brand } from "@/lib/brand";
 import { HeroLogo } from "./HeroLogo";
 import { HeroHeadline } from "./HeroHeadline";
+import { HeroFireworks } from "./StackingSections";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-[calc(var(--header-h)+40px)] pb-20 sm:pb-28 lg:pt-[calc(var(--header-h)+56px)]" aria-labelledby="hero-title">
+    // Full-screen: min-height (never a fixed height) is the small viewport, so the hero fills the first screen
+    // without jumping as mobile toolbars collapse, and still grows on short screens. The fixed header is
+    // counted once, in the top padding; the content is centred in the space below it.
+    // Stacking layer 0 (bottom): sticky under the next section — see StackingSections.
+    <section data-stack-layer="0" className="stack-sticky relative z-0 flex min-h-svh flex-col justify-center overflow-hidden pt-[calc(var(--header-h)+32px)] pb-12 lg:pt-[calc(var(--header-h)+24px)]" aria-labelledby="hero-title">
       <div className="ambient" aria-hidden="true" />
       <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_30%,#000_20%,transparent_70%)]" aria-hidden="true" />
 
       {/* Fireworks in brand blues (no navy, so particles never blend into the headline).
           Clicking empty hero space launches one; it pauses offscreen and is still under reduced motion. */}
-      <FireworksBackground
+      <HeroFireworks
         className="absolute! inset-0 opacity-80"
         color={[brand.blue, brand.blueTint, brand.blueAction]}
         population={1}
@@ -24,7 +28,7 @@ export function Hero() {
       {/* Top-aligned with a fixed desktop min-height, so the web-font swap in the left column
           can neither move the visual nor change the section height (both caused CLS).
           The grid itself is click-through so empty space reaches the fireworks; columns stay interactive. */}
-      <div className="container-x pointer-events-none relative grid items-start gap-10 lg:min-h-[640px] lg:grid-cols-[1fr_1.08fr] lg:gap-10">
+      <div className="container-x pointer-events-none relative grid items-start gap-10 lg:min-h-[440px] lg:grid-cols-[1.12fr_0.88fr] lg:gap-10 xl:grid-cols-[1fr_1fr]">
         <div className="pointer-events-auto relative z-10 flex flex-col items-start gap-7">
 
           <HeroHeadline id="hero-title" />

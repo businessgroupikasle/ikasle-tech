@@ -1,4 +1,6 @@
 import type { IconName } from "@/types";
+import { SERVICE_SLUGS } from "./service-slugs";
+import { getService } from "./services";
 
 /** A real project to point to from a service: a live product (external) or a case study (internal). */
 export type RelatedWork = { label: string; href: string; external?: boolean };
@@ -8,7 +10,7 @@ export type ServiceAccent = "workflow" | "server-render" | "platforms" | "erp-sy
 
 /**
  * Services page content, written for business readers first: value, then capabilities, then technology.
- * Keyed by the same slugs as src/data/services.ts (and the /services#slug anchors used site-wide).
+ * Keyed by the same slugs as src/data/services.ts, which are also the /services/[slug] detail-page routes.
  * Photos, problems and technologies come from services.ts; this file only adds the page's own copy.
  */
 export type ServicePage = {
@@ -33,7 +35,7 @@ const ERP_CASE = { label: "ERP Solution case study", href: "/work/erp-solution" 
 
 export const servicePages: ServicePage[] = [
   {
-    slug: "custom-software",
+    slug: SERVICE_SLUGS.customSoftware,
     name: "Custom Software Development",
     icon: "code",
     card: "Software built around your processes — connecting teams and replacing spreadsheets with one reliable system.",
@@ -52,7 +54,7 @@ export const servicePages: ServicePage[] = [
     accent: "workflow",
   },
   {
-    slug: "web-applications",
+    slug: SERVICE_SLUGS.webApplications,
     name: "Web Application Development",
     icon: "globe",
     card: "Fast, secure web platforms, portals and dashboards your customers and staff can use on any device.",
@@ -71,7 +73,7 @@ export const servicePages: ServicePage[] = [
     accent: "server-render",
   },
   {
-    slug: "mobile-apps",
+    slug: SERVICE_SLUGS.mobileApps,
     name: "Mobile App Development",
     icon: "smartphone",
     card: "iOS and Android apps that put your services in the hands of customers and field teams.",
@@ -90,7 +92,7 @@ export const servicePages: ServicePage[] = [
     accent: "platforms",
   },
   {
-    slug: "erp-solutions",
+    slug: SERVICE_SLUGS.erp,
     name: "ERP & Business Automation",
     icon: "boxes",
     card: "One system for inventory, purchasing, sales and production — with the routine steps automated.",
@@ -109,7 +111,7 @@ export const servicePages: ServicePage[] = [
     accent: "erp-sync",
   },
   {
-    slug: "ai-automation",
+    slug: SERVICE_SLUGS.ai,
     name: "AI & Intelligent Solutions",
     icon: "sparkles",
     card: "Practical AI that reads documents, handles routine requests and routes work, so your team can focus on decisions.",
@@ -128,7 +130,7 @@ export const servicePages: ServicePage[] = [
     accent: "ai-extract",
   },
   {
-    slug: "product-design",
+    slug: SERVICE_SLUGS.productDesign,
     name: "UI/UX & Product Design",
     icon: "pen",
     card: "Research-led interfaces and design systems that make your product easy to learn and pleasant to use.",
@@ -147,3 +149,16 @@ export const servicePages: ServicePage[] = [
     accent: "tokens",
   },
 ];
+
+/**
+ * A service's page copy joined with its catalogue entry — the one lookup the routes and pages use.
+ * Unknown slug → undefined (a 404). Known slug without a catalogue entry → an error naming it, because that is
+ * a data bug (the two files out of sync), which must never be hidden behind a "not found" page.
+ */
+export function getServiceDetail(slug: string) {
+  const page = servicePages.find((p) => p.slug === slug);
+  if (!page) return undefined;
+  const service = getService(slug);
+  if (!service) throw new Error(`Service "${slug}" has page copy but no entry in src/data/services.ts`);
+  return { page, service };
+}

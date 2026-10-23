@@ -81,7 +81,7 @@ export const post: BlogPost = {
       type: "paragraph",
       content: [
         "If you are unsure, map one workflow end to end and look for the manual steps. That map is also the best starting point for a conversation about ",
-        { text: "custom software development", href: "/services#custom-software" },
+        { text: "custom software development", href: "/services/custom-software-development" },
         ".",
       ],
     },

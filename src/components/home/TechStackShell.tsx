@@ -12,7 +12,7 @@ import { brand } from "@/lib/brand";
 export function TechStackShell({ children, labelledBy }: { children: ReactNode; labelledBy: string }) {
   const ref = useRef<HTMLElement>(null);
   return (
-    <section ref={ref} aria-labelledby={labelledBy} className="relative isolate overflow-hidden border-y border-line bg-bg-soft pt-12 pb-6 sm:pt-14 sm:pb-8">
+    <section ref={ref} aria-labelledby={labelledBy} data-stack-layer="1" className="stack-sticky stack-sheet relative isolate z-10 flex flex-col justify-center overflow-hidden border-b border-line bg-bg-soft motion-reduce:border-t py-16 md:min-h-svh md:pt-[calc(var(--header-h)+24px)] md:pb-10">
       {children}
       <Crosshair
         containerRef={ref}

@@ -309,6 +309,30 @@ body {
     transform: translateY(16px);
   }
 }
+/* ---------- Book-style stacking (StackingSections.tsx) ----------
+   Motion-safe only: with reduced motion the layers are plain document flow. The controller sets `--stick-N` on its
+   wrapper for layer N; unset (no JS) it is far negative, i.e. not sticky. `.stack-sheet` is an entering layer's top edge. */
+[data-stack-layer="0"] { --stick: var(--stick-0); }
+[data-stack-layer="1"] { --stick: var(--stick-1); }
+[data-stack-layer="2"] { --stick: var(--stick-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .stack-sticky {
+    position: sticky;
+    top: var(--stick, -100000px);
+  }
+  .stack-sheet {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0 -18px 40px -24px rgb(8 43 69 / 0.28);
+  }
+  @media (width >= 640px) {
+    .stack-sheet {
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+    }
+  }
+}
+
 /* Terminal: freeze the caret blink while the terminal is offscreen (toggled by AnimatedTerminal). */
 .terminal-paused .caret {
   animation-play-state: paused;

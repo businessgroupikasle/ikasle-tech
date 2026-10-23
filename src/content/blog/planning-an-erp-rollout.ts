@@ -63,7 +63,7 @@ export const post: BlogPost = {
       type: "paragraph",
       content: [
         "See how we approach ",
-        { text: "ERP and business automation", href: "/services#erp-solutions" },
+        { text: "ERP and business automation", href: "/services/erp-business-automation" },
         ".",
       ],
     },

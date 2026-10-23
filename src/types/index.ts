@@ -31,6 +31,9 @@ export type ServiceImage = {
   alt: string;
   /** CSS object-position, tuned per photo so the key device/screen stays in frame when cropped. */
   position: string;
+  /** Intrinsic size (used for Open Graph images). */
+  width: number;
+  height: number;
 };
 
 export type Service = {

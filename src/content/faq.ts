@@ -24,7 +24,7 @@ export const faqs: Faq[] = [
     answer: [
       [
         "Yes. We build software around how a business actually works — internal tools, management systems, integrations between existing systems, reporting dashboards and complete line-of-business applications. ",
-        { text: "Custom software development", href: "/services#custom-software" },
+        { text: "Custom software development", href: "/services/custom-software-development" },
         ".",
       ],
     ],
@@ -35,9 +35,9 @@ export const faqs: Faq[] = [
     answer: [
       [
         "Yes. We build web applications such as online stores, customer portals, SaaS products and dashboards, and cross-platform mobile apps for iOS and Android from a single codebase. See ",
-        { text: "web applications", href: "/services#web-applications" },
+        { text: "web applications", href: "/services/web-application-development" },
         " and ",
-        { text: "mobile apps", href: "/services#mobile-apps" },
+        { text: "mobile apps", href: "/services/mobile-app-development" },
         ".",
       ],
     ],
@@ -48,7 +48,7 @@ export const faqs: Faq[] = [
     answer: [
       [
         "Yes. We design ERP systems that connect inventory, purchasing, sales, production planning and reporting, with routine steps automated. ",
-        { text: "ERP & business automation", href: "/services#erp-solutions" },
+        { text: "ERP & business automation", href: "/services/erp-business-automation" },
         " · ",
         { text: "Our work", href: "/work" },
         ".",
@@ -61,7 +61,7 @@ export const faqs: Faq[] = [
     answer: [
       [
         "Yes. We add AI and automation to existing workflows — for example reading and extracting data from documents, sorting and routing requests, and assistants that answer from your own knowledge — with human review where it matters. ",
-        { text: "AI & intelligent solutions", href: "/services#ai-automation" },
+        { text: "AI & intelligent solutions", href: "/services/ai-intelligent-solutions" },
         ".",
       ],
     ],

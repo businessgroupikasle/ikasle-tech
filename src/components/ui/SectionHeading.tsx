@@ -12,6 +12,8 @@ type Props = {
   /** Optional mono-styled "file path" label above the title. */
   path?: string;
   id?: string;
+  /** Replaces the default animated title element (e.g. a heading with its own animation). */
+  heading?: ReactNode;
 };
 
 export function Eyebrow({ children, path }: { children: ReactNode; path?: string }) {
@@ -25,23 +27,25 @@ export function Eyebrow({ children, path }: { children: ReactNode; path?: string
   );
 }
 
-export function SectionHeading({ eyebrow, title, description, align = "left", as = "h2", className, path, id }: Props) {
+export function SectionHeading({ eyebrow, title, description, align = "left", as = "h2", className, path, id, heading }: Props) {
   return (
     <div className={cn("flex flex-col gap-5", align === "center" ? "items-center text-center" : "items-start", className)}>
       {eyebrow && <Eyebrow path={path}>{eyebrow}</Eyebrow>}
-      <AnimatedHeading
-        as={as}
-        id={id}
-        immediate={as === "h1"}
-        text={title}
-        className={cn(
-          "text-balance font-semibold tracking-[-0.035em] text-ink",
-          as === "h1"
-            ? "text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.5rem]"
-            : "text-[2rem] leading-[1.08] sm:text-5xl lg:text-[3.25rem]",
-          align === "center" && "mx-auto max-w-4xl",
-        )}
-      />
+      {heading ?? (
+        <AnimatedHeading
+          as={as}
+          id={id}
+          immediate={as === "h1"}
+          text={title}
+          className={cn(
+            "text-balance font-semibold tracking-[-0.035em] text-ink",
+            as === "h1"
+              ? "text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.5rem]"
+              : "text-[2rem] leading-[1.08] sm:text-5xl lg:text-[3.25rem]",
+            align === "center" && "mx-auto max-w-4xl",
+          )}
+        />
+      )}
       {description && (
         <p className={cn("max-w-2xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg", align === "center" && "mx-auto")}>
           {description}
