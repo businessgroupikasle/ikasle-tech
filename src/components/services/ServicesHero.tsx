@@ -58,7 +58,7 @@ export function ServicesHero() {
           </div>
         </div>
 
-        {/* Quick links (desktop): the six services at a glance */}
+        {/* Quick links (desktop): the seven services at a glance */}
         <nav aria-label="Services" className="enter-up hidden [animation-delay:300ms] lg:block">
           <div className="rounded-[28px] border border-accent/15 bg-white/80 p-3 shadow-soft backdrop-blur">
             <p className="px-3 pt-2 pb-3 font-mono text-[12px] text-ink-soft">services/</p>

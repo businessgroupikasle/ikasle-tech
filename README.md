@@ -40,7 +40,7 @@ See `.env.example`.
 | Variable | Scope | Purpose |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | public | Canonical URLs, sitemap, Open Graph. **Set this in production.** |
-| `NEXT_PUBLIC_CONTACT_EMAIL` / `_PHONE` / `_ADDRESS` | public | Company details. Anything left empty is hidden. |
+| `NEXT_PUBLIC_CONTACT_EMAIL` / `_PHONE` | public | Optional contact overrides. Anything left empty is hidden. The published address is centralized in `src/data/company-contact.ts`. |
 | `NEXT_PUBLIC_LINKEDIN_URL` / `NEXT_PUBLIC_GITHUB_URL` | public | Footer social links (optional) |
 | `RESEND_API_KEY` | server | Contact form delivery via [Resend](https://resend.com) |
 | `CONTACT_TO_EMAIL` | server | Inbox(es) that receive enquiries (comma-separated) |

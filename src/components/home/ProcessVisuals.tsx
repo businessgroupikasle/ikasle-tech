@@ -185,14 +185,14 @@ function Develop() {
   );
 }
 
-/* ---------- 05 Test & QA ---------- */
+/* ---------- 06 Test & QA ---------- */
 
 function Test() {
-  const tests = ["checkout › creates an order", "stock › flags items below reorder level", "auth › redirects signed-out users", "api › rejects an invalid payload"];
+  const tests = ["functional testing", "integration testing", "automated test execution", "regression testing", "validation results", "QA reporting"];
   return (
     <Card title="tests/e2e.spec.ts" dark>
       <div className="code-surface space-y-1 text-[12px]">
-        <p className="tok-muted">Running 4 tests using 2 workers</p>
+        <p className="tok-muted">Running quality checks using 2 workers</p>
         {tests.map((t) => (
           <p key={t} className="flex items-start gap-2">
             <Check className="mt-1 size-3 shrink-0 text-[#4ade80]" aria-hidden="true" />
@@ -200,7 +200,7 @@ function Test() {
           </p>
         ))}
         <p className="pt-2">
-          <span className="tok-success">4 passed</span>
+          <span className="tok-success">6 checks passed</span>
           <span className="tok-muted"> (sample run)</span>
         </p>
       </div>
@@ -208,16 +208,15 @@ function Test() {
   );
 }
 
-/* ---------- 06 Automate ---------- */
+/* ---------- 05 Automate ---------- */
 
 const CI_STEPS: { label: string; cmd: string; time: string }[] = [
   { label: "Code commit", cmd: "push · main", time: "" },
-  { label: "Install dependencies", cmd: "npm ci", time: "18s" },
-  { label: "Run lint", cmd: "npm run lint", time: "6s" },
-  { label: "Type check", cmd: "tsc --noEmit", time: "9s" },
-  { label: "Automated tests", cmd: "npm test", time: "41s" },
-  { label: "Build application", cmd: "npm run build", time: "37s" },
-  { label: "Prepare deployment", cmd: "artifact · release", time: "" },
+  { label: "Dependency installation", cmd: "npm ci", time: "18s" },
+  { label: "Automated linting", cmd: "npm run lint", time: "6s" },
+  { label: "Type checking", cmd: "npm run typecheck", time: "9s" },
+  { label: "Test pipeline configuration", cmd: "npm test -- --list", time: "4s" },
+  { label: "Build automation", cmd: "npm run build", time: "37s" },
 ];
 
 /**
@@ -242,7 +241,7 @@ function Automate() {
             {"\n    "}
             <span className="tok-prop">steps</span>
             <span className="tok-punct">:</span>
-            {CI_STEPS.slice(1, 6).map((s) => (
+            {CI_STEPS.slice(1).map((s) => (
               <span key={s.cmd}>
                 {"\n      - "}
                 <span className="tok-prop">run</span>
@@ -431,8 +430,8 @@ export const processSteps = [
   { id: "plan", title: "Plan & Architect", summary: "We define the system architecture, development roadmap, technology stack, and integration strategy.", Visual: PlanArchitect },
   { id: "design", title: "Design", summary: "We create intuitive interfaces, wireframes, prototypes, and design systems focused on real user needs.", Visual: Design },
   { id: "develop", title: "Develop", summary: "Our engineers build secure, scalable applications using modern frameworks, APIs, and maintainable code.", Visual: Develop },
-  { id: "test", title: "Test & QA", summary: "We validate functionality, usability, performance, and reliability through structured testing.", Visual: Test },
-  { id: "automate", title: "Automate", summary: "We automate testing, repetitive workflows, builds, and deployments to improve consistency and delivery speed.", Visual: Automate },
+  { id: "automate", title: "Automate", summary: "We automate repetitive development tasks, configure CI workflows, and prepare automated quality checks to improve consistency and delivery speed.", Visual: Automate },
+  { id: "test", title: "Test & QA", summary: "We validate functionality, usability, integration, performance, and reliability through structured manual and automated testing.", Visual: Test },
   { id: "deploy", title: "Deploy", summary: "We deploy applications using controlled release processes, environment configuration, and production checks.", Visual: Deploy },
   { id: "monitor", title: "Monitor & Optimize", summary: "We monitor application health, identify bottlenecks, and continuously improve performance and reliability.", Visual: Monitor_ },
   { id: "scale", title: "Scale & Support", summary: "We maintain, enhance, and scale your software as your users and business requirements grow.", Visual: Scale },

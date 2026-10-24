@@ -25,6 +25,7 @@ export type ServicePage = {
   benefits: string[];
   related: RelatedWork[];
   accent: ServiceAccent;
+  cta?: { label: string; href: string };
 };
 
 const KIDDOS = { label: "Kiddos Foods", href: "https://kiddosfoods.com", external: true };
@@ -52,6 +53,35 @@ export const servicePages: ServicePage[] = [
     benefits: ["Less manual data entry and fewer errors", "One source of truth your teams can trust", "Software that grows with your business"],
     related: [KIDDOS_ERP, ERP_CASE],
     accent: "workflow",
+  },
+  {
+    slug: SERVICE_SLUGS.websiteDevelopment,
+    name: "Website Development",
+    icon: "monitor-smartphone",
+    card: "Modern, responsive, SEO-friendly business websites that help your brand stand out, reach customers, and grow online.",
+    heading: "Websites That Represent Your Brand and Drive Growth.",
+    intro:
+      "Your website is often the first interaction customers have with your business. At IKASLE Technologies, we design and develop fast, responsive, visually engaging websites that communicate your brand, improve user experience, and support your digital growth.",
+    capabilities: [
+      "Business and corporate websites",
+      "Responsive website development",
+      "Landing pages and campaign websites",
+      "SEO-friendly website architecture",
+      "Content management integration",
+      "Website redesign and modernization",
+      "Website speed and performance optimization",
+    ],
+    benefits: [
+      "Stronger brand credibility",
+      "Better user experience",
+      "Improved mobile accessibility",
+      "Faster website performance",
+      "SEO-ready technical foundation",
+      "Easier customer enquiries",
+    ],
+    related: [KIDDOS, UZHAVAR],
+    accent: "server-render",
+    cta: { label: "Let's Build Your Website", href: "/contact" },
   },
   {
     slug: SERVICE_SLUGS.webApplications,

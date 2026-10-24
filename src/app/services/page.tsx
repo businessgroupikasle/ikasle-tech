@@ -7,7 +7,7 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 export const metadata = pageMetadata({
   title: "Services",
   description:
-    "Custom software, web applications, mobile apps, ERP & business automation, AI & intelligent solutions and UI/UX product design from IKASLE Technologies.",
+    "Custom software, business websites, web applications, mobile apps, ERP automation, AI solutions and UI/UX product design from IKASLE Technologies.",
   path: "/services",
 });
 
@@ -32,7 +32,7 @@ export default function ServicesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd).replace(/</g, "\\u003c") }} />
       <ServicesHero />
-      {/* Six cards only: each opens its own page at /services/[slug] (details live there, not here). */}
+      {/* Seven cards only: each opens its own page at /services/[slug] (details live there, not here). */}
       <ServicesOverview />
     </>
   );

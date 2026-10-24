@@ -76,6 +76,10 @@ export const privacyPolicy: LegalDocument = {
               " when online enquiries are enabled, the contents of the contact form are sent to our inbox by email through Resend, an email delivery provider.",
             ],
             [{ strong: "Hosting:" }, " the website runs on a hosting provider whose servers process requests to the site."],
+            [
+              { strong: "AI assistant:" },
+              " when the AI service is configured, messages entered in the assistant are sent to the configured AI provider to generate a response. The website does not send assistant conversations to analytics by default. Do not enter sensitive information in the assistant.",
+            ],
             [{ strong: "External links:" }, " some pages link to other websites (for example, projects we have built). Their privacy practices are their own."],
           ],
         },

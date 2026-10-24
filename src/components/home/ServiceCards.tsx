@@ -90,7 +90,7 @@ function TiltCard({ service, index }: { service: Service; index: number }) {
  *
  * Each transform has one owner: GSAP → [data-svc-card] (entrance), pointer → .svc-tilt (tilt),
  * CSS → .svc-static (hover lift). These used to be React Bits <ReflectiveCard />s, but once the cards became
- * solid white the photo and content covered the whole WebGL surface, so six WebGL contexts were rendering
+ * solid white the photo and content covered the whole WebGL surface, so multiple WebGL contexts were rendering
  * a hairline. The visible parts (tilt, entrance, glow) are kept, without WebGL.
  * The cards render visible on the server, so content never depends on JavaScript.
  */

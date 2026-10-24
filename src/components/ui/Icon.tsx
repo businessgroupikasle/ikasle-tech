@@ -11,6 +11,7 @@ import {
   Globe,
   Layers,
   MapPin,
+  MonitorSmartphone,
   Package,
   PenTool,
   Receipt,
@@ -28,6 +29,7 @@ import type { IconName } from "@/types";
 const icons: Record<IconName, LucideIcon> = {
   code: CodeXml,
   globe: Globe,
+  "monitor-smartphone": MonitorSmartphone,
   smartphone: Smartphone,
   boxes: Boxes,
   sparkles: Sparkles,

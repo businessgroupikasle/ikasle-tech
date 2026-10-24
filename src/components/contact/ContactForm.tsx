@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "motion/react";
 import { CircleAlert, CircleCheck, LoaderCircle, Send, TriangleAlert } from "lucide-react";
 import {
-  BUDGET_RANGES,
   PROJECT_TYPES,
   contactSchema,
   type ContactFormInput,
@@ -105,7 +104,7 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
       company: "",
       // Preselected from ?type= links on service and work pages; empty shows the placeholder.
       projectType: (initialType ?? "") as ContactFormInput["projectType"],
-      budget: "",
+      budget: undefined,
       description: "",
       website: "",
       startedAt: 0,
@@ -181,16 +180,28 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5" aria-describedby={status.state === "error" ? `${uid}-status` : undefined}>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id={`${uid}-name`} label="Full Name" error={errors.fullName?.message}>
-          {(a) => <input {...a} {...reg("fullName")} autoComplete="name" className={fieldBase} placeholder="Jane Doe" />}
+          {(a) => (
+            <input
+              {...a}
+              {...reg("fullName")}
+              autoComplete="name"
+              className={fieldBase}
+              onKeyDown={(e) => {
+                if (!e.ctrlKey && !e.metaKey && !e.altKey && /^[0-9]$/.test(e.key)) {
+                  e.preventDefault();
+                }
+              }}
+            />
+          )}
         </Field>
         <Field id={`${uid}-email`} label="Business Email" error={errors.email?.message}>
-          {(a) => <input {...a} {...reg("email")} type="email" autoComplete="email" inputMode="email" className={fieldBase} placeholder="jane@company.com" />}
+          {(a) => <input {...a} {...reg("email")} type="email" autoComplete="email" inputMode="email" className={fieldBase} />}
         </Field>
         <Field id={`${uid}-phone`} label="Phone Number" optional error={errors.phone?.message}>
-          {(a) => <input {...a} {...reg("phone")} type="tel" autoComplete="tel" inputMode="tel" className={fieldBase} placeholder="+1 555 000 0000" />}
+          {(a) => <input {...a} {...reg("phone")} type="tel" autoComplete="tel" inputMode="tel" className={fieldBase} />}
         </Field>
         <Field id={`${uid}-company`} label="Company Name" optional error={errors.company?.message}>
-          {(a) => <input {...a} {...reg("company")} autoComplete="organization" className={fieldBase} placeholder="Company Ltd." />}
+          {(a) => <input {...a} {...reg("company")} autoComplete="organization" className={fieldBase} />}
         </Field>
         <Field id={`${uid}-type`} label="Project Type" error={errors.projectType?.message}>
           {(a) => (
@@ -206,22 +217,10 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
             </select>
           )}
         </Field>
-        <Field id={`${uid}-budget`} label="Project Budget" optional error={errors.budget?.message}>
-          {(a) => (
-            <select {...a} {...reg("budget")} className={selectCls}>
-              <option value="">Prefer not to say</option>
-              {BUDGET_RANGES.map((b) => (
-                <option key={b} value={b}>
-                  {b}
-                </option>
-              ))}
-            </select>
-          )}
-        </Field>
       </div>
 
       <Field id={`${uid}-desc`} label="Project Description" error={errors.description?.message} hint="What are you building, who is it for, and what does success look like?">
-        {(a) => <textarea {...a} {...reg("description")} rows={6} className={cn(fieldBase, "resize-y")} placeholder="We need a web platform that…" />}
+        {(a) => <textarea {...a} {...reg("description")} rows={6} className={cn(fieldBase, "resize-y")} />}
       </Field>
 
       {/* Honeypot — hidden from people and assistive tech */}

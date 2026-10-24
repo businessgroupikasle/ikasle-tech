@@ -165,7 +165,8 @@ export function ServiceDetail({ slug }: { slug: string }) {
   const root = useRef<HTMLDivElement>(null);
   const { page, service } = getServiceDetail(slug)!;
   const index = servicePages.indexOf(page);
-  const contactHref = `/contact?type=${encodeURIComponent(service.projectType)}`;
+  const contactHref = page.cta?.href ?? `/contact?type=${encodeURIComponent(service.projectType)}`;
+  const contactLabel = page.cta?.label ?? "Start a Project";
   const others = servicePages.filter((p) => p.slug !== slug);
 
   useGSAP(
@@ -214,7 +215,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
               <div className="enter-up mt-8 flex w-full flex-col gap-3 [animation-delay:280ms] xs:w-auto xs:flex-row">
                 <MagneticButton className="flex">
                   <ButtonLink href={contactHref} size="lg" arrow className="w-full xs:w-auto">
-                    Start a Project
+                    {contactLabel}
                   </ButtonLink>
                 </MagneticButton>
                 <ButtonLink href="/services" size="lg" variant="secondary">
@@ -283,6 +284,22 @@ export function ServiceDetail({ slug }: { slug: string }) {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* ---------- Technologies ---------- */}
+      <section aria-labelledby="service-technologies" className="border-y border-line py-14 sm:py-16">
+        <div className="container-x">
+          <h2 id="service-technologies" data-reveal className={h2}>
+            Technologies We Use
+          </h2>
+          <ul className="mt-7 flex flex-wrap gap-3">
+            {service.technologies.map((technology) => (
+              <li key={technology} data-reveal className="rounded-xl border border-line bg-white px-4 py-2.5 font-mono text-[13px] font-medium text-ink shadow-[0_8px_20px_-18px_rgb(8_40_60/0.4)]">
+                {technology}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

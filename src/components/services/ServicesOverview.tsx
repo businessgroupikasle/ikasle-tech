@@ -13,7 +13,7 @@ const lift = { rest: { y: 0 }, hover: { y: -6 } };
 const zoom = { rest: { scale: 1 }, hover: { scale: 1.05 } };
 
 /**
- * Six service cards. Motion owns all movement here: RevealItem (entrance) wraps the card,
+ * Seven service cards. Motion owns all movement here: RevealItem (entrance) wraps the card,
  * the card lifts on hover, and its photo zooms — three separate elements, so nothing competes.
  */
 export function ServicesOverview() {
@@ -24,7 +24,7 @@ export function ServicesOverview() {
           id="services-overview-title"
           eyebrow="Our services"
           path="services/"
-          title="Six Ways We Help Your Business Grow."
+          title="Seven Ways We Help Your Business Grow."
           description="Pick a service to see what it solves, what we deliver and the technology behind it."
         />
         <RevealGroup className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7" stagger={0.07}>

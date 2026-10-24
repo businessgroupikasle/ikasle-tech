@@ -6,6 +6,7 @@ export type NavItem = {
 export type IconName =
   | "code"
   | "globe"
+  | "monitor-smartphone"
   | "smartphone"
   | "boxes"
   | "sparkles"
@@ -88,4 +89,3 @@ export type Project = {
   year: string | null;
   screens: { kind: "erp-dashboard" | "erp-inventory" | "erp-production"; caption: string }[];
 };
-

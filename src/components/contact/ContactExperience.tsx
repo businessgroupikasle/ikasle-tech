@@ -14,7 +14,6 @@ function PayloadPreview({ values }: { values: Partial<ContactFormInput> }) {
     ["email", show(values.email)],
     ["company", show(values.company)],
     ["projectType", show(values.projectType)],
-    ["budget", show(values.budget)],
     ["description", show(values.description)],
   ];
   return (

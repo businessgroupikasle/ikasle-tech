@@ -3,6 +3,8 @@
 import { MotionConfig } from "motion/react";
 import type { ReactNode } from "react";
 import { ClickEffect } from "@/components/effects/ClickEffect";
+import { ChatbotShell } from "@/components/chatbot/ChatbotShell";
+import "@/components/chatbot/chatbot.css";
 
 /** `reducedMotion="user"` makes every Motion animation honour prefers-reduced-motion. */
 export function Providers({ children }: { children: ReactNode }) {
@@ -10,6 +12,7 @@ export function Providers({ children }: { children: ReactNode }) {
     <MotionConfig reducedMotion="user">
       {children}
       <ClickEffect />
+      <ChatbotShell />
     </MotionConfig>
   );
 }

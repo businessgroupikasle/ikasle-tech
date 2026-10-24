@@ -1,3 +1,5 @@
+import { companyContact } from "@/data/company-contact";
+
 const clean = (value: string | undefined) => (value && value.trim().length > 0 ? value.trim() : null);
 
 export const siteConfig = {
@@ -8,14 +10,13 @@ export const siteConfig = {
     "IKASLE Technologies is a software engineering company building custom software, web and mobile applications, ERP platforms and intelligent automation.",
   url: (clean(process.env.NEXT_PUBLIC_SITE_URL) ?? "http://localhost:3000").replace(/\/$/, ""),
   /**
-   * Company contact details are intentionally not hard-coded.
-   * Configure them with NEXT_PUBLIC_* environment variables (see .env.example);
-   * anything left empty is hidden from the UI.
+   * The published address comes from the central company contact record so UI and structured data cannot drift.
+   * Optional email and phone overrides remain environment-configurable.
    */
   contact: {
     email: clean(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
     phone: clean(process.env.NEXT_PUBLIC_CONTACT_PHONE),
-    address: clean(process.env.NEXT_PUBLIC_CONTACT_ADDRESS),
+    address: companyContact.address.join(", "),
   },
   social: {
     linkedin: clean(process.env.NEXT_PUBLIC_LINKEDIN_URL),

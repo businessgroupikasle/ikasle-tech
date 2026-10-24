@@ -5,6 +5,7 @@
  */
 export const SERVICE_SLUGS = {
   customSoftware: "custom-software-development",
+  websiteDevelopment: "website-development",
   webApplications: "web-application-development",
   mobileApps: "mobile-app-development",
   erp: "erp-business-automation",

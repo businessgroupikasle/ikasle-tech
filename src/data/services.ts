@@ -1,7 +1,7 @@
 import type { Service } from "@/types";
 import { SERVICE_SLUGS } from "./service-slugs";
 
-/** The six services. Each slug is also its detail-page route: /services/[slug] (see src/app/services/[slug]). */
+/** The seven services. Each slug is also its detail-page route: /services/[slug] (see src/app/services/[slug]). */
 export const services: Service[] = [
   {
     slug: SERVICE_SLUGS.customSoftware,
@@ -33,6 +33,39 @@ export const services: Service[] = [
       position: "55% 50%",
     },
     projectType: "Software Development",
+  },
+  {
+    slug: SERVICE_SLUGS.websiteDevelopment,
+    title: "Website Development",
+    shortTitle: "Websites",
+    icon: "monitor-smartphone",
+    summary: "We create modern, responsive, SEO-friendly business websites that help your brand stand out, reach customers, and grow online.",
+    description:
+      "Your website is often the first interaction customers have with your business. At IKASLE Technologies, we design and develop fast, responsive, visually engaging websites that communicate your brand, improve user experience, and support your digital growth.",
+    problems: [
+      "Outdated website designs",
+      "Poor mobile responsiveness",
+      "Slow website loading",
+      "Difficult navigation",
+      "Weak online brand presentation",
+      "Limited content management flexibility",
+    ],
+    capabilities: [
+      "Responsive, mobile-first implementation",
+      "SEO-friendly semantic architecture",
+      "Content management integration",
+      "Performance and Core Web Vitals optimization",
+      "Accessible, maintainable component systems",
+    ],
+    technologies: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
+    image: {
+      src: "/images/services/website-development-responsive.png",
+      width: 1456,
+      height: 1092,
+      alt: "Modern corporate website displayed responsively on a desktop monitor and smartphone",
+      position: "50% 50%",
+    },
+    projectType: "Website Development",
   },
   {
     slug: SERVICE_SLUGS.webApplications,

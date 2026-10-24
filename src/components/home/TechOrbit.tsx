@@ -14,9 +14,9 @@ import { useLayerCovered } from "./StackingSections";
 function logoTile(tech: Technology): string {
   const body = tech.path
     ? `<rect x="1" y="1" width="94" height="94" fill="#FFFFFF" stroke="#DFEAF3" stroke-width="2"/>` +
-      `<g transform="translate(26 26) scale(1.8333)"><path fill="${tech.hex}" d="${tech.path}"/></g>`
+    `<g transform="translate(26 26) scale(1.8333)"><path fill="${tech.hex}" d="${tech.path}"/></g>`
     : `<rect width="96" height="96" fill="#232F3E"/>` +
-      `<text x="48" y="57" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-weight="700" font-size="26" fill="#FF9900">aws</text>`;
+    `<text x="48" y="57" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-weight="700" font-size="26" fill="#FF9900">aws</text>`;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">${body}</svg>`;
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }

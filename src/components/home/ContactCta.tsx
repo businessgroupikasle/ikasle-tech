@@ -25,7 +25,6 @@ export function ContactCta({
   highlight = ["Extraordinary."],
   text = "From your first concept to a scalable digital product, our team is ready to bring your vision to life.",
   primary = { label: "Start Your Project", href: "/contact" },
-  secondary = { label: "Contact Our Team", href: "/contact#contact-form" },
 }: {
   headingLevel?: "h2" | "h3";
   eyebrow?: string;
@@ -33,7 +32,6 @@ export function ContactCta({
   highlight?: string[];
   text?: string;
   primary?: CtaLink;
-  secondary?: CtaLink;
 }) {
   const rain = [...CODE_LINES, ...CODE_LINES, ...CODE_LINES, ...CODE_LINES].join("\n");
   return (
@@ -74,9 +72,6 @@ export function ContactCta({
             <div className="mt-2 flex w-full flex-col justify-center gap-3 xs:w-auto xs:flex-row">
               <ButtonLink href={primary.href} size="lg" arrow>
                 {primary.label}
-              </ButtonLink>
-              <ButtonLink href={secondary.href} size="lg" variant="secondary" className="border-white/15! bg-white/5! text-white! hover:bg-white/10!">
-                {secondary.label}
               </ButtonLink>
             </div>
           </div>

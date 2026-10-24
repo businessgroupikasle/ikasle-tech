@@ -12,7 +12,7 @@ export const faqs: Faq[] = [
     question: "What services does IKASLE Technologies provide?",
     answer: [
       [
-        "We design and build software across six areas: custom software development, web application development, mobile app development, ERP and business automation, AI and intelligent solutions, and UI/UX and product design. ",
+        "We design and build digital products across seven areas: custom software development, website development, web application development, mobile app development, ERP and business automation, AI and intelligent solutions, and UI/UX and product design. ",
         { text: "See all services", href: "/services" },
         ".",
       ],

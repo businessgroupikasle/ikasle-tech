@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const PROJECT_TYPES = [
   "Software Development",
+  "Website Development",
   "Web Application",
   "Mobile Application",
   "ERP Solution",
@@ -10,7 +11,6 @@ export const PROJECT_TYPES = [
   "Other",
 ] as const;
 
-export const BUDGET_RANGES = ["Not sure yet", "Under $5k", "$5k – $15k", "$15k – $50k", "$50k+"] as const;
 
 const optionalText = (max: number) =>
   z.string().trim().max(max, `Please keep this under ${max} characters.`).optional().or(z.literal(""));
@@ -21,7 +21,13 @@ export const contactSchema = z.object({
     .string()
     .trim()
     .min(2, "Please enter your full name.")
-    .max(100, "Please keep your name under 100 characters."),
+    .max(100, "Please keep your name under 100 characters.")
+    .refine((val) => !/\d/.test(val), {
+      message: "Full name cannot contain numbers.",
+    })
+    .refine((val) => /^[\p{L}\s.'’-]+$/u.test(val), {
+      message: "Please enter a valid name (letters only).",
+    }),
   email: z.string().trim().max(160).pipe(z.email("Please enter a valid business email.")),
   phone: z
     .string()
@@ -32,7 +38,6 @@ export const contactSchema = z.object({
     .or(z.literal("")),
   company: optionalText(120),
   projectType: z.enum(PROJECT_TYPES, { message: "Please choose a project type." }),
-  budget: z.enum(BUDGET_RANGES).optional().or(z.literal("")),
   description: z
     .string()
     .trim()

@@ -14,7 +14,7 @@ export function ServicesPreview() {
           <SectionHeading
             id="services-title"
             title="Engineering Digital Experiences That Matter."
-            description="Six disciplines, one engineering team. We take products from first sketch to production — and keep them running."
+            description="Seven disciplines, one engineering team. We take products from first sketch to production — and keep them running."
           />
           <Link href="/services" className="group inline-flex shrink-0 items-center gap-1.5 font-medium text-accent-strong">
             All services

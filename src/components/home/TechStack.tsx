@@ -1,5 +1,5 @@
 import { orbitTechnologies } from "@/data/technologies";
-import { TechOrbit } from "./TechOrbit";
+import { TechOrbitWithTooltips } from "./TechOrbitWithTooltips";
 import { TechStackShell } from "./TechStackShell";
 import { Reveal } from "@/components/animations/Reveal";
 
@@ -18,7 +18,7 @@ export function TechStack() {
         ))}
       </ul>
       <div className="container-x">
-        <TechOrbit />
+        <TechOrbitWithTooltips />
       </div>
     </TechStackShell>
   );

@@ -3,12 +3,13 @@ import { notFound } from "next/navigation";
 import { ServiceDetail } from "@/components/services/ServiceDetail";
 import { ContactCta } from "@/components/home/ContactCta";
 import { getServiceDetail, servicePages } from "@/data/service-pages";
+import { SERVICE_SLUGS } from "@/data/service-slugs";
 import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
-// Only the six services exist; any other slug is a 404.
+// Only the seven services exist; any other slug is a 404.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!detail) return {};
   const { page, service } = detail;
   return pageMetadata({
-    title: page.name,
+    title: slug === SERVICE_SLUGS.websiteDevelopment ? "Website Development Company in Coimbatore" : page.name,
     description: page.intro,
     path: `/services/${page.slug}`,
     image: { src: service.image.src, alt: service.image.alt, width: service.image.width, height: service.image.height },
@@ -64,7 +65,7 @@ export default async function ServicePage({ params }: Params) {
         title="Have a Challenge? Let's Build the Solution."
         highlight={["Solution."]}
         text="Tell us what you want to achieve. We'll help you explore the right technology approach for your business."
-        primary={{ label: "Start a Project", href: `/contact?type=${encodeURIComponent(service.projectType)}` }}
+        primary={page.cta ?? { label: "Start a Project", href: `/contact?type=${encodeURIComponent(service.projectType)}` }}
         secondary={{ label: "All Services", href: "/services" }}
       />
     </>
