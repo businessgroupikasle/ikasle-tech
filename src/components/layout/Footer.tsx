@@ -123,9 +123,6 @@ export function Footer() {
       <div className="relative border-t border-line">
         <div className="container-x flex flex-col gap-2 py-6 text-[13px] text-ink-soft sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} IKASLE Technologies. All rights reserved.</p>
-          <p className="font-mono text-[12px]">
-            <span className="tok-keyword">{"</>"}</span> engineered with Next.js &amp; TypeScript
-          </p>
         </div>
       </div>
     </footer>

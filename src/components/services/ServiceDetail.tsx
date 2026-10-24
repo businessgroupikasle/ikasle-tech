@@ -286,7 +286,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* ---------- Benefits, technologies, related work ---------- */}
+      {/* ---------- Benefits, related work ---------- */}
       <section aria-labelledby="service-benefits" className="bg-bg-soft py-16 sm:py-20">
         <div className="container-x">
           <h2 id="service-benefits" data-reveal className={h2}>
@@ -301,46 +301,33 @@ export function ServiceDetail({ slug }: { slug: string }) {
             ))}
           </ul>
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <div data-reveal>
-              <h2 className={h3}>Technologies We Use</h2>
-              <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${page.name} technologies`}>
-                {service.technologies.map((t) => (
-                  <li key={t} className="rounded-full border border-line bg-white px-3.5 py-1.5 font-mono text-[12.5px] text-ink-soft">
-                    {t}
+          {page.related.length > 0 && (
+            <div data-reveal className="mt-12">
+              <h2 className={h3}>Related Work</h2>
+              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+                {page.related.map((r) => (
+                  <li key={r.href}>
+                    {r.external ? (
+                      <a
+                        href={r.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[15.5px] font-medium text-ink underline decoration-accent/40 underline-offset-4 hover:text-accent-strong"
+                      >
+                        {r.label}
+                        <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                        <span className="sr-only">(opens in a new tab)</span>
+                      </a>
+                    ) : (
+                      <Link href={r.href} className="inline-flex items-center gap-1 text-[15.5px] font-medium text-ink underline decoration-accent/40 underline-offset-4 hover:text-accent-strong">
+                        {r.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
             </div>
-
-            {page.related.length > 0 && (
-              <div data-reveal>
-                <h2 className={h3}>Related Work</h2>
-                <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
-                  {page.related.map((r) => (
-                    <li key={r.href}>
-                      {r.external ? (
-                        <a
-                          href={r.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[15.5px] font-medium text-ink underline decoration-accent/40 underline-offset-4 hover:text-accent-strong"
-                        >
-                          {r.label}
-                          <ArrowUpRight className="size-3.5" aria-hidden="true" />
-                          <span className="sr-only">(opens in a new tab)</span>
-                        </a>
-                      ) : (
-                        <Link href={r.href} className="inline-flex items-center gap-1 text-[15.5px] font-medium text-ink underline decoration-accent/40 underline-offset-4 hover:text-accent-strong">
-                          {r.label}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </section>
 
