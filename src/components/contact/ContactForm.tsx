@@ -104,7 +104,6 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
       company: "",
       // Preselected from ?type= links on service and work pages; empty shows the placeholder.
       projectType: (initialType ?? "") as ContactFormInput["projectType"],
-      budget: undefined,
       description: "",
       website: "",
       startedAt: 0,
