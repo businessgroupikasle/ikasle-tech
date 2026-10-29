@@ -20,7 +20,8 @@ type CtaLink = { label: string; href: string };
  */
 export function ContactCta({
   headingLevel = "h2",
-  eyebrow = "// ready when you are",
+  secondary,
+  eyebrow = "",
   title = "Have an Idea? Let's Build Something Extraordinary.",
   highlight = ["Extraordinary."],
   text = "From your first concept to a scalable digital product, our team is ready to bring your vision to life.",
@@ -32,6 +33,7 @@ export function ContactCta({
   highlight?: string[];
   text?: string;
   primary?: CtaLink;
+  secondary?: CtaLink;
 }) {
   const rain = [...CODE_LINES, ...CODE_LINES, ...CODE_LINES, ...CODE_LINES].join("\n");
   return (
@@ -58,7 +60,7 @@ export function ContactCta({
           <div className="absolute -top-24 left-1/2 h-64 w-[70%] -translate-x-1/2 rounded-full bg-accent/30 blur-[100px]" aria-hidden="true" />
 
           <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
-            <p className="font-mono text-[12px] text-accent-2">{eyebrow}</p>
+            {eyebrow && <p className="font-mono text-[12px] text-accent-2">{eyebrow}</p>}
             <AnimatedHeading
               as={headingLevel}
               id="cta-title"
@@ -73,6 +75,7 @@ export function ContactCta({
               <ButtonLink href={primary.href} size="lg" arrow>
                 {primary.label}
               </ButtonLink>
+              {secondary && <ButtonLink href={secondary.href} size="lg" variant="secondary" arrow>{secondary.label}</ButtonLink>}
             </div>
           </div>
         </Reveal>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ScrollLink as Link } from "@/components/ui/ScrollLink";
 import type { ComponentProps, ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/cn";

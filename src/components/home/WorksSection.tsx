@@ -206,7 +206,7 @@ export function WorksSection() {
         />
         <p className="mt-5 inline-flex items-center gap-2 font-mono text-[12px] text-ink-soft">
           <FolderOpen className="size-3.5 text-accent-strong" aria-hidden="true" />
-          Open a folder to look inside · select a page to zoom
+          Open a project folder to explore its contents. Select a page to view it in detail.
         </p>
         <Reveal className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
           {works.map((w, i) => (

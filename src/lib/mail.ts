@@ -24,7 +24,6 @@ export async function sendContactEmail(data: ContactFormValues): Promise<MailRes
     ["Phone", data.phone],
     ["Company", data.company],
     ["Project type", data.projectType],
-    ["Budget", data.budget],
   ];
   const html = `
     <h2>New project enquiry</h2>

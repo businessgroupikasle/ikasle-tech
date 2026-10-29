@@ -12,11 +12,12 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
   {
     title: "Quick Links",
     links: [
-      { label: "Home", href: "/" },
+      { label: "Home", href: "/#top" },
       { label: "Work", href: "/work" },
       { label: "Services", href: "/services" },
       { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
+      { label: "Careers", href: "/careers" },
     ],
   },
   {

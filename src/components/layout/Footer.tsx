@@ -1,10 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
+import { ScrollLink as Link } from "@/components/ui/ScrollLink";
 import type { ReactNode } from "react";
-import { Mail } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { siInstagram } from "simple-icons";
 import { footerNav } from "@/data/navigation";
+import { companyContact } from "@/data/company-contact";
 import { companySocials } from "@/data/socials";
+import { FooterGroup } from "./FooterGroup";
 import { FooterMetaBalls } from "./FooterMetaBalls";
 
 const isUrl = (v: string) => /^https:\/\/[^\s/$.?#].[^\s]*$/i.test(v.trim());
@@ -66,12 +68,12 @@ export function Footer() {
   const { instagram, linkedin, email } = companySocials;
 
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-bg-soft">
+    <footer className="site-footer relative overflow-hidden border-t border-line bg-bg-soft">
       <FooterMetaBalls />
-      <div className="container-x relative grid gap-x-10 gap-y-12 py-16 sm:grid-cols-2 md:py-20 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div className="container-x relative grid gap-x-10 gap-y-4 py-8 sm:gap-y-12 sm:py-16 sm:grid-cols-2 md:py-20 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1">
-          <Link href="/" className="inline-flex self-start rounded-lg" aria-label="IKASLE Technologies — home">
+          <Link href="/#top" className="inline-flex self-start rounded-lg" aria-label="IKASLE Technologies — home">
             <Image
               src="/brand/ikasle-logo-flat.webp"
               alt="IKASLE Technologies"
@@ -85,12 +87,17 @@ export function Footer() {
           <p className="max-w-xs text-[15px] leading-relaxed text-ink-soft">
             Engineering intelligent digital solutions through code, creativity, and technology.
           </p>
+          <address className="flex min-w-0 flex-col gap-3 text-sm leading-relaxed text-ink-soft not-italic">
+            {companyContact.phones.map((phone) => <a key={phone.tel} href={`tel:${phone.tel}`} className="flex items-center gap-2 hover:text-accent-strong"><Phone className="size-4 shrink-0" aria-hidden="true" />{phone.display}</a>)}
+            <a href={`mailto:${companyContact.email}`} className="flex min-w-0 items-center gap-2 hover:text-accent-strong"><Mail className="size-4 shrink-0" aria-hidden="true" /><span className="break-all">{companyContact.email}</span></a>
+            <div className="flex items-start gap-2"><MapPin className="mt-1 size-4 shrink-0" aria-hidden="true" /><span>{companyContact.address.map((line) => <span key={line} className="block">{line}</span>)}</span></div>
+          </address>
         </div>
 
         {/* Quick Links · Legal & Support */}
         {footerNav.map((group) => (
           <nav key={group.title} aria-label={group.title}>
-            <h2 className="font-mono text-[12px] font-medium tracking-wider text-ink uppercase">{group.title}</h2>
+            <FooterGroup title={group.title}>
             <ul className="mt-5 flex flex-col gap-3">
               {group.links.map((link) => (
                 <li key={link.href}>
@@ -100,12 +107,12 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+            </FooterGroup>
           </nav>
         ))}
 
         {/* Connect */}
-        <div>
-          <h2 className="font-mono text-[12px] font-medium tracking-wider text-ink uppercase">Connect</h2>
+        <FooterGroup title="Connect">
           <ul className="mt-5 flex flex-col gap-3">
             <li>
               <ConnectItem label="Instagram" icon={<InstagramIcon />} href={isUrl(instagram) ? instagram.trim() : null} />
@@ -117,7 +124,7 @@ export function Footer() {
               <ConnectItem label="Email" icon={<Mail className="size-4" aria-hidden="true" />} href={isEmail(email) ? `mailto:${email.trim()}` : null} />
             </li>
           </ul>
-        </div>
+        </FooterGroup>
       </div>
 
       <div className="relative border-t border-line">

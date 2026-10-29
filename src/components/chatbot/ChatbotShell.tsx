@@ -2,18 +2,7 @@
 
 import { lazy, Suspense, useState, type PointerEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { X } from "lucide-react";
-
-function IkasleAssistantMark() {
-  return (
-    <svg viewBox="0 0 32 32" className="size-8" fill="none" aria-hidden="true">
-      <path d="M12.5 8.5 5.5 16l7 7.5M19.5 8.5l7 7.5-7 7.5" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="m18.1 6-4.2 20" stroke="#4DB3FF" strokeWidth="2.4" strokeLinecap="round" />
-      <circle cx="16" cy="16" r="13" stroke="url(#assistant-ring)" strokeWidth="1" opacity=".45" />
-      <defs><linearGradient id="assistant-ring" x1="5" y1="5" x2="27" y2="27"><stop stopColor="#fff" /><stop offset="1" stopColor="#009CFF" /></linearGradient></defs>
-    </svg>
-  );
-}
+import { MessageCircle, X } from "lucide-react";
 
 const ChatWindow = lazy(() => import("./ChatWindow"));
 
@@ -44,7 +33,7 @@ export function ChatbotShell() {
         <span className="chat-launcher-ring absolute inset-[-2px] rounded-full" aria-hidden="true" />
         <AnimatePresence mode="wait" initial={false}>
           <motion.span key={open ? "close" : "open"} initial={{ opacity: 0, rotate: -25, scale: 0.7 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} exit={{ opacity: 0, rotate: 25, scale: 0.7 }} className="relative">
-            {open ? <X className="size-6" /> : <IkasleAssistantMark />}
+            {open ? <X className="size-6" /> : <MessageCircle className="size-8" aria-hidden="true" />}
           </motion.span>
         </AnimatePresence>
       </motion.button>

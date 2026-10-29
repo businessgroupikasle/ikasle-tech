@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { ScrollLink as Link } from "@/components/ui/ScrollLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -92,7 +92,7 @@ export function Header() {
                     />
                   )}
                   <Link
-                    href={item.href}
+                    href={item.href === "/" ? "/#top" : item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "relative z-10 block rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200",
@@ -108,7 +108,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 justify-self-end">
-          <ButtonLink href="/contact" arrow className="max-md:hidden">
+          <ButtonLink href="/contact#contact-form" arrow className="max-md:hidden">
             Let&apos;s Talk
           </ButtonLink>
           <button
@@ -155,7 +155,7 @@ export function Header() {
                 animate="show"
                 variants={{ show: { transition: { staggerChildren: 0.05, delayChildren: 0.08 } } }}
               >
-                {mainNav.map((item, i) => {
+                {mainNav.map((item) => {
                   const active = isActive(pathname, item.href);
                   return (
                     <motion.li
@@ -164,12 +164,11 @@ export function Header() {
                       className="border-b border-line"
                     >
                       <Link
-                        href={item.href}
+                        href={item.href === "/" ? "/#top" : item.href}
                         aria-current={active ? "page" : undefined}
                         className="flex items-center justify-between py-4 text-2xl font-semibold tracking-tight"
                       >
                         <span className={active ? "text-accent-strong" : "text-ink"}>
-                          <span className="mr-3 font-mono text-xs text-ink-soft">0{i + 1}</span>
                           {item.label}
                         </span>
                         <ArrowRight className="size-5 text-ink-soft" aria-hidden="true" />
@@ -178,7 +177,7 @@ export function Header() {
                   );
                 })}
               </motion.ul>
-              <ButtonLink href="/contact" size="lg" arrow className="w-full">
+              <ButtonLink href="/contact#contact-form" onClick={() => setOpen(false)} size="lg" arrow className="w-full">
                 Let&apos;s Talk
               </ButtonLink>
             </nav>

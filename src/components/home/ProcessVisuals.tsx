@@ -226,8 +226,8 @@ const CI_STEPS: { label: string; cmd: string; time: string }[] = [
 function Automate() {
   return (
     <Card title=".github/workflows/ci.yml" dark>
-      <div className="grid gap-4 sm:grid-cols-[0.9fr_1.1fr]">
-        <pre className="code-surface min-w-0 overflow-x-auto text-[11.5px] leading-[1.7]">
+      <div className="grid min-w-0 gap-4 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+        <pre className="code-surface min-w-0 whitespace-pre-wrap! [overflow-wrap:anywhere] text-[11.5px] leading-[1.7]">
           <code>
             <span className="tok-prop">on</span>
             <span className="tok-punct">: </span>
@@ -262,8 +262,8 @@ function Automate() {
                   {i === 0 ? <GitCommitHorizontal className="size-3.5" aria-hidden="true" /> : last ? <Zap className="size-3.5" aria-hidden="true" /> : <Check className="size-3.5" aria-hidden="true" />}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[12.5px] font-medium text-white">{s.label}</span>
-                  <span className="block truncate font-mono text-[10.5px] text-editor-muted">{s.cmd}</span>
+                  <span className="block text-[12.5px] font-medium text-white">{s.label}</span>
+                  <span className="block break-words font-mono text-[10.5px] text-editor-muted">{s.cmd}</span>
                 </span>
                 <span className={cn("ci-status font-mono text-[10.5px]", last ? "text-[#4db3ff]" : "text-[#4ade80]")}>{last ? "ready" : s.time ? `passed · ${s.time}` : "triggered"}</span>
               </li>

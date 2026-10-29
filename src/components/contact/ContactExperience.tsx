@@ -5,13 +5,14 @@ import type { ContactFormInput } from "@/lib/contact-schema";
 import { ContactForm } from "./ContactForm";
 import { WindowFrame } from "@/components/ui/Frames";
 
-const show = (v: unknown) => (typeof v === "string" && v.trim() ? JSON.stringify(v.trim().slice(0, 42) + (v.trim().length > 42 ? "…" : "")) : null);
+const show = (v: unknown) => JSON.stringify(typeof v === "string" ? v.trim() : "");
 
 /** Code-themed illustration: the form's request payload, updating live as the visitor types. */
 function PayloadPreview({ values }: { values: Partial<ContactFormInput> }) {
   const rows: [string, string | null][] = [
-    ["name", show(values.fullName)],
+    ["fullName", show(values.fullName)],
     ["email", show(values.email)],
+    ["phone", show(values.phone)],
     ["company", show(values.company)],
     ["projectType", show(values.projectType)],
     ["description", show(values.description)],
@@ -43,7 +44,7 @@ function PayloadPreview({ values }: { values: Partial<ContactFormInput> }) {
           <p key={k} className="truncate pl-8">
             <span className="tok-prop">{k}</span>
             <span className="tok-punct">: </span>
-            {v ? <span className="tok-string">{v}</span> : <span className="tok-comment">undefined</span>}
+            <span className="tok-string">{v}</span>
             <span className="tok-punct">,</span>
           </p>
         ))}
@@ -69,7 +70,7 @@ export function ContactExperience({ fallbackEmail, aside }: { fallbackEmail: str
       <div className="order-2 flex flex-col gap-8 lg:order-1">
         <div>
           <PayloadPreview values={values} />
-          <p className="mt-3 font-mono text-[11px] text-ink-soft">{"// live preview of the request this form sends"}</p>
+          <p className="mt-3 font-mono text-[11px] text-ink-soft">{"// live preview of the project details this form sends"}</p>
         </div>
         {aside}
       </div>

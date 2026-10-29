@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
     .filter(([, status]) => status === "approved")
     .map(([path]) => path!);
-  const pages = ["/", "/work", "/services", ...(blogUnderMaintenance ? [] : ["/blog"]), "/contact", "/faq", ...legal].map((path) => ({
+  const pages = ["/", "/work", "/services", ...(blogUnderMaintenance ? [] : ["/blog"]), "/contact", "/careers", "/faq", ...legal].map((path) => ({
     url: absoluteUrl(path),
     lastModified: now,
     changeFrequency: "monthly" as const,

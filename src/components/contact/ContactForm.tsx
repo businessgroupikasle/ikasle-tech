@@ -92,6 +92,7 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
     setError,
     reset,
     subscribe,
+    getValues,
     setFocus,
     formState: { errors },
   } = useForm<ContactFormInput, unknown, ContactFormValues>({
@@ -104,7 +105,6 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
       company: "",
       // Preselected from ?type= links on service and work pages; empty shows the placeholder.
       projectType: (initialType ?? "") as ContactFormInput["projectType"],
-      budget: undefined,
       description: "",
       website: "",
       startedAt: 0,
@@ -118,11 +118,12 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
 
   useEffect(() => {
     if (!onValuesChange) return;
+    onValuesChange(getValues());
     return subscribe({
       formState: { values: true },
       callback: ({ values }) => onValuesChange(values as Partial<ContactFormInput>),
     });
-  }, [subscribe, onValuesChange]);
+  }, [subscribe, getValues, onValuesChange]);
 
   const onSubmit = async (values: ContactFormValues) => {
     if (status.state === "submitting") return;

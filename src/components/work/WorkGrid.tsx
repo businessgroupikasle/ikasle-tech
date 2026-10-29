@@ -182,8 +182,12 @@ export function WorkGrid({ entries, categories }: { entries: WorkEntry[]; catego
   const count = (f: Filter) => (f === "All Projects" ? entries.length : entries.filter((e) => categoriesOf(e).includes(f)).length);
 
   return (
-    <div>
-      <div role="group" aria-label="Filter projects by category" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
+    <div className="min-w-0">
+      <label className="mb-2 block text-sm font-medium text-ink sm:hidden" htmlFor="work-category">Project category</label>
+      <select id="work-category" value={filter} onChange={(event) => setFilter(event.target.value as Filter)} className="block w-full min-w-0 max-w-full rounded-xl border border-line bg-white px-3 py-3 text-sm text-ink sm:hidden">
+        {filters.map((f) => <option key={f} value={f}>{f} ({count(f)})</option>)}
+      </select>
+      <div role="group" aria-label="Filter projects by category" className="hidden min-w-0 flex-wrap gap-2 pb-2 sm:flex">
         {filters.map((f) => {
           const active = f === filter;
           return (

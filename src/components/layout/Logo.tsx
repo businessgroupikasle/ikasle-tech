@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
+import { ScrollLink as Link } from "@/components/ui/ScrollLink";
 import { cn } from "@/lib/cn";
 
 /** Official IKASLE Technologies wordmark (transparent WebP, trimmed: 720 × 238). */
 export function Logo({ className }: { className?: string }) {
   return (
-    <Link href="/" className={cn("inline-flex items-center rounded-lg", className)} aria-label="IKASLE Technologies — home">
+    <Link href="/#top" className={cn("inline-flex items-center rounded-lg", className)} aria-label="IKASLE Technologies — home">
       <Image
         src="/brand/ikasle-logo-flat.webp"
         alt="IKASLE Technologies"

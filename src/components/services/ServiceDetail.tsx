@@ -354,7 +354,7 @@ export function ServiceDetail({ slug }: { slug: string }) {
           <h2 id="other-services" data-reveal className={h3}>
             Explore Other Services
           </h2>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((o) => (
               <li key={o.slug} data-reveal>
                 <Link
