@@ -26,6 +26,7 @@ export function ContactCta({
   highlight = ["Extraordinary."],
   text = "From your first concept to a scalable digital product, our team is ready to bring your vision to life.",
   primary = { label: "Start Your Project", href: "/contact" },
+  secondary,
 }: {
   headingLevel?: "h2" | "h3";
   eyebrow?: string;
@@ -75,7 +76,15 @@ export function ContactCta({
               <ButtonLink href={primary.href} size="lg" arrow>
                 {primary.label}
               </ButtonLink>
+<<<<<<< HEAD
               {secondary && <ButtonLink href={secondary.href} size="lg" variant="secondary" arrow>{secondary.label}</ButtonLink>}
+=======
+              {secondary && (
+                <ButtonLink href={secondary.href} size="lg" variant="secondary" className="border-white/15! bg-white/5! text-white! hover:bg-white/10!">
+                  {secondary.label}
+                </ButtonLink>
+              )}
+>>>>>>> 5be199e143c0b03e88b13f3f38171e59c39e2edc
             </div>
           </div>
         </Reveal>
