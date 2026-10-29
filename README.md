@@ -40,6 +40,7 @@ See `.env.example`.
 | Variable | Scope | Purpose |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | public | Canonical URLs, sitemap, Open Graph. **Set this in production.** |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | public | GA4 web stream ID (`G-...`); blank disables analytics. Rebuild after changes. |
 | `NEXT_PUBLIC_CONTACT_EMAIL` / `_PHONE` | public | Optional contact overrides. Anything left empty is hidden. The published address is centralized in `src/data/company-contact.ts`. |
 | `NEXT_PUBLIC_LINKEDIN_URL` / `NEXT_PUBLIC_GITHUB_URL` | public | Footer social links (optional) |
 | `RESEND_API_KEY` | server | Contact form delivery via [Resend](https://resend.com) |
@@ -47,6 +48,20 @@ See `.env.example`.
 | `CONTACT_FROM_EMAIL` | server | Sender on a domain verified in Resend |
 
 If the three server variables are not all set, the form does **not** pretend to send: the API returns `503 not_configured`, and the form shows an honest message (plus `NEXT_PUBLIC_CONTACT_EMAIL` if one is set).
+
+## Analytics and search setup
+
+Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin (no path) and `NEXT_PUBLIC_GA_MEASUREMENT_ID` to your GA4 web stream ID in the hosting environment, then rebuild and deploy. No GA ID or production domain is stored in this repository.
+
+In GA4 Admin → Data streams → Web → Enhanced measurement → Page views → Advanced settings, enable **Page loads** and **Page changes based on browser history events**. GA4 is the sole source of page views; this app does not manually emit `page_view`. Do not install a second GA tag through Tag Manager or your host. Keep automatic form interactions off if using `generate_lead` as the enquiry conversion; mark `generate_lead` as a key event. Custom events are `contact_click` (phone/email method only), `contact_cta_click`, `view_project`, and `generate_lead` (only after a successful contact API response, excluding the honeypot). Custom events exclude enquiry contents, contact addresses and chatbot messages. GA4 also collects page URLs; do not put personal information in URL parameters.
+
+Verify using Google Tag Assistant and GA4 DebugView: load a page, navigate to another page, then use back/forward. Expect exactly one `page_view` per navigation with the correct location and referrer. Test a phone/email link, contact link, project link, failed enquiry and successful enquiry; only the successful enquiry should emit `generate_lead`. Confirm source/medium using a test UTM campaign and GA4 acquisition reporting. Debug mode should be enabled through Tag Assistant for testing, not for all visitors. Live reporting verification requires the real GA4 property.
+
+`/sitemap.xml` is generated on every build from the public pages, service and project registries, and published blog posts. Draft legal documents and the maintenance-mode blog are excluded. Only known article publication dates are emitted as `lastmod`; build time is not presented as a content modification date. Rebuild when content or publication status changes. `/robots.txt` allows public pages and assets, blocks `/api/`, and advertises the sitemap. These routes must be served by Next.js in production.
+
+After deployment, check both endpoints return HTTP 200 and contain the production origin, then open the verified domain in Google Search Console → Sitemaps → submit `sitemap.xml`. Monitor its fetch status and discovered pages. Search Console submission and GA4 property settings require access to those Google accounts.
+
+References: [GA4 single-page application setup](https://developers.google.com/analytics/devguides/collection/ga4/single-page-applications), [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
 
 ## Content
 

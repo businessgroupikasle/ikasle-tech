@@ -3,7 +3,7 @@ import type { LegalDocument } from "./types";
 /**
  * PRIVACY POLICY — EDITABLE DRAFT.
  * Statements without a `review` note describe what the website code actually does today (contact form,
- * API route, no cookies/analytics). Anything that depends on business decisions, hosting or law is flagged
+ * API route, optional analytics). Anything that depends on business decisions, hosting or law is flagged
  * with `review`. Have it reviewed (including by a legal adviser) before setting status to "approved".
  */
 export const privacyPolicy: LegalDocument = {
@@ -59,11 +59,11 @@ export const privacyPolicy: LegalDocument = {
       body: [
         {
           p: [
-            "At the time of writing, this website does not set cookies and does not use analytics or advertising trackers. Fonts and images are served from this website rather than from third-party font or image services.",
+            "When Google Analytics 4 is configured, this website uses Google Analytics cookies to measure visitors, page views, traffic sources and interactions such as contact link clicks and successful enquiries. Contact form contents and assistant conversations are not included in our custom analytics events. Advertising personalization and Google signals are disabled. Fonts and images are served from this website.",
           ],
         },
       ],
-      review: "Update this section before adding analytics, embedded content or any other tool that sets cookies or tracks visitors.",
+      review: "Confirm analytics configuration, retention settings and any consent requirements for the regions served before approving this policy.",
     },
     {
       id: "third-party-services",

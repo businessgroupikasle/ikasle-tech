@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/layout/Providers";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
+        <GoogleAnalytics />
         <div id="top" aria-hidden="true" />
         <script
           type="application/ld+json"

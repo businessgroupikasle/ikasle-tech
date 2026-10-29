@@ -15,6 +15,7 @@ import {
 } from "@/lib/contact-schema";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { trackEvent } from "@/lib/analytics";
 
 type Status =
   | { state: "idle" }
@@ -137,6 +138,7 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
       const data = (await res.json().catch(() => null)) as ContactResponse | null;
       if (data?.ok) {
         setStatus({ state: "success" });
+        if (!values.website) trackEvent("generate_lead", { form_name: "project_enquiry" });
         reset();
         return;
       }

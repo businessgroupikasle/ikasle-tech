@@ -8,7 +8,6 @@ import { termsAndConditions } from "@/content/legal/terms";
 import { absoluteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   // Legal pages are listed only once approved (drafts are noindex).
   const legal = [
     ["/privacy-policy", privacyPolicy.status],
@@ -18,19 +17,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .map(([path]) => path!);
   const pages = ["/", "/work", "/services", ...(blogUnderMaintenance ? [] : ["/blog"]), "/contact", "/careers", "/faq", ...legal].map((path) => ({
     url: absoluteUrl(path),
-    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: path === "/" ? 1 : 0.8,
   }));
   const services = servicePages.map((s) => ({
     url: absoluteUrl(`/services/${s.slug}`),
-    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
   const caseStudies = projects.map((p) => ({
     url: absoluteUrl(`/work/${p.slug}`),
-    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

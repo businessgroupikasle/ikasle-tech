@@ -20,7 +20,6 @@ type CtaLink = { label: string; href: string };
  */
 export function ContactCta({
   headingLevel = "h2",
-  secondary,
   eyebrow = "",
   title = "Have an Idea? Let's Build Something Extraordinary.",
   highlight = ["Extraordinary."],
@@ -76,15 +75,11 @@ export function ContactCta({
               <ButtonLink href={primary.href} size="lg" arrow>
                 {primary.label}
               </ButtonLink>
-<<<<<<< HEAD
-              {secondary && <ButtonLink href={secondary.href} size="lg" variant="secondary" arrow>{secondary.label}</ButtonLink>}
-=======
               {secondary && (
-                <ButtonLink href={secondary.href} size="lg" variant="secondary" className="border-white/15! bg-white/5! text-white! hover:bg-white/10!">
+                <ButtonLink href={secondary.href} size="lg" variant="secondary" arrow className="border-white/15! bg-white/5! text-white! hover:bg-white/10!">
                   {secondary.label}
                 </ButtonLink>
               )}
->>>>>>> 5be199e143c0b03e88b13f3f38171e59c39e2edc
             </div>
           </div>
         </Reveal>

@@ -4,7 +4,6 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { clients, type Client } from "@/data/clients";
-import { Eyebrow } from "@/components/ui/SectionHeading";
 import { usePrefersReducedMotion } from "@/hooks/useReducedMotion";
 import { cn } from "@/lib/cn";
 
@@ -61,7 +60,7 @@ function ClientCard({ client, index }: { client: Client; index: number }) {
   );
 
   const cardClasses = cn(
-    "group relative flex flex-col justify-between rounded-2xl border border-line/80 bg-white p-6 sm:p-7",
+    "group relative flex min-w-0 shrink-0 basis-[85%] snap-start flex-col justify-between rounded-2xl border border-line/80 bg-white p-6 sm:basis-auto sm:p-7",
     "shadow-[0_2px_10px_rgb(8_40_60/0.03)] transition-all duration-300 ease-out",
     "hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_12px_28px_rgb(0_140_248/0.1)]",
     client.url ? "cursor-pointer" : "cursor-default"
@@ -157,8 +156,17 @@ export function ClientsSection() {
           </p>
         </motion.div>
 
-        {/* 6 Client Cards Grid: 3 columns desktop, 2 columns tablet, 1-2 columns mobile */}
-        <div className="grid grid-cols-1 gap-5 xs:grid-cols-2 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
+        <p id="clients-swipe-hint" className="mb-3 text-center text-sm text-ink-soft sm:hidden">
+          Swipe left or right to explore our clients
+        </p>
+        {/* Swipeable cards on mobile; retain the tablet and desktop grid. */}
+        <div
+          role="region"
+          aria-label="Our clients carousel"
+          aria-describedby="clients-swipe-hint"
+          tabIndex={0}
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain px-1 pt-2 pb-5 motion-safe:scroll-smooth sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:p-0 lg:grid-cols-3 lg:gap-8"
+        >
           {clients.map((client, index) => (
             <ClientCard key={client.slug} client={client} index={index} />
           ))}
