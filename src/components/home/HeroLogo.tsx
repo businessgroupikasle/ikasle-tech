@@ -13,11 +13,11 @@ import { useLayerCovered } from "./StackingSections";
 
 const StickerPeel = dynamic(() => import("@/components/react-bits/StickerPeel/StickerPeel"), { ssr: false });
 
-/** The 3D logo, trimmed to its content, with a true alpha channel (1200 × 564). */
-const LOGO = { src: "/brand/ikasle-logo-3d.webp", w: 1200, h: 564 };
+/** The supplied logo, trimmed to its visible content with transparency preserved. */
+const LOGO = { src: "/brand/ikasle-hero-logo.png", w: 3010, h: 986 };
 
 /**
- * The glossy 3D IKASLE Technologies logo as the hero visual, with React Bits <StickerPeel />.
+ * The IKASLE Technologies logo as the hero visual, with React Bits <StickerPeel />.
  *
  * Only the peel is interactive: no dragging, swing or intro, and it rests flat (no curl) until hovered.
  * The sticker is exactly as wide and tall as its slot, so the component's own edge confinement keeps it
