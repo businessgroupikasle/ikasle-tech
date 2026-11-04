@@ -74,7 +74,11 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    // suppressHydrationWarning: browser extensions (e.g. ones that set data-qb-installed) add attributes to
+    // <html> before React hydrates. This only silences attribute mismatches on this one element, not its children.
+    // data-scroll-behavior: lets Next switch off the smooth scrolling in globals.css during route changes. Without it,
+    // its reset to the top animates, gets stuck on a lower section, and new pages open part-way down.
+    <html lang="en" data-scroll-behavior="smooth" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <body>
         <GoogleAnalytics />
         <div id="top" aria-hidden="true" />

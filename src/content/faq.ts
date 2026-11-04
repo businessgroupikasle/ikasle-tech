@@ -49,8 +49,6 @@ export const faqs: Faq[] = [
       [
         "Yes. We design ERP systems that connect inventory, purchasing, sales, production planning and reporting, with routine steps automated. ",
         { text: "ERP & business automation", href: "/services/erp-business-automation" },
-        " · ",
-        { text: "Our work", href: "/work" },
         ".",
       ],
     ],

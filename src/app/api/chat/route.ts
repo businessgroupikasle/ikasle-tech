@@ -58,8 +58,10 @@ export async function POST(req: NextRequest) {
               const data = block.split("\n").find((line) => line.startsWith("data: "))?.slice(6);
               if (!data || data === "[DONE]") continue;
               try {
-                const event = JSON.parse(data) as { type?: string; delta?: string; message?: string };
+                const event = JSON.parse(data) as { type?: string; delta?: string; message?: string; choices?: Array<{ delta?: { content?: string } }> };
                 if (event.type === "response.output_text.delta" && event.delta) controller.enqueue(encoder.encode(event.delta));
+                const chatDelta = event.choices?.[0]?.delta?.content;
+                if (chatDelta) controller.enqueue(encoder.encode(chatDelta));
                 if (event.type === "error") throw new Error(event.message ?? "Provider stream error");
               } catch (error) { if (error instanceof SyntaxError) continue; throw error; }
             }

@@ -2,8 +2,9 @@ import type { NavItem } from "@/types";
 
 export const mainNav: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Clientele", href: "/clientele" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -13,8 +14,9 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
     title: "Quick Links",
     links: [
       { label: "Home", href: "/#top" },
-      { label: "Work", href: "/work" },
-      { label: "Services", href: "/services" },
+      { label: "About", href: "/about" },
+          { label: "Services", href: "/services" },
+      { label: "Clientele", href: "/clientele" },
       { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
       { label: "Careers", href: "/careers" },

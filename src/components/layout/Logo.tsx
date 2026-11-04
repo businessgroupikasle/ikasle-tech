@@ -13,7 +13,7 @@ export function Logo({ className }: { className?: string }) {
         height={238}
         priority
         sizes="150px"
-        className="h-10 w-auto select-none sm:h-11"
+        className="h-10 w-auto max-w-none select-none sm:h-11"
         draggable={false}
       />
     </Link>

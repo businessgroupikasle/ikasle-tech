@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import { Hand, MousePointer2 } from "lucide-react";
 import { architectureLayers } from "@/data/architecture";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -11,14 +11,30 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/animations/Reveal";
 
+const AUTO_ADVANCE_MS = 4000;
+
 export function ArchitectureSection() {
   const [selected, setSelected] = useState(0);
   const reduced = usePrefersReducedMotion();
   const finePointer = useMediaQuery("(hover: hover) and (pointer: fine)");
   const layer = architectureLayers[selected]!;
 
+  // Auto-advance the active layer while the section is on screen. Pauses only while the mouse is over the layer
+  // list or keyboard focus is in it: the section fills the screen, so pausing on any hover would stop the cycle
+  // wherever the cursor rests. A manual selection restarts the countdown (the effect re-runs on `selected`).
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { amount: 0.3 });
+  const [listHovered, setListHovered] = useState(false);
+  const [listKeyboardFocused, setListKeyboardFocused] = useState(false);
+  const paused = listHovered || listKeyboardFocused;
+  useEffect(() => {
+    if (reduced || paused || !inView) return;
+    const id = window.setTimeout(() => setSelected((s) => (s + 1) % architectureLayers.length), AUTO_ADVANCE_MS);
+    return () => window.clearTimeout(id);
+  }, [selected, reduced, paused, inView]);
+
   return (
-    <section aria-labelledby="arch-title" className="relative overflow-hidden py-20 sm:py-24">
+    <section ref={sectionRef} aria-labelledby="arch-title" className="relative overflow-hidden py-20 sm:py-24">
       <div className="ambient opacity-60" aria-hidden="true" />
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
         <Reveal className="flex min-w-0 flex-col gap-8">
@@ -29,7 +45,16 @@ export function ArchitectureSection() {
           />
 
           {/* Accessible layer selector — the source of truth for the diagram */}
-          <div role="tablist" aria-label="Application layers" aria-orientation="vertical" className="flex flex-col gap-1.5">
+          <div
+            role="tablist"
+            aria-label="Application layers"
+            aria-orientation="vertical"
+            className="flex flex-col gap-1.5"
+            onPointerEnter={(e) => e.pointerType === "mouse" && setListHovered(true)}
+            onPointerLeave={(e) => e.pointerType === "mouse" && setListHovered(false)}
+            onFocus={(e) => setListKeyboardFocused(e.target.matches(":focus-visible"))}
+            onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node | null) && setListKeyboardFocused(false)}
+          >
             {architectureLayers.map((l, i) => (
               <button
                 key={l.id}

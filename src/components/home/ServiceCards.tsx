@@ -16,24 +16,24 @@ function CardInner({ service, index }: { service: Service; index: number }) {
           src={service.image.src}
           alt={service.image.alt}
           fill
-          sizes="(min-width: 1024px) 380px, (min-width: 768px) 46vw, 92vw"
+          sizes="(min-width: 1280px) 300px, (min-width: 1024px) 380px, (min-width: 768px) 46vw, 45vw"
           className="object-cover transition-transform duration-700 ease-out group-hover/svc:scale-[1.05]"
           style={{ objectPosition: service.image.position }}
           draggable={false}
         />
       </div>
       {/* Content: solid white and full-bleed under the image, so the card reads as one white surface. */}
-      <div className="svc-panel flex flex-1 flex-col px-5 pt-5 pb-5">
+      <div className="svc-panel flex flex-1 flex-col px-3 pt-3 pb-3 sm:px-5 sm:pt-5 sm:pb-5">
         <div className="flex items-center justify-between">
-          <span className="inline-flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent/10 to-accent-2/15 text-accent">
-            <Icon name={service.icon} className="size-5" />
+          <span className="inline-flex size-8 items-center justify-center rounded-lg sm:size-10 sm:rounded-xl bg-gradient-to-br from-accent/10 to-accent-2/15 text-accent">
+            <Icon name={service.icon} className="size-4 sm:size-5" />
           </span>
-          <span className="font-mono text-[12px] text-ink-soft">{String(index + 1).padStart(2, "0")}</span>
+          <span className="font-mono text-[10px] text-ink-soft sm:text-[12px]">{String(index + 1).padStart(2, "0")}</span>
         </div>
-        <h3 className="mt-3.5 text-xl font-semibold tracking-tight text-ink">{service.title}</h3>
-        <p className="mt-2 flex-1 text-[15px] leading-relaxed text-ink-soft">{service.summary}</p>
-        <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-ink">
-          Explore service
+        <h3 className="mt-2.5 text-sm leading-snug font-semibold tracking-tight text-ink sm:mt-3.5 sm:text-xl xl:text-lg">{service.title}</h3>
+        <p className="mt-2 hidden flex-1 text-[15px] leading-relaxed text-ink-soft sm:block xl:text-[14px]">{service.summary}</p>
+        <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium text-ink sm:mt-5 sm:gap-2 sm:text-sm">
+          <span className="hidden sm:inline">Explore service</span>
           <span className="inline-flex size-7 items-center justify-center rounded-full bg-bg-blue text-accent-strong transition-[background-color,color,transform] duration-300 group-hover/svc:translate-x-0.5 group-hover/svc:-translate-y-0.5 group-hover/svc:bg-accent-strong group-hover/svc:text-white">
             <ArrowUpRight className="size-3.5" aria-hidden="true" />
           </span>
@@ -77,7 +77,7 @@ function TiltCard({ service, index }: { service: Service; index: number }) {
 
   return (
     <div ref={ref} onPointerMove={onPointerMove} onPointerLeave={onPointerLeave} className="svc-tilt h-full">
-      <div className="svc-static svc-sheen relative h-full overflow-hidden rounded-[20px] border border-line bg-white p-4 shadow-soft">
+      <div className="svc-static svc-sheen relative h-full overflow-hidden rounded-[16px] border border-line bg-white p-2 sm:rounded-[20px] sm:p-4 shadow-soft">
         <CardInner service={service} index={index} />
       </div>
     </div>
@@ -126,7 +126,7 @@ export function ServiceCards({ services }: { services: Service[] }) {
   );
 
   return (
-    <div ref={grid} className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+    <div ref={grid} className="mt-14 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4 xl:gap-5 max-lg:[&>*:last-child:nth-child(odd)]:col-span-2 max-lg:[&>*:last-child:nth-child(odd)]:w-[calc(50%-0.5rem)] max-lg:[&>*:last-child:nth-child(odd)]:justify-self-center lg:max-xl:[&>*:last-child:nth-child(3n+1)]:col-start-2">
       {services.map((service, i) => (
         <div key={service.slug} data-svc-card className="h-full">
           <TiltCard service={service} index={i} />

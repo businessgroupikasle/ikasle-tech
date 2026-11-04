@@ -1,0 +1,42 @@
+/* About page motion that runs without JavaScript: the hero's entrance and the idle loops.
+   Scroll reveals live in AboutReveal.tsx. Everything here animates only transform, translate and opacity on
+   whole elements, so the browser can run it off the main thread without repainting the artwork. Entrances use
+   `transform` and the idle float uses `translate`, which is why both can run on one element at once. */
+@media (prefers-reduced-motion: no-preference) {
+  .about-rise { animation: about-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both; }
+  .about-bar { transform-origin: left; animation: about-bar 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both; }
+  .about-fade { animation: about-fade 1.2s ease-out var(--d, 0s) both; }
+  .about-spark { animation: about-spark 3.4s ease-in-out var(--d, 0s) infinite; }
+  .about-nudge { animation: about-nudge 2.4s ease-in-out var(--d, 0s) infinite; }
+
+  .about-art-links,
+  .about-art-back,
+  .about-art-front { will-change: transform, translate, opacity; }
+
+  .about-art-links {
+    animation:
+      about-art-links 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both,
+      about-float-up 7s ease-in-out 1.2s infinite alternate;
+  }
+  .about-art-back {
+    animation:
+      about-art-back 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both,
+      about-float-down 6s ease-in-out 1.3s infinite alternate;
+  }
+  .about-art-front {
+    animation:
+      about-art-front 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both,
+      about-float-up 5.5s ease-in-out 1.5s infinite alternate;
+  }
+}
+
+@keyframes about-rise { from { opacity: 0; transform: translateY(18px); } }
+@keyframes about-bar { from { transform: scaleX(0); } }
+@keyframes about-fade { from { opacity: 0; } }
+@keyframes about-spark { 50% { opacity: 0.35; transform: scale(0.65); } }
+@keyframes about-nudge { 50% { translate: 4px 0; } }
+@keyframes about-art-links { from { opacity: 0; transform: translateY(5%) scale(0.94); } }
+@keyframes about-art-back { from { opacity: 0; transform: translateX(-7%); } }
+@keyframes about-art-front { from { opacity: 0; transform: translateX(7%); } }
+@keyframes about-float-up { to { translate: 0 -2.2%; } }
+@keyframes about-float-down { to { translate: 0 2.2%; } }

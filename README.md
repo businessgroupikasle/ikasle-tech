@@ -26,8 +26,6 @@ Requires Node.js 20.9 or newer.
 | Route | What it is |
 | --- | --- |
 | `/` | Home: animated brand-logo hero, tech marquee, services, featured work, process timeline, 3D architecture, terminal demo, CTA |
-| `/work` | Case studies with category filtering |
-| `/work/[slug]` | Case study detail (static, from `src/data/projects.ts`) |
 | `/services` | Service explorer with a sticky navigator |
 | `/products` | IKASLE-owned products with tabbed details |
 | `/contact` | Contact form → `POST /api/contact` |
@@ -43,17 +41,18 @@ See `.env.example`.
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | public | GA4 web stream ID (`G-...`); blank disables analytics. Rebuild after changes. |
 | `NEXT_PUBLIC_CONTACT_EMAIL` / `_PHONE` | public | Optional contact overrides. Anything left empty is hidden. The published address is centralized in `src/data/company-contact.ts`. |
 | `NEXT_PUBLIC_LINKEDIN_URL` / `NEXT_PUBLIC_GITHUB_URL` | public | Footer social links (optional) |
-| `RESEND_API_KEY` | server | Contact form delivery via [Resend](https://resend.com) |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` | server | SMTP server connection |
+| `SMTP_USER`, `SMTP_PASSWORD` | server | SMTP credentials |
 | `CONTACT_TO_EMAIL` | server | Inbox(es) that receive enquiries (comma-separated) |
-| `CONTACT_FROM_EMAIL` | server | Sender on a domain verified in Resend |
+| `CONTACT_FROM_EMAIL` | server | Verified sender; defaults to `SMTP_USER` |
 
-If the three server variables are not all set, the form does **not** pretend to send: the API returns `503 not_configured`, and the form shows an honest message (plus `NEXT_PUBLIC_CONTACT_EMAIL` if one is set).
+If the required SMTP server variables are not all set, the form does **not** pretend to send: the API returns `503 not_configured`, and the form shows an honest message (plus `NEXT_PUBLIC_CONTACT_EMAIL` if one is set).
 
 ## Analytics and search setup
 
 Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin (no path) and `NEXT_PUBLIC_GA_MEASUREMENT_ID` to your GA4 web stream ID in the hosting environment, then rebuild and deploy. No GA ID or production domain is stored in this repository.
 
-In GA4 Admin → Data streams → Web → Enhanced measurement → Page views → Advanced settings, enable **Page loads** and **Page changes based on browser history events**. GA4 is the sole source of page views; this app does not manually emit `page_view`. Do not install a second GA tag through Tag Manager or your host. Keep automatic form interactions off if using `generate_lead` as the enquiry conversion; mark `generate_lead` as a key event. Custom events are `contact_click` (phone/email method only), `contact_cta_click`, `view_project`, and `generate_lead` (only after a successful contact API response, excluding the honeypot). Custom events exclude enquiry contents, contact addresses and chatbot messages. GA4 also collects page URLs; do not put personal information in URL parameters.
+In GA4 Admin → Data streams → Web → Enhanced measurement → Page views → Advanced settings, enable **Page loads** and **Page changes based on browser history events**. GA4 is the sole source of page views; this app does not manually emit `page_view`. Do not install a second GA tag through Tag Manager or your host. Keep automatic form interactions off if using `generate_lead` as the enquiry conversion; mark `generate_lead` as a key event. Custom events are `contact_click` (phone/email method only), `contact_cta_click`, and `generate_lead` (only after a successful contact API response, excluding the honeypot). Custom events exclude enquiry contents, contact addresses and chatbot messages. GA4 also collects page URLs; do not put personal information in URL parameters.
 
 Verify using Google Tag Assistant and GA4 DebugView: load a page, navigate to another page, then use back/forward. Expect exactly one `page_view` per navigation with the correct location and referrer. Test a phone/email link, contact link, project link, failed enquiry and successful enquiry; only the successful enquiry should emit `generate_lead`. Confirm source/medium using a test UTM campaign and GA4 acquisition reporting. Debug mode should be enabled through Tag Assistant for testing, not for all visitors. Live reporting verification requires the real GA4 property.
 

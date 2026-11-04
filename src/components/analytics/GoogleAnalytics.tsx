@@ -16,8 +16,6 @@ export function GoogleAnalytics() {
         trackEvent("contact_click", { contact_method: url.protocol === "tel:" ? "phone" : "email" });
       } else if (url.origin === window.location.origin && url.pathname === "/contact") {
         trackEvent("contact_cta_click", { page_path: window.location.pathname });
-      } else if (url.origin === window.location.origin && url.pathname.startsWith("/work/")) {
-        trackEvent("view_project", { project_path: url.pathname });
       }
     };
     document.addEventListener("click", onClick);

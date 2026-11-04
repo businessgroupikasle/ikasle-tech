@@ -1,7 +1,6 @@
 "use client";
 
-import { createContext, useContext, useRef, useState, type ComponentProps, type ReactNode } from "react";
-import { FireworksBackground } from "@/components/animate-ui/backgrounds/fireworks";
+import { createContext, useContext, useRef, useState, type ReactNode } from "react";
 import { ScrollTrigger, useGSAP } from "@/lib/gsap";
 
 const CoveredContext = createContext<readonly boolean[]>([]);
@@ -92,9 +91,4 @@ export function StackingSections({ children }: { children: ReactNode }) {
       </div>
     </CoveredContext.Provider>
   );
-}
-
-/** The hero fireworks (stacking layer 0), paused while the hero is covered. */
-export function HeroFireworks(props: Omit<ComponentProps<typeof FireworksBackground>, "paused">) {
-  return <FireworksBackground {...props} paused={useLayerCovered(0)} />;
 }

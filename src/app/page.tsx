@@ -5,8 +5,6 @@ import { StackingSections } from "@/components/home/StackingSections";
 import { TechStack } from "@/components/home/TechStack";
 import { DevelopmentPhilosophy } from "@/components/home/DevelopmentPhilosophy";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
-import { WorksSection } from "@/components/home/WorksSection";
-import { ClientsSection } from "@/components/home/ClientsSection";
 import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { ArchitectureSection } from "@/components/home/ArchitectureSection";
 import { ContactCta } from "@/components/home/ContactCta";
@@ -44,12 +42,6 @@ export default function HomePage() {
           <ServicesPreview />
         </Suspense>
       </StackingSections>
-      <Suspense>
-        <WorksSection />
-      </Suspense>
-      <Suspense>
-        <ClientsSection />
-      </Suspense>
       <Suspense>
         <ProcessTimeline />
       </Suspense>

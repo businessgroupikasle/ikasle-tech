@@ -39,7 +39,7 @@ export function ContactCta({
   return (
     <section aria-labelledby="cta-title" className="py-20 sm:py-24">
       <div className="container-x">
-        <Reveal className="on-dark relative overflow-hidden rounded-[32px] bg-editor px-6 py-16 text-center sm:px-12 sm:py-24">
+        <Reveal className="on-dark relative overflow-hidden rounded-3xl bg-editor px-6 py-8 text-center sm:px-10 sm:py-10 md:text-left lg:px-12">
           {/* decorative code scroll */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-70 [mask-image:radial-gradient(ellipse_at_center,transparent_25%,#000_80%)]" aria-hidden="true">
             <pre className="code-rain absolute top-0 left-6 text-[#4db3ff]/20!">{rain}</pre>
@@ -59,24 +59,27 @@ export function ContactCta({
           </svg>
           <div className="absolute -top-24 left-1/2 h-64 w-[70%] -translate-x-1/2 rounded-full bg-accent/30 blur-[100px]" aria-hidden="true" />
 
-          <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
-            {eyebrow && <p className="font-mono text-[12px] text-accent-2">{eyebrow}</p>}
-            <AnimatedHeading
-              as={headingLevel}
-              id="cta-title"
-              text={title}
-              highlight={highlight}
-              className="text-[2rem] leading-[1.08] font-semibold tracking-[-0.035em] text-balance text-white sm:text-5xl lg:text-[3.4rem]"
-            />
-            <p className="max-w-xl text-[17px] leading-relaxed text-[#B7CCDD]">
-              {text}
-            </p>
-            <div className="mt-2 flex w-full flex-col justify-center gap-3 xs:w-auto xs:flex-row">
-              <ButtonLink href={primary.href} size="lg" arrow>
+          {/* Content on the left, actions on the right (stacked and centred below md). */}
+          <div className="relative flex flex-col items-center gap-6 md:flex-row md:items-center md:justify-between md:gap-10">
+            <div className="flex min-w-0 max-w-2xl flex-col items-center gap-3 md:items-start">
+              {eyebrow && <p className="font-mono text-[12px] text-accent-2">{eyebrow}</p>}
+              <AnimatedHeading
+                as={headingLevel}
+                id="cta-title"
+                text={title}
+                highlight={highlight}
+                className="text-2xl leading-[1.15] font-semibold tracking-[-0.03em] text-balance text-white sm:text-3xl lg:text-[2rem]"
+              />
+              <p className="hidden max-w-xl text-[15px] leading-relaxed text-[#B7CCDD] sm:block">
+                {text}
+              </p>
+            </div>
+            <div className="flex w-full shrink-0 flex-col justify-center gap-3 xs:w-auto xs:flex-row">
+              <ButtonLink href={primary.href} size="md" arrow>
                 {primary.label}
               </ButtonLink>
               {secondary && (
-                <ButtonLink href={secondary.href} size="lg" variant="secondary" arrow className="border-white/15! bg-white/5! text-white! hover:bg-white/10!">
+                <ButtonLink href={secondary.href} size="md" variant="secondary" arrow className="border-white/15! bg-white/5! text-white! hover:bg-white/10!">
                   {secondary.label}
                 </ButtonLink>
               )}

@@ -1,63 +1,317 @@
-/* ---------- Automate preview: CI/CD pipeline ----------
-   Static by default (fully lit: no JS, inactive phases, reduced motion). Whenever the Automate preview becomes the
-   active phase (desktop: the shown sticky preview; below 1024px: the current step) the selectors below start to
-   match and the steps light up in order — CSS only, so no extra JS or ScrollTrigger. */
-.ci-node-pass {
-  background: rgb(74 222 128 / 0.16);
-  color: #4ade80;
+/* ---------- Process phase illustrations ----------
+   Every scene is drawn in its finished state. The motion below only runs while a scene is the active phase
+   (desktop: the shown sticky preview; below 1024px: the current step), so inactive scenes cost nothing.
+   globals.css switches all animation off under prefers-reduced-motion. Delays come from var(--d). */
+
+/* Only animated parts (class pv-*): static shapes such as gear teeth rely on their rotate() attribute pivoting
+   around the parent origin. :where() keeps this at single-class specificity so the overrides below win. */
+.pv :where(svg [class*="pv-"]) {
+  transform-box: fill-box;
+  transform-origin: center;
 }
-.ci-node-ready {
-  background: #009cff;
-  color: #fff;
-  box-shadow: 0 0 0 4px rgb(0 156 255 / 0.2);
+/* Elements given an explicit origin in user units (needle, compass) rotate around that point. */
+.pv .pv-needle,
+.pv .pv-swing {
+  transform-box: view-box;
 }
-.ci-link {
-  background: rgb(74 222 128 / 0.35);
+.pv .pv-type {
+  transform-origin: 0 50%;
+}
+.pv .pv-grow {
+  transform-origin: 50% 100%;
+}
+.pv .pv-flame {
+  transform-origin: 50% 0;
+}
+.pv .pv-draw {
+  stroke-dasharray: 1;
+}
+.pv .pv-trace {
+  stroke-dasharray: 0.28 1;
 }
 
-[data-preview][aria-hidden="false"] .ci-step,
-li[aria-current="step"] .ci-step {
-  animation: ci-step 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: calc(var(--i) * 0.16s);
-}
-[data-preview][aria-hidden="false"] .ci-node,
-li[aria-current="step"] .ci-node {
-  animation: ci-node 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: calc(var(--i) * 0.16s + 0.05s);
-}
-[data-preview][aria-hidden="false"] .ci-link,
-li[aria-current="step"] .ci-link {
-  transform-origin: top;
-  animation: ci-link 0.3s ease-out both;
-  animation-delay: calc(var(--i) * 0.16s + 0.2s);
-}
-[data-preview][aria-hidden="false"] .ci-node-ready,
-li[aria-current="step"] .ci-node-ready {
-  animation:
-    ci-node 0.5s cubic-bezier(0.22, 1, 0.36, 1) both calc(var(--i) * 0.16s + 0.05s),
-    ci-ready 1.8s ease-in-out calc(var(--i) * 0.16s + 0.6s) infinite;
-}
+:is([data-preview][aria-hidden="false"], li[aria-current="step"]) .pv {
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-@keyframes ci-step {
-  from {
-    opacity: 0.3;
+  /* one-shot entrances */
+  & .pv-pop {
+    animation: pv-pop 0.55s var(--ease) var(--d, 0s) both;
+  }
+  & .pv-draw {
+    animation: pv-draw 0.9s var(--ease) var(--d, 0s) both;
+  }
+  & .pv-type {
+    animation: pv-type 0.5s var(--ease) var(--d, 0s) both;
+  }
+  & .pv-grow {
+    animation: pv-grow 0.7s var(--ease) var(--d, 0s) both;
+  }
+  & .pv-fade {
+    animation: pv-fade 0.8s ease-out var(--d, 0s) both;
+  }
+
+  /* loops */
+  & .pv-blink {
+    animation: pv-blink 1.4s ease-in-out var(--d, 0s) infinite;
+  }
+  & .pv-glow {
+    animation: pv-glow 2.4s ease-in-out var(--d, 0s) infinite;
+  }
+  & .pv-scan {
+    animation: pv-scan 6s ease-in-out infinite;
+  }
+  & .pv-float {
+    animation: pv-float 3.2s ease-in-out var(--d, 0s) infinite;
+  }
+  & .pv-spin {
+    animation: pv-spin 8s linear infinite;
+  }
+  & .pv-spin-rev {
+    animation: pv-spin 8s linear infinite reverse;
+  }
+  /* meshing gears: 12 / 8 / 6 teeth → periods 10s / 6.67s / 5s */
+  & .pv-slow {
+    animation-duration: 10s;
+  }
+  & .pv-mid {
+    animation-duration: 6.667s;
+  }
+  & .pv-fast {
+    animation-duration: 5s;
+  }
+  & .pv-caret {
+    animation: pv-caret 1s steps(1) infinite;
+  }
+  & .pv-flow {
+    animation: pv-flow 1.2s linear infinite;
+  }
+  & .pv-march {
+    animation: pv-march 0.9s linear infinite;
+  }
+  & .pv-belt {
+    animation: pv-belt 7.2s linear var(--d, 0s) infinite;
+  }
+  & .pv-ring {
+    animation: pv-ring 2.6s ease-out infinite;
+  }
+  & .pv-wiggle {
+    animation: pv-wiggle 0.9s ease-in-out infinite;
+  }
+  & .pv-twinkle {
+    animation: pv-twinkle 1.8s ease-in-out var(--d, 0s) infinite;
+  }
+  & .pv-rocket {
+    animation: pv-rocket 2.4s ease-in-out infinite;
+  }
+  & .pv-flame {
+    animation: pv-flame 0.25s ease-in-out infinite alternate;
+  }
+  & .pv-puff {
+    animation: pv-puff 1.6s ease-out var(--d, 0s) infinite;
+  }
+  & .pv-speed {
+    animation: pv-speed 0.9s linear var(--d, 0s) infinite;
+  }
+  & .pv-cloud {
+    animation: pv-cloud 12s ease-in-out var(--d, 0s) infinite alternate;
+  }
+  & .pv-swing {
+    animation: pv-swing 3s ease-in-out infinite alternate;
+  }
+  & .pv-needle {
+    animation: pv-needle 2.8s ease-in-out infinite alternate;
+  }
+  & .pv-trace {
+    animation: pv-trace 1.8s linear infinite;
+  }
+  & .pv-cursor {
+    animation: pv-cursor 5s ease-in-out infinite;
   }
 }
-@keyframes ci-node {
+
+@keyframes pv-pop {
   from {
+    opacity: 0;
     transform: scale(0.6);
-    background: rgb(255 255 255 / 0.08);
-    color: rgb(255 255 255 / 0.3);
-    box-shadow: none;
   }
 }
-@keyframes ci-link {
+@keyframes pv-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+@keyframes pv-type {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes pv-grow {
   from {
     transform: scaleY(0);
   }
 }
-@keyframes ci-ready {
+@keyframes pv-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes pv-blink {
   50% {
-    box-shadow: 0 0 0 7px rgb(0 156 255 / 0.12);
+    opacity: 0.25;
+  }
+}
+@keyframes pv-glow {
+  50% {
+    transform: scale(1.18);
+    opacity: 0.08;
+  }
+}
+@keyframes pv-scan {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(-46px, -40px);
+  }
+  60% {
+    transform: translate(-40px, 44px);
+  }
+}
+@keyframes pv-float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes pv-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pv-caret {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes pv-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+@keyframes pv-march {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+@keyframes pv-belt {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  8%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(354px);
+    opacity: 0;
+  }
+}
+@keyframes pv-ring {
+  from {
+    transform: scale(0.85);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.12);
+    opacity: 0;
+  }
+}
+@keyframes pv-wiggle {
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+@keyframes pv-twinkle {
+  50% {
+    transform: scale(0.4);
+    opacity: 0.3;
+  }
+}
+@keyframes pv-rocket {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes pv-flame {
+  to {
+    transform: scaleY(0.75) scaleX(0.92);
+  }
+}
+@keyframes pv-puff {
+  from {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+@keyframes pv-speed {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
+@keyframes pv-cloud {
+  to {
+    transform: translateX(26px);
+  }
+}
+@keyframes pv-swing {
+  from {
+    transform: rotate(-12deg);
+  }
+  to {
+    transform: rotate(12deg);
+  }
+}
+@keyframes pv-needle {
+  from {
+    transform: rotate(-95deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}
+@keyframes pv-trace {
+  from {
+    stroke-dashoffset: 0.28;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+@keyframes pv-cursor {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  35% {
+    transform: translate(-60px, 52px);
+  }
+  65% {
+    transform: translate(70px, 58px);
   }
 }

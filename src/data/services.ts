@@ -59,7 +59,7 @@ export const services: Service[] = [
     ],
     technologies: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
     image: {
-      src: "/images/services/website-development-responsive.png",
+      src: "/images/services/website-development-responsive.webp",
       width: 1456,
       height: 1092,
       alt: "Modern corporate website displayed responsively on a desktop monitor and smartphone",

@@ -31,8 +31,6 @@ export type ServicePage = {
 const KIDDOS = { label: "Kiddos Foods", href: "https://kiddosfoods.com", external: true };
 const UZHAVAR = { label: "Uzhavar Connect", href: "https://uzhavarconnect.com/", external: true };
 const KIDDOS_ERP = { label: "Kiddos Foods ERP", href: "https://erpkiddosfoods.in", external: true };
-const WAHID = { label: "Wahid mobile app", href: "/work#wahid" };
-const ERP_CASE = { label: "ERP Solution case study", href: "/work/erp-solution" };
 
 export const servicePages: ServicePage[] = [
   {
@@ -51,7 +49,7 @@ export const servicePages: ServicePage[] = [
       "Scalable application architecture",
     ],
     benefits: ["Less manual data entry and fewer errors", "One source of truth your teams can trust", "Software that grows with your business"],
-    related: [KIDDOS_ERP, ERP_CASE],
+    related: [KIDDOS_ERP],
     accent: "workflow",
   },
   {
@@ -118,7 +116,7 @@ export const servicePages: ServicePage[] = [
       "App store release preparation",
     ],
     benefits: ["Reach customers where they already are", "Give field teams the tools they need on the move", "One codebase to maintain instead of two"],
-    related: [WAHID],
+    related: [],
     accent: "platforms",
   },
   {
@@ -137,7 +135,7 @@ export const servicePages: ServicePage[] = [
       "Operational dashboards and reports",
     ],
     benefits: ["Stock levels that match reality", "Faster purchasing and sales decisions", "Reports in minutes instead of days"],
-    related: [KIDDOS_ERP, ERP_CASE],
+    related: [KIDDOS_ERP],
     accent: "erp-sync",
   },
   {
@@ -175,7 +173,7 @@ export const servicePages: ServicePage[] = [
       "Usability reviews and iteration",
     ],
     benefits: ["Ideas validated before development starts", "A consistent experience across every screen", "Faster development from clear, ready-to-build designs"],
-    related: [KIDDOS, UZHAVAR, WAHID],
+    related: [KIDDOS, UZHAVAR],
     accent: "tokens",
   },
 ];

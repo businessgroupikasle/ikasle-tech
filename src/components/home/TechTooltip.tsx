@@ -16,8 +16,11 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
+
+const noopSubscribe = () => () => {};
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -28,7 +31,9 @@ export type OrbitTooltipInfo = {
   category: string;
   description: string;
   /** data URI from logo tile */
-  logoSrc: string;
+  logoSrc?: string;
+  /** Rendered instead of `logoSrc` when given (e.g. an inline SVG mark or line icon). */
+  logo?: ReactNode;
   /** Brand hex colour (e.g. "#007ACC") */
   hex: string;
 };
@@ -186,15 +191,17 @@ function TooltipInner({ info, onClose }: TooltipInnerProps) {
       <div className="flex flex-col gap-2">
         {/* Header: Brand logo + Tech name + Category pill */}
         <div className="flex items-center gap-2.5">
-          <img
-            src={info.logoSrc}
-            alt=""
-            aria-hidden="true"
-            width={30}
-            height={30}
-            className="h-[30px] w-[30px] shrink-0 rounded-lg border border-[#E8EFF5] bg-white object-contain p-0.5 shadow-sm"
-            draggable={false}
-          />
+          {info.logo ?? (
+            <img
+              src={info.logoSrc}
+              alt=""
+              aria-hidden="true"
+              width={30}
+              height={30}
+              className="h-[30px] w-[30px] shrink-0 rounded-lg border border-[#E8EFF5] bg-white object-contain p-0.5 shadow-sm"
+              draggable={false}
+            />
+          )}
           <div className="min-w-0 flex-1">
             <div className="truncate text-[13.5px] font-semibold leading-tight text-[#082B45]">
               {info.name}
@@ -234,8 +241,12 @@ type TechTooltipProps = {
  * AnimatePresence provides smooth enter/exit transitions.
  */
 export function TechTooltip({ info, onClose }: TechTooltipProps): ReactNode {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  // false on the server and during hydration, true afterwards — without a setState-in-effect render pass.
+  const mounted = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
 
   if (!mounted) return null;
 

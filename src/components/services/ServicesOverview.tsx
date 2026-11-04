@@ -27,7 +27,7 @@ export function ServicesOverview() {
           title="Seven Ways We Help Your Business Grow."
           description="Pick a service to see what it solves, what we deliver and the technology behind it."
         />
-        <RevealGroup className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7" stagger={0.07}>
+        <RevealGroup className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7 md:max-lg:[&>*:last-child:nth-child(odd)]:col-span-2 md:max-lg:[&>*:last-child:nth-child(odd)]:w-[calc(50%-0.75rem)] md:max-lg:[&>*:last-child:nth-child(odd)]:justify-self-center lg:[&>*:last-child:nth-child(3n+1)]:col-start-2" stagger={0.07}>
           {servicePages.map((s, i) => {
             const image = getServiceDetail(s.slug)!.service.image;
             return (
