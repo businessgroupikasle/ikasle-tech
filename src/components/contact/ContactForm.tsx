@@ -200,8 +200,64 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
         <Field id={`${uid}-email`} label="Business Email" error={errors.email?.message}>
           {(a) => <input {...a} {...reg("email")} type="email" autoComplete="email" inputMode="email" className={fieldBase} />}
         </Field>
-        <Field id={`${uid}-phone`} label="Phone Number" optional error={errors.phone?.message}>
-          {(a) => <input {...a} {...reg("phone")} type="tel" autoComplete="tel" inputMode="tel" className={fieldBase} />}
+        <Field id={`${uid}-phone`} label="Phone Number" error={errors.phone?.message}>
+          {(a) => {
+            const phoneReg = reg("phone");
+            return (
+              <input
+                {...a}
+                {...phoneReg}
+                type="tel"
+                autoComplete="tel"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={10}
+                className={fieldBase}
+                onKeyDown={(e) => {
+                  if (
+                    e.ctrlKey ||
+                    e.metaKey ||
+                    e.altKey ||
+                    [
+                      "Backspace",
+                      "Delete",
+                      "Tab",
+                      "Enter",
+                      "Escape",
+                      "ArrowLeft",
+                      "ArrowRight",
+                      "ArrowUp",
+                      "ArrowDown",
+                      "Home",
+                      "End",
+                    ].includes(e.key)
+                  ) {
+                    return;
+                  }
+                  if (!/^[0-9]$/.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
+                onChange={(e) => {
+                  const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  e.target.value = cleaned;
+                  phoneReg.onChange(e);
+                }}
+                onPaste={(e) => {
+                  e.preventDefault();
+                  const pasted = e.clipboardData.getData("text") || "";
+                  const digits = pasted.replace(/\D/g, "");
+                  const input = e.currentTarget;
+                  const start = input.selectionStart ?? 0;
+                  const end = input.selectionEnd ?? input.value.length;
+                  const current = input.value;
+                  const nextVal = (current.slice(0, start) + digits + current.slice(end)).replace(/\D/g, "").slice(0, 10);
+                  input.value = nextVal;
+                  setValue("phone", nextVal, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
+                }}
+              />
+            );
+          }}
         </Field>
         <Field id={`${uid}-company`} label="Company Name" optional error={errors.company?.message}>
           {(a) => <input {...a} {...reg("company")} autoComplete="organization" className={fieldBase} />}

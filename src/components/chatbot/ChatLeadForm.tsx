@@ -37,7 +37,43 @@ export function ChatLeadForm({ onClose }: { onClose: () => void }) {
       {step === 1 && <textarea value={lead.description} onChange={(e) => setLead({ ...lead, description: e.target.value })} rows={3} maxLength={1500} placeholder="What should it do, and who is it for?" className="w-full resize-none rounded-xl border border-line p-3 text-sm" />}
       {step === 2 && <input value={lead.fullName} onChange={(e) => setLead({ ...lead, fullName: e.target.value })} onKeyDown={(e) => { if (!e.ctrlKey && !e.metaKey && !e.altKey && /^[0-9]$/.test(e.key)) e.preventDefault(); }} autoComplete="name" className="w-full rounded-xl border border-line p-3 text-sm" />}
       {step === 3 && <input value={lead.email} onChange={(e) => setLead({ ...lead, email: e.target.value })} type="email" autoComplete="email" className="w-full rounded-xl border border-line p-3 text-sm" />}
-      {step === 4 && <input value={lead.phone} onChange={(e) => setLead({ ...lead, phone: e.target.value })} type="tel" autoComplete="tel" className="w-full rounded-xl border border-line p-3 text-sm" />}
+      {step === 4 && (
+        <input
+          value={lead.phone}
+          onChange={(e) => setLead({ ...lead, phone: e.target.value.replace(/\D/g, "").slice(0, 10) })}
+          onKeyDown={(e) => {
+            if (
+              e.ctrlKey ||
+              e.metaKey ||
+              e.altKey ||
+              [
+                "Backspace",
+                "Delete",
+                "Tab",
+                "Enter",
+                "Escape",
+                "ArrowLeft",
+                "ArrowRight",
+                "ArrowUp",
+                "ArrowDown",
+                "Home",
+                "End",
+              ].includes(e.key)
+            ) {
+              return;
+            }
+            if (!/^[0-9]$/.test(e.key)) {
+              e.preventDefault();
+            }
+          }}
+          type="tel"
+          autoComplete="tel"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          maxLength={10}
+          className="w-full rounded-xl border border-line p-3 text-sm"
+        />
+      )}
       {step === 5 && <select value={lead.contactMethod} onChange={(e) => setLead({ ...lead, contactMethod: e.target.value })} className="w-full rounded-xl border border-line bg-white p-3 text-sm"><option value="">No preference</option><option>Email</option><option>Phone</option></select>}
     </div>{step === 1 && lead.description.length > 0 && !valid && <p className="mt-1.5 text-[11px] text-danger">Please add at least 20 characters.</p>}<div className="mt-3 flex justify-between"><button onClick={() => setStep((value) => Math.max(0, value - 1))} disabled={step === 0} className="inline-flex items-center gap-1 text-[12px] text-ink-soft disabled:opacity-0"><ArrowLeft className="size-3" />Back</button><button onClick={() => setStep((value) => value + 1)} disabled={!valid} className="inline-flex items-center gap-1 rounded-lg bg-accent-strong px-3 py-2 text-[12px] font-semibold text-white disabled:opacity-40">{step >= 4 ? "Continue / Skip" : "Continue"}<ArrowRight className="size-3" /></button></div></> : <><p className="mt-3 text-[14px] font-semibold text-ink">Please confirm your details</p><dl className="mt-3 space-y-2 text-[12px]">{[["Project", lead.projectType], ["Description", lead.description], ["Name", lead.fullName], ["Email", lead.email], ["Phone", lead.phone || "Skipped"], ["Contact", lead.contactMethod || "No preference"]].map(([label, value]) => <div key={label} className="grid grid-cols-[72px_1fr] gap-2"><dt className="text-ink-soft">{label}</dt><dd className="break-words font-medium text-ink">{value}</dd></div>)}</dl>{error && <p role="alert" className="mt-3 rounded-lg bg-danger/[.06] p-2 text-[11.5px] text-danger">{error}</p>}<div className="mt-4 flex justify-between"><button onClick={() => { setStep(5); setStatus("idle"); }} className="text-[12px] text-ink-soft">Edit</button><button onClick={() => void submit()} disabled={status === "sending"} className="inline-flex items-center gap-1.5 rounded-lg bg-accent-strong px-3 py-2 text-[12px] font-semibold text-white disabled:opacity-60">{status === "sending" && <LoaderCircle className="size-3 animate-spin" />}Confirm & Send</button></div></>}
   </motion.div>;

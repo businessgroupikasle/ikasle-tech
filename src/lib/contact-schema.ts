@@ -32,8 +32,13 @@ export const contactSchema = z.object({
   phone: z
     .string()
     .trim()
-    .max(30, "Phone number looks too long.")
-    .regex(/^[+()\d\s.-]*$/, "Use digits, spaces and + ( ) - only.")
+    .max(10, "Phone number cannot exceed 10 digits.")
+    .refine((val) => val === "" || /^\d+$/.test(val), {
+      message: "Phone number must contain only numeric digits (0–9).",
+    })
+    .refine((val) => val === "" || val.length === 10, {
+      message: "Phone number must be exactly 10 digits.",
+    })
     .optional()
     .or(z.literal("")),
   company: optionalText(120),
