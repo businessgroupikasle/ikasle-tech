@@ -1,0 +1,807 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "IKASLE Technologies — home" [ref=e5] [cursor=pointer]:
+        - /url: /#top
+        - img "IKASLE Technologies" [ref=e6]
+      - navigation "Main" [ref=e7]:
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "Home" [ref=e11] [cursor=pointer]:
+              - /url: /#top
+          - listitem [ref=e13]:
+            - link "About" [ref=e14] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e16]:
+            - link "Services" [ref=e17] [cursor=pointer]:
+              - /url: /services
+          - listitem [ref=e21]:
+            - link "Clientele" [ref=e22] [cursor=pointer]:
+              - /url: /clientele
+          - listitem [ref=e24]:
+            - link "Blog" [ref=e25] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e27]:
+            - link "Contact" [ref=e28] [cursor=pointer]:
+              - /url: /contact
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - region [ref=e33]:
+          - generic:
+            - generic [ref=e34]:
+              - heading "Your Trusted Partner For Innovative Software Development Solutions" [level=1] [ref=e36]
+              - paragraph [ref=e37]: We transform ambitious ideas into powerful digital products through modern software engineering, intelligent automation, and scalable technology.
+              - link "Start a Project" [ref=e40] [cursor=pointer]:
+                - /url: /contact
+            - generic [ref=e44]:
+              - generic [aria-hidden]:
+                - generic: </>
+              - generic:
+                - generic:
+                  - generic:
+                    - img "IKASLE Technologies"
+              - generic [aria-hidden]:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: const idea = vision();
+                      - generic: await build(idea);
+                      - generic: deploy()
+                - generic: "{ }"
+        - region [ref=e45]:
+          - heading "The modern stack we build with" [level=2] [ref=e47]
+          - generic [ref=e49]:
+            - paragraph [ref=e50]:
+              - generic [ref=e51]: 59 technologies & practices
+              - generic [aria-hidden] [ref=e52]: "|"
+              - generic [ref=e53]: All technologies — 59
+            - list "Filter technologies by category" [ref=e55]:
+              - listitem [ref=e56]:
+                - button "All 59" [pressed] [ref=e57]:
+                  - text: All
+                  - generic [ref=e58]: "59"
+              - listitem [ref=e59]:
+                - button "Frontend 10" [ref=e60]:
+                  - text: Frontend
+                  - generic [ref=e61]: "10"
+              - listitem [ref=e62]:
+                - button "Backend 7" [ref=e63]:
+                  - text: Backend
+                  - generic [ref=e64]: "7"
+              - listitem [ref=e65]:
+                - button "Database 7" [ref=e66]:
+                  - text: Database
+                  - generic [ref=e67]: "7"
+              - listitem [ref=e68]:
+                - button "Testing & QA 5" [ref=e69]:
+                  - text: Testing & QA
+                  - generic [ref=e70]: "5"
+              - listitem [ref=e71]:
+                - button "Automation 3" [ref=e72]:
+                  - text: Automation
+                  - generic [ref=e73]: "3"
+              - listitem [ref=e74]:
+                - button "DevOps 9" [ref=e75]:
+                  - text: DevOps
+                  - generic [ref=e76]: "9"
+              - listitem [ref=e77]:
+                - button "Tools 5" [ref=e78]:
+                  - text: Tools
+                  - generic [ref=e79]: "5"
+              - listitem [ref=e80]:
+                - button "Networking 3" [ref=e81]:
+                  - text: Networking
+                  - generic [ref=e82]: "3"
+              - listitem [ref=e83]:
+                - button "AI 4" [ref=e84]:
+                  - text: AI
+                  - generic [ref=e85]: "4"
+              - listitem [ref=e86]:
+                - button "UI/UX 3" [ref=e87]:
+                  - text: UI/UX
+                  - generic [ref=e88]: "3"
+              - listitem [ref=e89]:
+                - button "Motion & 3D 3" [ref=e90]:
+                  - text: Motion & 3D
+                  - generic [ref=e91]: "3"
+            - group "Technology globe. Use the arrow keys to move between technologies and Enter for details." [ref=e93]:
+              - button "HTML5, Frontend" [ref=e94]:
+                - generic [aria-hidden]: HTML5
+              - button "Node.js, Backend" [ref=e98]:
+                - generic [aria-hidden]: Node.js
+              - button "PostgreSQL, Database" [ref=e102]:
+                - generic [aria-hidden]: PostgreSQL
+              - button "Functional Testing, Testing & QA" [ref=e106]:
+                - generic [aria-hidden]: Functional Testing
+              - button "Selenium, Automation" [ref=e111]:
+                - generic [aria-hidden]: Selenium
+              - button "Git, DevOps" [ref=e115]:
+                - generic [aria-hidden]: Git
+              - button "Postman, Tools" [ref=e119]:
+                - generic [aria-hidden]: Postman
+              - button "Linux Administration, Networking" [ref=e123]:
+                - generic [aria-hidden]: Linux Administration
+              - button "Ollama, AI" [ref=e127]:
+                - generic [aria-hidden]: Ollama
+              - button "Figma, UI/UX" [ref=e131]:
+                - generic [aria-hidden]: Figma
+              - button "Three.js, Motion & 3D" [ref=e135]:
+                - generic [aria-hidden]: Three.js
+              - button "CSS, Frontend" [ref=e139]:
+                - generic [aria-hidden]: CSS
+              - button "Express, Backend" [ref=e143]:
+                - generic [aria-hidden]: Express
+              - button "MySQL, Database" [ref=e147]:
+                - generic [aria-hidden]: MySQL
+              - button "Integration Testing, Testing & QA" [ref=e151]:
+                - generic [aria-hidden]: Integration Testing
+              - button "Apache JMeter, Automation" [ref=e155]:
+                - generic [aria-hidden]: Apache JMeter
+              - button "GitHub, DevOps" [ref=e159]:
+                - generic [aria-hidden]: GitHub
+              - button "Jira, Tools" [ref=e163]:
+                - generic [aria-hidden]: Jira
+              - button "Network Security, Networking" [ref=e167]:
+                - generic [aria-hidden]: Network Security
+              - button "Local LLMs, AI" [ref=e172]:
+                - generic [aria-hidden]: Local LLMs
+              - button "UI/UX Design, UI/UX" [ref=e177]:
+                - generic [aria-hidden]: UI/UX Design
+              - button "WebGL, Motion & 3D" [ref=e183]:
+                - generic [aria-hidden]: WebGL
+              - button "JavaScript, Frontend" [ref=e187]:
+                - generic [aria-hidden]: JavaScript
+              - button "Python, Backend" [ref=e191]:
+                - generic [aria-hidden]: Python
+              - button "MongoDB, Database" [ref=e195]:
+                - generic [aria-hidden]: MongoDB
+              - button "Regression Testing, Testing & QA" [ref=e199]:
+                - generic [aria-hidden]: Regression Testing
+              - button "OWASP Testing, Automation" [ref=e205]:
+                - generic [aria-hidden]: OWASP Testing
+              - button "GitHub Actions, DevOps" [ref=e209]:
+                - generic [aria-hidden]: GitHub Actions
+              - button "Redmine, Tools" [ref=e213]:
+                - generic [aria-hidden]: Redmine
+              - button "Firewall & VPN, Networking" [ref=e217]:
+                - generic [aria-hidden]: Firewall & VPN
+              - button "AI Automation, AI" [ref=e221]:
+                - generic [aria-hidden]: AI Automation
+              - button "Visual Design, UI/UX" [ref=e226]:
+                - generic [aria-hidden]: Visual Design
+              - button "GSAP, Motion & 3D" [ref=e234]:
+                - generic [aria-hidden]: GSAP
+              - button "TypeScript, Frontend" [ref=e238]:
+                - generic [aria-hidden]: TypeScript
+              - button "PHP, Backend" [ref=e242]:
+                - generic [aria-hidden]: PHP
+              - button "SQLite, Database" [ref=e246]:
+                - generic [aria-hidden]: SQLite
+              - button "API Testing, Testing & QA" [ref=e250]:
+                - generic [aria-hidden]: API Testing
+              - button "Docker, DevOps" [ref=e254]:
+                - generic [aria-hidden]: Docker
+              - button "Chrome DevTools, Tools" [ref=e258]:
+                - generic [aria-hidden]: Chrome DevTools
+              - button "Computer Vision, AI" [ref=e262]:
+                - generic [aria-hidden]: Computer Vision
+              - button "React, Frontend" [ref=e271]:
+                - generic [aria-hidden]: React
+              - button "GraphQL, Backend" [ref=e275]:
+                - generic [aria-hidden]: GraphQL
+              - button "Redis, Database" [ref=e279]:
+                - generic [aria-hidden]: Redis
+              - button "User Acceptance Testing, Testing & QA" [ref=e283]:
+                - generic [aria-hidden]: User Acceptance Testing
+              - button "AWS, DevOps" [ref=e289]:
+                - generic [aria-hidden] [ref=e291]: aws
+                - generic [aria-hidden]: AWS
+              - button "DBeaver, Tools" [ref=e292]:
+                - generic [aria-hidden]: DBeaver
+              - button "Next.js, Frontend" [ref=e296]:
+                - generic [aria-hidden]: Next.js
+              - button "REST APIs, Backend" [ref=e300]:
+                - generic [aria-hidden]: REST APIs
+              - button "Prisma, Database" [ref=e306]:
+                - generic [aria-hidden]: Prisma
+              - button "Vercel, DevOps" [ref=e310]:
+                - generic [aria-hidden]: Vercel
+              - button "Tailwind CSS, Frontend" [ref=e314]:
+                - generic [aria-hidden]: Tailwind CSS
+              - button "API Integration, Backend" [ref=e318]:
+                - generic [aria-hidden]: API Integration
+              - button "Database Design, Database" [ref=e322]:
+                - generic [aria-hidden]: Database Design
+              - button "Ubuntu, DevOps" [ref=e329]:
+                - generic [aria-hidden]: Ubuntu
+              - button "Bootstrap, Frontend" [ref=e333]:
+                - generic [aria-hidden]: Bootstrap
+              - button "Nginx, DevOps" [ref=e337]:
+                - generic [aria-hidden]: Nginx
+              - button "Flutter, Frontend" [ref=e341]:
+                - generic [aria-hidden]: Flutter
+              - button "PM2, DevOps" [ref=e345]:
+                - generic [aria-hidden]: PM2
+              - button "Responsive Design, Frontend" [ref=e349]:
+                - generic [aria-hidden]: Responsive Design
+            - paragraph [ref=e354]: Swipe to explore · Tap for details
+        - region [ref=e355]:
+          - generic [ref=e356]:
+            - heading "Our Development Philosophy" [level=2] [ref=e358]:
+              - generic [ref=e359]: Our
+              - generic [ref=e362]: Development
+              - generic [ref=e365]: Philosophy
+            - generic [ref=e368]:
+              - figure "Animated terminal demo showing a project being cloned, installed, built, tested and deployed" [ref=e369]:
+                - generic [ref=e371]:
+                  - paragraph [ref=e377]: "ikasle@development: ~/workspace"
+                  - generic [ref=e378]: $ git clone ikasle/technology Cloning into 'technology'... ✓ Repository ready $ npm install ✓ Dependencies installed $ npm run build ✓ Compiled successfully ✓ Type checking passed $ npm run test ✓ All checks passed $ npm run deploy ✓ Deployment completed > Building technology that lasts
+                  - generic [ref=e380]:
+                    - generic [ref=e381]:
+                      - generic [ref=e382]: $
+                      - generic [ref=e383]: git clone ikasle/technology
+                    - generic [ref=e385]: Cloning into 'technology'...
+                    - generic [ref=e386]: ✓ Repository ready
+                    - generic [ref=e388]:
+                      - generic [ref=e389]: $
+                      - generic [ref=e390]: npm install
+                    - generic [ref=e392]: ✓ Dependencies installed
+                    - generic [ref=e394]:
+                      - generic [ref=e395]: $
+                      - generic [ref=e396]: npm run build
+                    - generic [ref=e398]: ✓ Compiled successfully
+                    - generic [ref=e399]: ✓ Type checking passed
+                    - generic [ref=e401]:
+                      - generic [ref=e402]: $
+                      - generic [ref=e403]: npm run test
+                    - generic [ref=e405]: ✓ All checks passed
+                    - generic [ref=e407]:
+                      - generic [ref=e408]: $
+                      - generic [ref=e409]: npm run deploy
+                    - generic [ref=e411]: ✓ Deployment completed
+                    - generic [ref=e413]: "> Building technology that lasts"
+              - generic [ref=e416]:
+                - heading "Building Software with Purpose" [level=3] [ref=e417]
+                - generic [ref=e418]:
+                  - paragraph [ref=e419]: At IKASLE Technologies, we believe great software is more than code. It's about solving real business challenges, simplifying complex processes, and creating digital experiences that make technology genuinely useful.
+                  - paragraph [ref=e420]: We approach every project with a strong foundation in clean architecture, thoughtful design, and scalable engineering. From enterprise ERP systems to intelligent attendance platforms and custom applications, our goal is to build solutions that are reliable, secure, and easy to evolve.
+                  - paragraph [ref=e421]: Our development philosophy combines innovation with practical problem-solving. We value maintainable code, transparent collaboration, continuous improvement, and software that creates lasting value for the businesses and people who depend on it.
+                - list "Technical principles" [ref=e422]:
+                  - listitem [ref=e423]: Clean Architecture
+                  - listitem [ref=e429]: Scalable Engineering
+                  - listitem [ref=e436]: Human-Centered Solutions
+        - region [ref=e440]:
+          - generic [ref=e441]:
+            - generic [ref=e442]:
+              - generic [ref=e443]:
+                - heading "Engineering Digital Experiences That Matter." [level=2] [ref=e444]:
+                  - generic [ref=e445]: Engineering
+                  - generic [ref=e447]: Digital
+                  - generic [ref=e449]: Experiences
+                  - generic [ref=e451]: That
+                  - generic [ref=e453]: Matter.
+                - paragraph [ref=e455]: Seven disciplines, one engineering team. We take products from first sketch to production — and keep them running.
+              - link "All services" [ref=e456] [cursor=pointer]:
+                - /url: /services
+            - generic [ref=e460]:
+              - link "Laptop on a desk showing HTML and CSS source code in a split-screen code editor 01 Custom Software Development Business applications, scalable systems and integrations engineered around how your team actually works. Explore service" [ref=e464] [cursor=pointer]:
+                - /url: /services/custom-software-development
+                - img "Laptop on a desk showing HTML and CSS source code in a split-screen code editor" [ref=e466]
+                - generic [ref=e467]:
+                  - generic [ref=e468]: "01"
+                  - heading "Custom Software Development" [level=3] [ref=e475]
+                  - paragraph [ref=e476]: Business applications, scalable systems and integrations engineered around how your team actually works.
+                  - generic [ref=e477]: Explore service
+              - link "Modern corporate website displayed responsively on a desktop monitor and smartphone 02 Website Development We create modern, responsive, SEO-friendly business websites that help your brand stand out, reach customers, and grow online. Explore service" [ref=e486] [cursor=pointer]:
+                - /url: /services/website-development
+                - img "Modern corporate website displayed responsively on a desktop monitor and smartphone" [ref=e488]
+                - generic [ref=e489]:
+                  - generic [ref=e490]: "02"
+                  - heading "Website Development" [level=3] [ref=e496]
+                  - paragraph [ref=e497]: We create modern, responsive, SEO-friendly business websites that help your brand stand out, reach customers, and grow online.
+                  - generic [ref=e498]: Explore service
+              - link "Desktop monitor displaying a SaaS analytics dashboard with charts and user activity 03 Web Application Development Fast, accessible Next.js and React platforms — SaaS products, portals and responsive dashboards. Explore service" [ref=e507] [cursor=pointer]:
+                - /url: /services/web-application-development
+                - img "Desktop monitor displaying a SaaS analytics dashboard with charts and user activity" [ref=e509]
+                - generic [ref=e510]:
+                  - generic [ref=e511]: "03"
+                  - heading "Web Application Development" [level=3] [ref=e517]
+                  - paragraph [ref=e518]: Fast, accessible Next.js and React platforms — SaaS products, portals and responsive dashboards.
+                  - generic [ref=e519]: Explore service
+              - link "Two smartphones displaying mobile application screens 04 Mobile App Development Cross-platform mobile apps connected to your systems, with offline-aware flows and native device features. Explore service" [ref=e528] [cursor=pointer]:
+                - /url: /services/mobile-app-development
+                - img "Two smartphones displaying mobile application screens" [ref=e530]
+                - generic [ref=e531]:
+                  - generic [ref=e532]: "04"
+                  - heading "Mobile App Development" [level=3] [ref=e537]
+                  - paragraph [ref=e538]: Cross-platform mobile apps connected to your systems, with offline-aware flows and native device features.
+                  - generic [ref=e539]: Explore service
+              - link "Warehouse with an inventory management dashboard on a laptop and stock, order and alert panels 05 ERP Solutions Inventory, sales, purchasing, manufacturing and reporting connected in one operational platform. Explore service" [ref=e548] [cursor=pointer]:
+                - /url: /services/erp-business-automation
+                - img "Warehouse with an inventory management dashboard on a laptop and stock, order and alert panels" [ref=e550]
+                - generic [ref=e551]:
+                  - generic [ref=e552]: "05"
+                  - heading "ERP Solutions" [level=3] [ref=e565]
+                  - paragraph [ref=e566]: Inventory, sales, purchasing, manufacturing and reporting connected in one operational platform.
+                  - generic [ref=e567]: Explore service
+              - link "Friendly robot presenting a task decomposition, execution and feedback-loop workflow 06 AI & Automation Intelligent workflows, AI integrations and automation that remove repetitive work from your day. Explore service" [ref=e576] [cursor=pointer]:
+                - /url: /services/ai-intelligent-solutions
+                - img "Friendly robot presenting a task decomposition, execution and feedback-loop workflow" [ref=e578]
+                - generic [ref=e579]:
+                  - generic [ref=e580]: "06"
+                  - heading "AI & Automation" [level=3] [ref=e586]
+                  - paragraph [ref=e587]: Intelligent workflows, AI integrations and automation that remove repetitive work from your day.
+                  - generic [ref=e588]: Explore service
+              - link "Designer's workstation with app wireframes and UI screens on a monitor and laptop 07 UI/UX & Product Design User research, interface design, interactive prototypes and design systems that ship cleanly to code. Explore service" [ref=e597] [cursor=pointer]:
+                - /url: /services/ui-ux-product-design
+                - img "Designer's workstation with app wireframes and UI screens on a monitor and laptop" [ref=e599]
+                - generic [ref=e600]:
+                  - generic [ref=e601]: "07"
+                  - heading "UI/UX & Product Design" [level=3] [ref=e609]
+                  - paragraph [ref=e610]: User research, interface design, interactive prototypes and design systems that ship cleanly to code.
+                  - generic [ref=e611]: Explore service
+      - region [ref=e617]:
+        - generic [ref=e620]:
+          - generic [ref=e622]:
+            - heading "From Idea to Production." [level=2] [ref=e623]:
+              - generic [ref=e624]: From
+              - generic [ref=e626]: Idea
+              - generic [ref=e628]: to
+              - generic [ref=e630]: Production.
+            - paragraph [ref=e632]: A predictable delivery process with working software at every step — not a big reveal at the end.
+          - generic [ref=e633]:
+            - paragraph [ref=e634]: phase 1/9 · discover
+            - list "Delivery phases" [ref=e635]:
+              - listitem [ref=e636]:
+                - button "01 Discover" [ref=e637]
+                - generic [aria-hidden] [ref=e638]: →
+              - listitem [ref=e639]:
+                - button "02 Plan & Architect" [ref=e640]
+                - generic [aria-hidden] [ref=e641]: →
+              - listitem [ref=e642]:
+                - button "03 Design" [ref=e643]
+                - generic [aria-hidden] [ref=e644]: →
+              - listitem [ref=e645]:
+                - button "04 Develop" [ref=e646]
+                - generic [aria-hidden] [ref=e647]: →
+              - listitem [ref=e648]:
+                - button "05 Automate" [ref=e649]
+                - generic [aria-hidden] [ref=e650]: →
+              - listitem [ref=e651]:
+                - button "06 Test & QA" [ref=e652]
+                - generic [aria-hidden] [ref=e653]: →
+              - listitem [ref=e654]:
+                - button "07 Deploy" [ref=e655]
+                - generic [aria-hidden] [ref=e656]: →
+              - listitem [ref=e657]:
+                - button "08 Monitor & Optimize" [ref=e658]
+                - generic [aria-hidden] [ref=e659]: →
+              - listitem [ref=e660]:
+                - button "09 Scale & Support" [ref=e661]
+          - list [ref=e663]:
+            - listitem [ref=e664]:
+              - generic [aria-hidden] [ref=e665]: "01"
+              - generic [ref=e666]:
+                - heading "Discover" [level=3] [ref=e667]
+                - paragraph [ref=e668]: We understand your business goals, users, challenges, and requirements to define a clear project roadmap.
+                - figure "01 · discover goals users requirements" [ref=e670]:
+                  - 'img "Illustration: a magnifying glass scanning a requirements document beside a user persona and an idea light bulb" [ref=e672]':
+                    - generic [ref=e706]: goals
+                    - generic [ref=e710]: users
+                  - generic [ref=e720]:
+                    - generic [ref=e724]: 01 · discover
+                    - generic [ref=e725]:
+                      - generic [ref=e726]: goals
+                      - generic [ref=e727]: users
+                      - generic [ref=e728]: requirements
+            - listitem [ref=e729]:
+              - generic [aria-hidden] [ref=e730]: "02"
+              - generic [ref=e731]:
+                - heading "Plan & Architect" [level=3] [ref=e732]
+                - paragraph [ref=e733]: We define the system architecture, development roadmap, technology stack, and integration strategy.
+                - figure "02 · plan & architect architecture roadmap stack" [ref=e735]:
+                  - 'img "Illustration: a blueprint with an architecture diagram being drawn, a drafting compass and a roadmap with milestones" [ref=e737]':
+                    - generic [ref=e741]: frontend
+                    - generic [ref=e744]: api
+                    - generic [ref=e747]: service
+                    - generic [ref=e750]: service
+                    - generic [ref=e761]: v1
+                    - generic [ref=e764]: v1.1
+                    - generic [ref=e767]: v2
+                  - generic [ref=e770]:
+                    - generic [ref=e775]: 02 · plan & architect
+                    - generic [ref=e776]:
+                      - generic [ref=e777]: architecture
+                      - generic [ref=e778]: roadmap
+                      - generic [ref=e779]: stack
+            - listitem [ref=e780]:
+              - generic [aria-hidden] [ref=e781]: "03"
+              - generic [ref=e782]:
+                - heading "Design" [level=3] [ref=e783]
+                - paragraph [ref=e784]: We create intuitive interfaces, wireframes, prototypes, and design systems focused on real user needs.
+                - figure "03 · design wireframes prototype design system" [ref=e786]:
+                  - 'img "Illustration: a design artboard with a wireframe layout, colour swatches, a pen-tool curve and a moving cursor" [ref=e788]':
+                    - generic [ref=e821]: Aa
+                  - generic [ref=e838]:
+                    - generic [ref=e845]: 03 · design
+                    - generic [ref=e846]:
+                      - generic [ref=e847]: wireframes
+                      - generic [ref=e848]: prototype
+                      - generic [ref=e849]: design system
+            - listitem [ref=e850]:
+              - generic [aria-hidden] [ref=e851]: "04"
+              - generic [ref=e852]:
+                - heading "Develop" [level=3] [ref=e853]
+                - paragraph [ref=e854]: Our engineers build secure, scalable applications using modern frameworks, APIs, and maintainable code.
+                - figure "04 · develop frameworks apis clean code" [ref=e856]:
+                  - 'img "Illustration: a laptop with code being typed, a floating code badge, a spinning gear and a passing build card" [ref=e858]':
+                    - generic [ref=e866]: "1"
+                    - generic [ref=e869]: "2"
+                    - generic [ref=e872]: "3"
+                    - generic [ref=e875]: "4"
+                    - generic [ref=e878]: "5"
+                    - generic [ref=e881]: "6"
+                    - generic [ref=e884]: "7"
+                    - generic [ref=e890]: </>
+                    - generic [ref=e906]: "{ }"
+                    - generic [ref=e907]: build ok
+                  - generic [ref=e912]:
+                    - generic [ref=e917]: 04 · develop
+                    - generic [ref=e918]:
+                      - generic [ref=e919]: frameworks
+                      - generic [ref=e920]: apis
+                      - generic [ref=e921]: clean code
+            - listitem [ref=e922]:
+              - generic [aria-hidden] [ref=e923]: "05"
+              - generic [ref=e924]:
+                - heading "Automate" [level=3] [ref=e925]
+                - paragraph [ref=e926]: We automate repetitive development tasks, configure CI workflows, and prepare automated quality checks to improve consistency and delivery speed.
+                - figure "05 · automate ci workflows quality checks speed" [ref=e928]:
+                  - 'img "Illustration: three meshing gears turning a conveyor belt that carries packages, powered by a lightning bolt" [ref=e930]'
+                  - generic [ref=e997]:
+                    - generic [ref=e1010]: 05 · automate
+                    - generic [ref=e1011]:
+                      - generic [ref=e1012]: ci workflows
+                      - generic [ref=e1013]: quality checks
+                      - generic [ref=e1014]: speed
+            - listitem [ref=e1015]:
+              - generic [aria-hidden] [ref=e1016]: "06"
+              - generic [ref=e1017]:
+                - heading "Test & QA" [level=3] [ref=e1018]
+                - paragraph [ref=e1019]: We validate functionality, usability, integration, performance, and reliability through structured manual and automated testing.
+                - figure "06 · test & qa functional integration regression" [ref=e1021]:
+                  - 'img "Illustration: a shield with a check mark, a checklist ticking off tests and a bug caught under a magnifying glass" [ref=e1023]'
+                  - generic [ref=e1057]:
+                    - generic [ref=e1062]: 06 · test & qa
+                    - generic [ref=e1063]:
+                      - generic [ref=e1064]: functional
+                      - generic [ref=e1065]: integration
+                      - generic [ref=e1066]: regression
+            - listitem [ref=e1067]:
+              - generic [aria-hidden] [ref=e1068]: "07"
+              - generic [ref=e1069]:
+                - heading "Deploy" [level=3] [ref=e1070]
+                - paragraph [ref=e1071]: We deploy applications using controlled release processes, environment configuration, and production checks.
+                - figure "07 · deploy release environments production checks" [ref=e1073]:
+                  - 'img "Illustration: a rocket lifting off a launch pad with flames and smoke, tagged as released to production" [ref=e1075]':
+                    - generic [ref=e1103]: v1.4.0 live
+                  - generic [ref=e1107]:
+                    - generic [ref=e1114]: 07 · deploy
+                    - generic [ref=e1115]:
+                      - generic [ref=e1116]: release
+                      - generic [ref=e1117]: environments
+                      - generic [ref=e1118]: production checks
+            - listitem [ref=e1119]:
+              - generic [aria-hidden] [ref=e1120]: "08"
+              - generic [ref=e1121]:
+                - heading "Monitor & Optimize" [level=3] [ref=e1122]
+                - paragraph [ref=e1123]: We monitor application health, identify bottlenecks, and continuously improve performance and reliability.
+                - figure "08 · monitor & optimize health performance uptime" [ref=e1125]:
+                  - 'img "Illustration: a monitor showing a rising performance chart, a health gauge and a live heartbeat line" [ref=e1127]':
+                    - generic [ref=e1145]: health
+                  - generic [ref=e1149]:
+                    - generic [ref=e1153]: 08 · monitor & optimize
+                    - generic [ref=e1154]:
+                      - generic [ref=e1155]: health
+                      - generic [ref=e1156]: performance
+                      - generic [ref=e1157]: uptime
+            - listitem [ref=e1158]:
+              - generic [aria-hidden] [ref=e1159]: "09"
+              - generic [ref=e1160]:
+                - heading "Scale & Support" [level=3] [ref=e1161]
+                - paragraph [ref=e1162]: We maintain, enhance, and scale your software as your users and business requirements grow.
+                - figure "09 · scale & support growth maintenance support" [ref=e1164]:
+                  - 'img "Illustration: growing bar chart with an upward trend arrow, a server rack adding a new server and a support agent chat bubble" [ref=e1166]'
+                  - generic [ref=e1204]:
+                    - generic [ref=e1209]: 09 · scale & support
+                    - generic [ref=e1210]:
+                      - generic [ref=e1211]: growth
+                      - generic [ref=e1212]: maintenance
+                      - generic [ref=e1213]: support
+      - region [ref=e1214]:
+        - generic [ref=e1215]:
+          - generic [ref=e1216]:
+            - generic [ref=e1217]:
+              - heading "Technology That Scales With Your Vision." [level=2] [ref=e1218]:
+                - generic [ref=e1219]: Technology
+                - generic [ref=e1221]: That
+                - generic [ref=e1223]: Scales
+                - generic [ref=e1225]: With
+                - generic [ref=e1227]: Your
+                - generic [ref=e1229]: Vision.
+              - paragraph [ref=e1231]: Every product we ship is built on clear, layered architecture. Select a layer to see what it does.
+            - tablist "Application layers" [ref=e1232]:
+              - tab "01 Frontend" [selected] [ref=e1233]:
+                - generic [ref=e1234]: "01"
+                - generic [ref=e1236]: Frontend
+                - generic [aria-hidden] [ref=e1237]: ↓
+              - tab "02 API Layer" [ref=e1238]:
+                - generic [ref=e1239]: "02"
+                - generic [ref=e1241]: API Layer
+                - generic [aria-hidden] [ref=e1242]: ↓
+              - tab "03 Backend Services" [ref=e1243]:
+                - generic [ref=e1244]: "03"
+                - generic [ref=e1246]: Backend Services
+                - generic [aria-hidden] [ref=e1247]: ↓
+              - tab "04 Database" [ref=e1248]:
+                - generic [ref=e1249]: "04"
+                - generic [ref=e1251]: Database
+                - generic [aria-hidden] [ref=e1252]: ↓
+              - tab "05 Cloud Infrastructure" [ref=e1253]:
+                - generic [ref=e1254]: "05"
+                - generic [ref=e1256]: Cloud Infrastructure
+            - tabpanel "01 Frontend" [ref=e1257]:
+              - generic [ref=e1258]:
+                - paragraph [ref=e1259]:
+                  - strong [ref=e1260]: Frontend.
+                  - text: Web and mobile clients render the experience — server-rendered pages, interactive dashboards and native apps.
+                - list "Frontend components" [ref=e1261]:
+                  - listitem [ref=e1262]: Next.js Web
+                  - listitem [ref=e1263]: Mobile App
+                  - listitem [ref=e1264]: Admin Panel
+          - generic [ref=e1265]:
+            - generic [ref=e1271]:
+              - generic [ref=e1272]:
+                - generic [ref=e1274] [cursor=pointer]
+                - generic [ref=e1277]:
+                  - generic [ref=e1278] [cursor=pointer]
+                  - generic [ref=e1284] [cursor=pointer]
+                  - generic [ref=e1285] [cursor=pointer]
+                - generic [ref=e1289]:
+                  - generic [ref=e1290] [cursor=pointer]
+                  - generic [ref=e1294] [cursor=pointer]
+                  - generic [ref=e1295] [cursor=pointer]
+                - generic [ref=e1299]:
+                  - generic [ref=e1300] [cursor=pointer]
+                  - generic [ref=e1306] [cursor=pointer]
+                  - generic [ref=e1307] [cursor=pointer]
+              - generic [ref=e1311]:
+                - generic [ref=e1313] [cursor=pointer]
+                - generic [ref=e1316]:
+                  - generic [ref=e1317] [cursor=pointer]
+                  - generic [ref=e1321] [cursor=pointer]
+                  - generic [ref=e1324] [cursor=pointer]
+                - generic [ref=e1330]:
+                  - generic [ref=e1331] [cursor=pointer]
+                  - generic [ref=e1335] [cursor=pointer]
+                  - generic [ref=e1338] [cursor=pointer]
+                - generic [ref=e1344]:
+                  - generic [ref=e1345] [cursor=pointer]
+                  - generic [ref=e1349] [cursor=pointer]
+                  - generic [ref=e1352] [cursor=pointer]
+              - generic [ref=e1358]:
+                - generic [ref=e1360] [cursor=pointer]
+                - generic [ref=e1363]:
+                  - generic [ref=e1364] [cursor=pointer]
+                  - generic [ref=e1365] [cursor=pointer]
+                  - generic [ref=e1382] [cursor=pointer]
+                - generic [ref=e1388]:
+                  - generic [ref=e1389] [cursor=pointer]
+                  - generic [ref=e1390] [cursor=pointer]
+                  - generic [ref=e1405] [cursor=pointer]
+                - generic [ref=e1411]:
+                  - generic [ref=e1412] [cursor=pointer]
+                  - generic [ref=e1413] [cursor=pointer]
+                  - generic [ref=e1419] [cursor=pointer]
+              - generic [ref=e1425]:
+                - generic [ref=e1427] [cursor=pointer]
+                - generic [ref=e1430]:
+                  - generic [ref=e1431] [cursor=pointer]
+                  - generic [ref=e1432] [cursor=pointer]
+                  - generic [ref=e1433] [cursor=pointer]
+                  - generic [ref=e1434] [cursor=pointer]
+                  - generic [ref=e1435] [cursor=pointer]
+                  - generic [ref=e1436] [cursor=pointer]
+                  - generic [ref=e1437] [cursor=pointer]
+                  - generic [ref=e1438] [cursor=pointer]
+                  - generic [ref=e1439] [cursor=pointer]
+                  - generic [ref=e1440] [cursor=pointer]
+                  - generic [ref=e1441] [cursor=pointer]
+                  - generic [ref=e1442] [cursor=pointer]
+                  - generic [ref=e1443] [cursor=pointer]
+                  - generic [ref=e1444] [cursor=pointer]
+                  - generic [ref=e1445] [cursor=pointer]
+                  - generic [ref=e1446] [cursor=pointer]
+                  - generic [ref=e1447] [cursor=pointer]
+                  - generic [ref=e1448] [cursor=pointer]
+                  - generic [ref=e1449] [cursor=pointer]
+                  - generic [ref=e1450] [cursor=pointer]
+                  - generic [ref=e1451] [cursor=pointer]
+                  - generic [ref=e1452] [cursor=pointer]
+                  - generic [ref=e1453] [cursor=pointer]
+                  - generic [ref=e1454] [cursor=pointer]
+                  - generic [ref=e1455] [cursor=pointer]
+                - generic [ref=e1460]:
+                  - generic [ref=e1461] [cursor=pointer]
+                  - generic [ref=e1462] [cursor=pointer]
+                  - generic [ref=e1463] [cursor=pointer]
+                  - generic [ref=e1464] [cursor=pointer]
+                  - generic [ref=e1465] [cursor=pointer]
+                  - generic [ref=e1466] [cursor=pointer]
+                  - generic [ref=e1467] [cursor=pointer]
+                  - generic [ref=e1468] [cursor=pointer]
+                  - generic [ref=e1469] [cursor=pointer]
+                  - generic [ref=e1470] [cursor=pointer]
+                  - generic [ref=e1471] [cursor=pointer]
+                  - generic [ref=e1472] [cursor=pointer]
+                  - generic [ref=e1473] [cursor=pointer]
+                  - generic [ref=e1474] [cursor=pointer]
+                  - generic [ref=e1475] [cursor=pointer]
+                  - generic [ref=e1476] [cursor=pointer]
+                  - generic [ref=e1477] [cursor=pointer]
+                  - generic [ref=e1478] [cursor=pointer]
+                  - generic [ref=e1479] [cursor=pointer]
+                  - generic [ref=e1480] [cursor=pointer]
+                  - generic [ref=e1481] [cursor=pointer]
+                  - generic [ref=e1482] [cursor=pointer]
+                  - generic [ref=e1483] [cursor=pointer]
+                  - generic [ref=e1484] [cursor=pointer]
+                  - generic [ref=e1485] [cursor=pointer]
+                - generic [ref=e1490]:
+                  - generic [ref=e1491] [cursor=pointer]
+                  - generic [ref=e1492] [cursor=pointer]
+                  - generic [ref=e1493] [cursor=pointer]
+                  - generic [ref=e1494] [cursor=pointer]
+                  - generic [ref=e1495] [cursor=pointer]
+                  - generic [ref=e1496] [cursor=pointer]
+                  - generic [ref=e1497] [cursor=pointer]
+                  - generic [ref=e1498] [cursor=pointer]
+                  - generic [ref=e1499] [cursor=pointer]
+                  - generic [ref=e1500] [cursor=pointer]
+                  - generic [ref=e1501] [cursor=pointer]
+                  - generic [ref=e1502] [cursor=pointer]
+                  - generic [ref=e1503] [cursor=pointer]
+                  - generic [ref=e1504] [cursor=pointer]
+                  - generic [ref=e1505] [cursor=pointer]
+                  - generic [ref=e1506] [cursor=pointer]
+                  - generic [ref=e1507] [cursor=pointer]
+                  - generic [ref=e1508] [cursor=pointer]
+                  - generic [ref=e1509] [cursor=pointer]
+                  - generic [ref=e1510] [cursor=pointer]
+                  - generic [ref=e1511] [cursor=pointer]
+                  - generic [ref=e1512] [cursor=pointer]
+                  - generic [ref=e1513] [cursor=pointer]
+                  - generic [ref=e1514] [cursor=pointer]
+                  - generic [ref=e1515] [cursor=pointer]
+              - generic [ref=e1520]:
+                - generic [ref=e1522] [cursor=pointer]
+                - generic [ref=e1525]:
+                  - generic [ref=e1526] [cursor=pointer]
+                  - generic [ref=e1527] [cursor=pointer]
+                  - generic [ref=e1531] [cursor=pointer]
+                - generic [ref=e1534]:
+                  - generic [ref=e1535] [cursor=pointer]
+                  - generic [ref=e1536] [cursor=pointer]
+                  - generic [ref=e1540] [cursor=pointer]
+                - generic [ref=e1543]:
+                  - generic [ref=e1544] [cursor=pointer]
+                  - generic [ref=e1545] [cursor=pointer]
+                  - generic [ref=e1549] [cursor=pointer]
+            - paragraph [ref=e1552]: Tap a layer to inspect
+      - region [ref=e1558]:
+        - generic [ref=e1560]:
+          - generic [aria-hidden]:
+            - generic: "const idea = await discover(goals); const design = prototype(idea, users); const product = build(design, { typed: true }); await test(product); await deploy(product, 'production'); scale(product).forEver(); // your idea goes here const idea = await discover(goals); const design = prototype(idea, users); const product = build(design, { typed: true }); await test(product); await deploy(product, 'production'); scale(product).forEver(); // your idea goes here const idea = await discover(goals); const design = prototype(idea, users); const product = build(design, { typed: true }); await test(product); await deploy(product, 'production'); scale(product).forEver(); // your idea goes here const idea = await discover(goals); const design = prototype(idea, users); const product = build(design, { typed: true }); await test(product); await deploy(product, 'production'); scale(product).forEver(); // your idea goes here"
+            - generic: "const idea = await discover(goals); const design = prototype(idea, users); const product = build(design, { typed: true }); await test(product); await deploy(product, 'production'); scale(product).forEver(); // your idea goes here const idea = await discover(goals); const design = prototype(idea, users); const product = build(design, { typed: true }); await test(product); await deploy(product, 'production'); scale(product).forEver(); // your idea goes here const idea = await discover(goals); const design = prototype(idea, users); const product = build(design, { typed: true }); await test(product); await deploy(product, 'production'); scale(product).forEver(); // your idea goes here const idea = await discover(goals); const design = prototype(idea, users); const product = build(design, { typed: true }); await test(product); await deploy(product, 'production'); scale(product).forEver(); // your idea goes here"
+          - generic [ref=e1562]:
+            - generic [ref=e1563]:
+              - heading "Have an Idea? Let's Build Something Extraordinary." [level=2] [ref=e1564]:
+                - generic [ref=e1565]: Have
+                - generic [ref=e1567]: an
+                - generic [ref=e1569]: Idea?
+                - generic [ref=e1571]: Let's
+                - generic [ref=e1573]: Build
+                - generic [ref=e1575]: Something
+                - generic [ref=e1577]: Extraordinary.
+              - paragraph [ref=e1579]: From your first concept to a scalable digital product, our team is ready to bring your vision to life.
+            - link "Start Your Project" [ref=e1581] [cursor=pointer]:
+              - /url: /contact
+  - contentinfo [ref=e1584]:
+    - generic [ref=e1585]:
+      - generic [ref=e1586]:
+        - generic [ref=e1587]:
+          - link "IKASLE Technologies — home" [ref=e1588] [cursor=pointer]:
+            - /url: /#top
+            - img "IKASLE Technologies" [ref=e1589]
+          - paragraph [ref=e1590]: Engineering intelligent digital solutions through code, creativity, and technology.
+        - navigation "Quick links" [ref=e1591]:
+          - heading "Quick Links" [level=2] [ref=e1592]
+          - list [ref=e1594]:
+            - listitem [ref=e1595]:
+              - link "Home" [ref=e1596] [cursor=pointer]:
+                - /url: /#top
+            - listitem [ref=e1597]:
+              - link "About" [ref=e1598] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e1599]:
+              - link "Services" [ref=e1600] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e1601]:
+              - link "Clientele" [ref=e1602] [cursor=pointer]:
+                - /url: /clientele
+            - listitem [ref=e1603]:
+              - link "Blog" [ref=e1604] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e1605]:
+              - link "Contact" [ref=e1606] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e1607]:
+              - link "Careers" [ref=e1608] [cursor=pointer]:
+                - /url: /careers
+        - navigation "Our services" [ref=e1609]:
+          - heading "Our Services" [level=2] [ref=e1610]
+          - list [ref=e1612]:
+            - listitem [ref=e1613]:
+              - link "Custom Software Development" [ref=e1614] [cursor=pointer]:
+                - /url: /services/custom-software-development
+            - listitem [ref=e1615]:
+              - link "Website Development" [ref=e1616] [cursor=pointer]:
+                - /url: /services/website-development
+            - listitem [ref=e1617]:
+              - link "Web Application Development" [ref=e1618] [cursor=pointer]:
+                - /url: /services/web-application-development
+            - listitem [ref=e1619]:
+              - link "Mobile App Development" [ref=e1620] [cursor=pointer]:
+                - /url: /services/mobile-app-development
+            - listitem [ref=e1621]:
+              - link "ERP Solutions" [ref=e1622] [cursor=pointer]:
+                - /url: /services/erp-business-automation
+            - listitem [ref=e1623]:
+              - link "AI & Automation" [ref=e1624] [cursor=pointer]:
+                - /url: /services/ai-intelligent-solutions
+            - listitem [ref=e1625]:
+              - link "UI/UX & Product Design" [ref=e1626] [cursor=pointer]:
+                - /url: /services/ui-ux-product-design
+        - generic [ref=e1627]:
+          - heading "Contact & Connect" [level=2] [ref=e1628]
+          - generic [ref=e1630]:
+            - link "+91 78451 32962" [ref=e1631] [cursor=pointer]:
+              - /url: tel:+917845132962
+            - link "business@ikasle.in" [ref=e1635] [cursor=pointer]:
+              - /url: mailto:business@ikasle.in
+            - generic [ref=e1640]: 1639/A, 2nd Floor, Hopes, Peelamedu, Coimbatore, Tamil Nadu, India – 641004
+          - generic [ref=e1645]:
+            - generic "Instagram profile is not configured" [ref=e1646]: Instagram profile is not available yet
+            - generic "LinkedIn profile is not configured" [ref=e1650]: LinkedIn profile is not available yet
+      - generic [ref=e1654]:
+        - paragraph [ref=e1655]: © 2026 IKASLE Technologies. All rights reserved.
+        - navigation "Legal and support" [ref=e1656]:
+          - list [ref=e1657]:
+            - listitem [ref=e1658]:
+              - link "Privacy Policy" [ref=e1659] [cursor=pointer]:
+                - /url: /privacy-policy
+            - listitem [ref=e1660]:
+              - link "Terms & Conditions" [ref=e1662] [cursor=pointer]:
+                - /url: /terms-and-conditions
+            - listitem [ref=e1663]:
+              - link "FAQ" [ref=e1665] [cursor=pointer]:
+                - /url: /faq
+  - link "Chat with IKASLE Technologies on WhatsApp" [ref=e1666] [cursor=pointer]:
+    - /url: https://wa.me/917845132962?text=Hi%20IKASLE%20Technologies%2C%20I'd%20like%20to%20discuss%20a%20project.
+  - button "Back to top"
+  - button "Open IKASLE AI Assistant" [ref=e1670]
+  - button "Open Next.js Dev Tools" [ref=e1682] [cursor=pointer]
+  - alert [ref=e1686]

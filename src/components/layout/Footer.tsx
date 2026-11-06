@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { siInstagram } from "simple-icons";
+import { siFacebook, siInstagram, siX } from "simple-icons";
 import { ScrollLink as Link } from "@/components/ui/ScrollLink";
 import { companyContact } from "@/data/company-contact";
 import { footerNav } from "@/data/navigation";
@@ -11,12 +11,18 @@ import { FooterMetaBalls } from "./FooterMetaBalls";
 
 const isUrl = (value: string) => /^https:\/\/[^\s/$.?#].[^\s]*$/i.test(value.trim());
 
-function InstagramIcon() {
-  return <svg viewBox="0 0 24 24" className="size-4" fill="currentColor" aria-hidden="true"><path d={siInstagram.path} /></svg>;
-}
+// simple-icons no longer ships a LinkedIn glyph, so its path is kept here.
+const linkedInPath = "M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z";
 
-function LinkedInIcon() {
-  return <svg viewBox="0 0 24 24" className="size-4" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" /></svg>;
+const socialLinks = [
+  { label: "Instagram", href: companySocials.instagram, path: siInstagram.path },
+  { label: "LinkedIn", href: companySocials.linkedin, path: linkedInPath },
+  { label: "Facebook", href: companySocials.facebook, path: siFacebook.path },
+  { label: "X", href: companySocials.x, path: siX.path },
+];
+
+function SocialIcon({ path }: { path: string }) {
+  return <svg viewBox="0 0 24 24" className="size-4" fill="currentColor" aria-hidden="true"><path d={path} /></svg>;
 }
 
 function Heading({ children }: { children: ReactNode }) {
@@ -66,7 +72,7 @@ export function Footer() {
               <a href={`mailto:${companyContact.email}`} className="flex min-w-0 items-center gap-2.5 transition-colors hover:text-accent-strong"><Mail className="size-4 shrink-0" aria-hidden="true" /><span className="break-all">{companyContact.email}</span></a>
               <div className="flex items-start gap-2.5"><MapPin className="mt-1 size-4 shrink-0" aria-hidden="true" /><span>{companyContact.address.join(", ")}</span></div>
             </address>
-            <div className="mt-3 flex gap-2.5"><SocialLink href={companySocials.instagram} label="Instagram"><InstagramIcon /></SocialLink><SocialLink href={companySocials.linkedin} label="LinkedIn"><LinkedInIcon /></SocialLink></div>
+            <div className="mt-3 flex flex-wrap gap-2.5">{socialLinks.map(({ label, href, path }) => <SocialLink key={label} href={href} label={label}><SocialIcon path={path} /></SocialLink>)}</div>
           </div>
         </div>
 
