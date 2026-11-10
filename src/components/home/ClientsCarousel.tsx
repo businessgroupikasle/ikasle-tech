@@ -29,7 +29,7 @@ export function ClientsCarousel() {
     <div className="h-[380px] text-ink sm:h-[500px]">
       <FlexCarousel items={items} preset="liquid" intro="rise" fit="landscape"
         cardHeight={0.42} gap={24} radius={18} squeeze={0.2}
-        focusOnClick captions captureWheel={false} />
+        focusOnClick captions captureWheel={false} autoplay interval={0.1} />
     </div>
   </div>;
 }
