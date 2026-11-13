@@ -45,6 +45,7 @@ export const clients: Client[] = [
     logo: "/images/clients/get-events-logo.jpeg",
     category: "Event Management & Celebrations",
     tagline: "Hub of Memories & Celebration",
+    url: "https://getcorporateevents.com/",
     aspect: "horizontal",
   },
   {

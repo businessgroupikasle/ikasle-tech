@@ -10,19 +10,12 @@ export function BlogMaintenance() {
       <div className="container-x relative flex flex-col items-center text-center">
         <div className="relative">
           <div className="absolute inset-[8%] rounded-full bg-[radial-gradient(circle,rgb(0_140_248/0.14),transparent_70%)]" aria-hidden="true" />
-          <Image
-            src="/images/blog/under-maintenance.webp"
-            alt="Illustration of a worker in a hard hat carrying a large wrench and a red toolbox"
-            width={323}
-            height={312}
-            priority
-            className="relative h-auto w-[220px] select-none sm:w-[300px]"
-            draggable={false}
-          />
+
+
         </div>
-        <p className="mt-8 font-mono text-[13px] tracking-wide text-accent-strong">{"// BLOG · UNDER MAINTENANCE"}</p>
+        <p className="mt-8 font-mono text-[13px] tracking-wide text-accent-strong">{"// BLOG "}</p>
         <h1 id="blog-maintenance-title" className="mt-4 max-w-2xl text-[2.2rem] leading-[1.08] font-semibold tracking-[-0.035em] text-balance text-ink sm:text-5xl">
-          Our Blog Is Under Maintenance
+          coming soon
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-pretty text-ink-soft">
           We&apos;re working on this section. Please check back soon — in the meantime, explore our services or get in touch.

@@ -1,21 +1,7 @@
-"use client";
-
-import { motion } from "motion/react";
-import { usePrefersReducedMotion } from "@/hooks/useReducedMotion";
-import { ClientsCarousel } from "./ClientsCarousel";
+import { clients } from "@/data/clients";
+import { ClientCard } from "./ClientCard";
 
 export function ClientsSection() {
-  const reduced = usePrefersReducedMotion();
-
-  const headerMotionProps = reduced
-    ? {}
-    : {
-      initial: { opacity: 0, y: 18 },
-      whileInView: { opacity: 1, y: 0 },
-      viewport: { once: true, margin: "-40px" },
-      transition: { duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] as const },
-    };
-
   return (
     <section
       id="clients"
@@ -36,9 +22,8 @@ export function ClientsSection() {
 
       <div className="container-x relative z-10">
         {/* Section Header */}
-        <motion.div
+        <div
           className="mx-auto mb-14 flex max-w-3xl flex-col items-center text-center sm:mb-18"
-          {...headerMotionProps}
         >
 
 
@@ -53,8 +38,12 @@ export function ClientsSection() {
             Proud to collaborate with businesses across industries, helping them build stronger
             digital experiences through technology.
           </p>
-        </motion.div>
-        <ClientsCarousel />
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+          {clients.map((client) => (
+            <ClientCard key={client.slug} client={client} />
+          ))}
+        </div>
       </div>
     </section>
   );
