@@ -3,14 +3,34 @@ import { BlogBrowser } from "@/components/blog/BlogBrowser";
 import { BlogMaintenance } from "@/components/blog/BlogMaintenance";
 import { blogUnderMaintenance, getPosts, showDrafts, toSummary } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
+import { siteConfig, absoluteUrl } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "Blog",
-  description: "Engineering insights, development practices and emerging technologies from the IKASLE Technologies team.",
+  title: "Engineering Blog | Software Architecture & Tech Insights",
+  description: "Engineering insights, software architecture best practices, and emerging technologies from the IKASLE Technologies team.",
   path: "/blog",
   // While under maintenance, keep the placeholder page out of search results.
   noindex: blogUnderMaintenance,
 });
+
+const blogJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${siteConfig.url}/blog#webpage`,
+    url: `${siteConfig.url}/blog`,
+    name: "Engineering Blog | IKASLE Technologies",
+    description: "Software architecture, technology insights and development best practices.",
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+        { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("/blog") },
+      ],
+    },
+  },
+];
 
 export default function BlogPage() {
   if (blogUnderMaintenance) return <BlogMaintenance />;
@@ -18,6 +38,10 @@ export default function BlogPage() {
   const posts = getPosts().map(toSummary);
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd).replace(/</g, "\\u003c") }}
+      />
       <BlogHero />
       <section aria-label="Articles" className="pb-24 sm:pb-32">
         <div className="container-x">

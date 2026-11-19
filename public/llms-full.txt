@@ -1,0 +1,64 @@
+# IKASLE Technologies — Full AI Knowledge Base & Context
+
+## 1. Company Profile
+- **Legal Entity**: IKASLE Technologies
+- **Short Name**: IKASLE
+- **Brand Tagline**: We Build the Future in Code.
+- **Headquarters**: 1639/A, 2nd Floor, Hopes, Peelamedu, Coimbatore, Tamil Nadu, India – 641004
+- **Primary Telephone**: +91 78451 32962
+- **Official Inquiries**: business@ikasle.in
+- **Official Website**: https://www.ikasletechnologies.com
+- **Operating Hours**: Monday – Friday, 09:00 – 18:00 IST
+- **Founding Year**: 2020
+
+## 2. Engineering Philosophy & Tech Stack
+IKASLE Technologies follows an engineering-first, product-driven methodology:
+- **Frontend Architecture**: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS, Motion / GSAP animations, Responsive Fluid Grid.
+- **Backend & APIs**: Node.js, Python, PostgreSQL, Prisma, Redis, RESTful APIs, GraphQL, Cloudflare Workers, Vercel Fluid Compute.
+- **Mobile Development**: React Native, Flutter, Swift, Kotlin for iOS and Android deployment.
+- **DevOps & Quality**: Automated CI/CD pipelines, Docker containerization, strict ESLint & TypeScript validation, zero-compromise security benchmarks.
+- **Security & IP**: Standard Non-Disclosure Agreements (NDA), 100% IP ownership transfer upon delivery, OWASP Top 10 compliance.
+
+## 3. Seven Core Services Breakdown
+
+### 3.1 Custom Software Development
+- **URL**: https://www.ikasletechnologies.com/services/custom-software-development
+- **Scope**: Internal business tools, custom ERP modules, database architecture, workflow automation, and enterprise legacy modernization.
+- **Target Audience**: Growing SMEs and mid-sized enterprises moving away from chaotic spreadsheets and off-the-shelf software limitations.
+
+### 3.2 Website Development
+- **URL**: https://www.ikasletechnologies.com/services/website-development
+- **Scope**: Ultra-fast marketing websites, corporate portals, accessibility compliance (WCAG), international SEO architecture, dynamic content pipelines.
+- **Key Location**: Renowned Website Development Company in Peelamedu, Coimbatore, serving domestic and international clients.
+
+### 3.3 Web Application Development
+- **URL**: https://www.ikasletechnologies.com/services/web-application-development
+- **Scope**: Multi-tenant SaaS platforms, interactive client portals, high-concurrency dashboards, real-time analytics.
+
+### 3.4 Mobile App Development
+- **URL**: https://www.ikasletechnologies.com/services/mobile-app-development
+- **Scope**: High-performance iOS and Android applications, offline-first synchronization, secure biometric authentication, push notifications.
+
+### 3.5 ERP & Business Automation
+- **URL**: https://www.ikasletechnologies.com/services/erp-business-automation
+- **Scope**: Supply chain tracking, automated invoice generation, live stock inventory management, production floor reporting (exemplified by Kiddos Foods ERP).
+
+### 3.6 AI & Intelligent Solutions
+- **URL**: https://www.ikasletechnologies.com/services/ai-intelligent-solutions
+- **Scope**: Contextual LLM wrappers, automated document ingestion, computer vision, AI-assisted customer chatbots, workflow agents.
+
+### 3.7 UI/UX & Product Design
+- **URL**: https://www.ikasletechnologies.com/services/ui-ux-product-design
+- **Scope**: User research, clickable Figma prototypes, comprehensive design tokens, UX heuristics auditing, mobile-first design systems.
+
+## 4. International Portfolio & Track Record
+- **United Kingdom**: Web development and digital systems delivered to match strict European accessibility, GDPR compliance, and performance standards.
+- **United Arab Emirates**: Enterprise cloud solutions, corporate platforms, and web applications for commercial clients in Dubai and Abu Dhabi.
+- **India**: Engineering headquarters in Coimbatore delivering solutions for clients across Tamil Nadu, Bangalore, Chennai, and PAN-India.
+- **Key Client Roster**: Kiddos Foods, Aadhan Caterers, Uzhavar Connect, ACME Bricks & Blocks, Giftery, AKVINZ Water Systems, TETA, Zeste Energy, Saravana Videos, Linga Construction, Chimp Premium Soda, Mahil Pharmacy, Bananza, Dream CADD, Krish Dental Studio, Sencirc, and Shifters.
+
+## 5. Contact & Collaboration
+For project estimates, architectural consultations, and partnership inquiries:
+- Form: https://www.ikasletechnologies.com/contact
+- Direct Email: business@ikasle.in
+- Phone: +91 78451 32962

@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { AnimatedHeading } from "@/components/animations/AnimatedHeading";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { ButtonLink } from "@/components/ui/Button";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Icon } from "@/components/ui/Icon";
 import { servicePages } from "@/data/service-pages";
 import "./services.css";
@@ -19,7 +20,7 @@ const PULSES = [
 /** Services page hero: GSAP word-stagger heading, CSS entrances, grid pulses, quick links to each service page. */
 export function ServicesHero() {
   return (
-    <section aria-labelledby="services-title" className="relative overflow-hidden pt-[calc(var(--header-h)+56px)] pb-16 sm:pb-24 lg:pt-[calc(var(--header-h)+88px)]">
+    <section aria-labelledby="services-title" className="relative overflow-hidden pt-[calc(var(--header-h)+56px)] pb-0 lg:pt-[calc(var(--header-h)+88px)]">
       <div className="ambient" aria-hidden="true" />
       <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_60%_30%,#000_15%,transparent_70%)]" aria-hidden="true" />
       <div className="svc-pulses" aria-hidden="true">
@@ -33,17 +34,20 @@ export function ServicesHero() {
       </div>
 
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-14">
-        <div className="flex flex-col items-start gap-6">
+        <div className="flex flex-col items-start gap-5">
+          <div className="enter-up">
+            <Breadcrumbs items={[{ label: "Services" }]} />
+          </div>
           <p className="enter-up font-mono text-[13px] tracking-wide text-accent-strong">{"// WHAT WE BUILD"}</p>
           <AnimatedHeading
             as="h1"
             id="services-title"
             immediate
             text="Seven Ways We Help Your Business Grow."
-            highlight={["Business."]}
+            highlight={["Your", "Business", "Grow."]}
             className="text-[2.4rem] leading-[1.04] font-semibold tracking-[-0.04em] text-balance text-ink sm:text-6xl lg:text-[3.6rem] xl:text-[4rem]"
           />
-          <p className="enter-up max-w-xl text-lg leading-relaxed text-pretty text-ink-soft [animation-delay:150ms]">
+          <p className="enter-up max-w-xl text-justify text-lg leading-relaxed text-pretty text-ink-soft [animation-delay:150ms]">
             From your first digital product to complex business systems, our services cover the technology required to build, improve and scale your digital operations.
             Explore our services to understand what each solution can achieve, what we deliver and how the right technology can support your business.
           </p>

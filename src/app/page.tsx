@@ -10,7 +10,7 @@ import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { ArchitectureSection } from "@/components/home/ArchitectureSection";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
 import { GlobalPortfolioSection } from "@/components/home/GlobalPortfolioSection";
-import { HomeFaqSection } from "@/components/home/HomeFaqSection";
+import { HomeFaqSection, HOME_FAQS } from "@/components/home/HomeFaqSection";
 import { ContactCta } from "@/components/home/ContactCta";
 import { siteConfig } from "@/lib/site";
 
@@ -23,16 +23,66 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/" },
   // Page-level openGraph/twitter replace the layout's objects, so the shared fields are repeated here.
-  openGraph: { type: "website", siteName: siteConfig.name, title, description, url: "/", locale: "en_US" },
-  twitter: { card: "summary_large_image", title, description },
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    title,
+    description,
+    url: "/",
+    locale: "en_US",
+    images: [
+      {
+        url: `${siteConfig.url}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: title,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [`${siteConfig.url}/opengraph-image`],
+  },
 };
 
+const homeJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${siteConfig.url}/#webpage`,
+    url: siteConfig.url,
+    name: title,
+    description,
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    about: { "@id": `${siteConfig.url}/#organization` },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url }],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: HOME_FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  },
+];
+
 export default function HomePage() {
-  // Each section below the hero is its own Suspense boundary, so React hydrates them as separate,
-  // interruptible units (yielding to input and paint between them) instead of one long task. The server
-  // HTML stays visible throughout; nothing here suspends or shows a fallback.
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd).replace(/</g, "\\u003c") }}
+      />
       {/* Book-style stacking: each section slides up over the one before (Hero → Stack → Philosophy → Services). */}
       <StackingSections>
         <Hero />

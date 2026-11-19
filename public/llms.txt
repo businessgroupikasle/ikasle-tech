@@ -1,0 +1,33 @@
+# IKASLE Technologies
+
+> Software Engineering Company in Coimbatore, India. Engineering custom software, web & mobile applications, ERP platforms, and AI automation for businesses worldwide.
+
+## Overview
+IKASLE Technologies is a premier software development and digital engineering partner headquartered in Peelamedu, Coimbatore, Tamil Nadu, India. We engineer custom enterprise software, scalable SaaS architectures, responsive web platforms, iOS/Android mobile applications, and connected business automation systems for clients across India, the United Kingdom, the United Arab Emirates, and global markets.
+
+- **Website**: https://www.ikasletechnologies.com
+- **Headquarters**: 1639/A, 2nd Floor, Hopes, Peelamedu, Coimbatore, Tamil Nadu, India – 641004
+- **Phone**: +91 78451 32962
+- **Email**: business@ikasle.in
+- **Founded**: 2020
+
+## Core Engineering Services
+- [Custom Software Development](https://www.ikasletechnologies.com/services/custom-software-development): Tailored line-of-business software, internal tools, microservices, and enterprise systems engineered around unique business workflows.
+- [Website Development](https://www.ikasletechnologies.com/services/website-development): High-performance, SEO-optimized, responsive websites and digital platforms built with Next.js, TypeScript, and modern web standards.
+- [Web Application Development](https://www.ikasletechnologies.com/services/web-application-development): Scalable SaaS platforms, customer portals, cloud-native dashboards, and interactive web applications.
+- [Mobile App Development](https://www.ikasletechnologies.com/services/mobile-app-development): Native and cross-platform Android and iOS applications with seamless APIs and responsive UX.
+- [ERP & Business Automation](https://www.ikasletechnologies.com/services/erp-business-automation): Connected systems integrating inventory, order management, sales, purchasing, and executive business reporting.
+- [AI & Intelligent Automation](https://www.ikasletechnologies.com/services/ai-intelligent-solutions): Applied AI workflows, LLM integrations, document intelligence, and automated business operations.
+- [UI/UX & Product Design](https://www.ikasletechnologies.com/services/ui-ux-product-design): User-centric product design, design systems, design tokens, interactive prototypes, and production UI.
+
+## International Presence & Delivery Hubs
+- **Coimbatore, India (HQ & Core Engineering Hub)**: Full-stack product engineering, system architecture, enterprise SaaS, and core labs (IST / UTC+5:30).
+- **United Kingdom (International Portfolio)**: Delivered bespoke website development, digital platforms, and European-standard web applications (GMT / BST).
+- **United Arab Emirates (International Portfolio)**: Enterprise web applications, cloud systems, and commercial digital solutions (GST / UTC+4).
+
+## Key Information
+- [All Services](https://www.ikasletechnologies.com/services): Overview of our 7 engineering disciplines.
+- [Clientele & Portfolio](https://www.ikasletechnologies.com/clientele): Verified client partnerships including Kiddos Foods, Aadhan Caterers, Uzhavar Connect, ACME Bricks, Giftery, AKVINZ, and others.
+- [About Company](https://www.ikasletechnologies.com/about): Company story, 2020-2027 milestone roadmap, values, and engineering approach.
+- [Frequently Asked Questions](https://www.ikasletechnologies.com/faq): Detailed answers on engagement models, development sprints, timezone overlap, and technology stack.
+- [Contact & Project Enquiries](https://www.ikasletechnologies.com/contact): Direct project scoping, NDA, and initial consultation.

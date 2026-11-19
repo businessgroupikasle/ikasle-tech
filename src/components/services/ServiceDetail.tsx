@@ -169,7 +169,7 @@ function SectionIntro({ id, title, copy, center = false }: { id: string; title: 
       </h2>
       {copy?.eyebrow && <p className={eyebrow}>{copy.eyebrow}</p>}
       {copy?.heading && <p className={cn("mt-5 max-w-2xl", center && "mx-auto", subheading)}>{copy.heading}</p>}
-      {copy?.intro && <p className={cn("mt-4 max-w-2xl text-[16.5px] leading-relaxed text-ink-soft", center && "mx-auto")}>{copy.intro}</p>}
+      {copy?.intro && <p className={cn("mt-4 max-w-2xl text-justify text-[16.5px] leading-relaxed text-ink-soft", center && "mx-auto")}>{copy.intro}</p>}
     </div>
   );
 }
@@ -223,7 +223,7 @@ function ApproachSection({ approach }: { approach: ServiceApproach }) {
           </h2>
           {approach.eyebrow && <p className={eyebrow}>{approach.eyebrow}</p>}
           {approach.heading && <p className={cn("mt-6", subheading)}>{approach.heading}</p>}
-          {approach.intro && <p className="mt-4 text-[16.5px] leading-relaxed text-ink-soft">{approach.intro}</p>}
+          {approach.intro && <p className="mt-4 text-justify text-[16.5px] leading-relaxed text-ink-soft">{approach.intro}</p>}
         </div>
         <ol className="relative min-w-0">
           {approach.steps.map((step, i) => (
@@ -256,7 +256,7 @@ function OverviewSection({ overview }: { overview: ServiceOverview }) {
           </h2>
           {overview.eyebrow && <p className={eyebrow}>{overview.eyebrow}</p>}
           <h3 className={cn("mt-6", subheading)}>{overview.heading}</h3>
-          <div className="mt-4 flex flex-col gap-4 text-[16.5px] leading-relaxed text-ink-soft">
+          <div className="mt-4 flex flex-col gap-4 text-justify text-[16.5px] leading-relaxed text-ink-soft">
             {overview.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -274,7 +274,7 @@ function OverviewSection({ overview }: { overview: ServiceOverview }) {
           </h2>
           {overview.challengesEyebrow && <p className={eyebrow}>{overview.challengesEyebrow}</p>}
           {overview.challengesIntro && (
-            <div className="mt-4 flex flex-col gap-3 text-[15px] leading-relaxed text-ink-soft">
+            <div className="mt-4 flex flex-col gap-3 text-justify text-[15px] leading-relaxed text-ink-soft">
               {overview.challengesIntro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -394,8 +394,8 @@ export function ServiceDetail({ slug }: { slug: string }) {
             <h2 id="service-overview" className={h2}>
               Service Overview
             </h2>
-            <p className="mt-5 text-[18px] leading-relaxed font-medium text-ink">{service.summary}</p>
-            <p className="mt-4 text-[16.5px] leading-relaxed text-ink-soft">{service.description}</p>
+            <p className="mt-5 text-justify text-[18px] leading-relaxed font-medium text-ink">{service.summary}</p>
+            <p className="mt-4 text-justify text-[16.5px] leading-relaxed text-ink-soft">{service.description}</p>
           </div>
           <div data-reveal className="min-w-0 rounded-[20px] border border-line bg-white p-6 sm:p-7">
             <h2 className="flex items-center gap-2 text-[17px] font-semibold text-ink">

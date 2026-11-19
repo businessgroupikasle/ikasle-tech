@@ -6,7 +6,7 @@ export function ClientsSection() {
     <section
       id="clients"
       aria-labelledby="clients-heading"
-      className="relative overflow-hidden border-t border-line/60 bg-white py-20 sm:py-24"
+      className="relative overflow-hidden border-t border-line/60 bg-white pt-8 pb-10 sm:pt-10 sm:pb-12"
     >
       {/* Subtle background technical grid accent */}
       <div

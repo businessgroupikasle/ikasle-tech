@@ -2,6 +2,7 @@ import { ClipboardCheck } from "lucide-react";
 import type { LegalDocument } from "@/content/legal/types";
 import { InlineText } from "@/components/blog/ArticleBody";
 import { formatDate } from "@/lib/blog";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 /** Readable legal page: header, draft notice, table of contents and numbered sections with review flags. */
 export function LegalPage({ doc }: { doc: LegalDocument }) {
@@ -10,6 +11,9 @@ export function LegalPage({ doc }: { doc: LegalDocument }) {
     <div className="pt-[calc(var(--header-h)+48px)] pb-24 lg:pt-[calc(var(--header-h)+72px)]">
       <div className="container-x">
         <div className="mx-auto max-w-3xl">
+          <div className="mb-4">
+            <Breadcrumbs items={[{ label: doc.title }]} />
+          </div>
           <p className="font-mono text-[12.5px] tracking-wide text-accent-strong">{"// LEGAL"}</p>
           <h1 className="mt-4 text-[2.4rem] leading-[1.06] font-semibold tracking-[-0.035em] text-ink sm:text-[3.2rem]">{doc.title}</h1>
           <p className="mt-5 text-lg leading-relaxed text-ink-soft">{doc.intro}</p>

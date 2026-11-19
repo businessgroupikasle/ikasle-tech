@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { 
-  Globe2, 
-  Briefcase, 
-  Handshake, 
-  Clock, 
-  ShieldCheck, 
-  CheckCircle2, 
+import {
+  Globe2,
+  Briefcase,
+  Handshake,
+  Clock,
+  ShieldCheck,
+  CheckCircle2,
   Sparkles,
   Building2,
   Laptop
@@ -206,11 +206,11 @@ function HubCard({ hub }: { hub: (typeof CORE_HUBS)[number] }) {
 
 export function GlobalPortfolioSection() {
   return (
-    <section aria-labelledby="global-title" className="relative overflow-hidden border-t border-line/60 bg-gradient-to-b from-bg via-bg-soft/40 to-bg py-20 sm:py-28">
+    <section aria-labelledby="global-title" className="relative overflow-hidden border-t border-line/60 bg-gradient-to-b from-bg via-bg-soft/40 to-bg pt-20 pb-10 sm:pt-28 sm:pb-12">
       {/* Background ambient lighting */}
-      <div 
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_15%,rgb(0_140_248/0.06),transparent_70%)]" 
-        aria-hidden="true" 
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_15%,rgb(0_140_248/0.06),transparent_70%)]"
+        aria-hidden="true"
       />
 
       <div className="container-x relative">
@@ -254,7 +254,7 @@ export function GlobalPortfolioSection() {
                 <span>Open to International Partnerships</span>
               </div>
               <h3 className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-                We Welcome Project Enquiries from Businesses Worldwide
+                We Welcome Project Enquiries from Businesses Worldwide.
               </h3>
               <p className="mt-4 text-base leading-relaxed text-white/75 text-justify sm:text-[17px]">
                 Whether you are launching a SaaS startup, developing a bespoke business platform, or modernizing enterprise software, we provide frictionless collaboration, clear roadmaps, and reliable engineering delivery.
@@ -304,10 +304,10 @@ export function GlobalPortfolioSection() {
 
               <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-5">
                 <span className="text-xs text-white/70">Ready to consult on your timezone?</span>
-                <ButtonLink 
-                  href="/contact" 
-                  variant="secondary" 
-                  arrow 
+                <ButtonLink
+                  href="/contact"
+                  variant="secondary"
+                  arrow
                   className="shrink-0 font-semibold !text-ink !bg-white hover:!bg-white/90"
                 >
                   Get in Touch

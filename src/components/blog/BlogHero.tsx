@@ -1,3 +1,5 @@
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+
 /** Faint, static code lines behind the hero — decorative only (no animation on long-form pages). */
 const CODE = [
   "const insight = await research(topic);",
@@ -21,6 +23,9 @@ export function BlogHero() {
         {CODE.join("\n")}
       </pre>
       <div className="container-x relative">
+        <div className="enter-up mb-4">
+          <Breadcrumbs items={[{ label: "Blog" }]} />
+        </div>
         <p className="enter-up font-mono text-[13px] tracking-wide text-accent-strong">{"// INSIGHTS & IDEAS"}</p>
         <h1 id="blog-title" className="enter-up mt-5 max-w-4xl text-[2.4rem] leading-[1.04] font-semibold tracking-[-0.04em] text-balance text-ink [animation-delay:80ms] sm:text-6xl lg:text-[4.1rem]">
           Insights from the World of <span className="text-gradient">Technology.</span>

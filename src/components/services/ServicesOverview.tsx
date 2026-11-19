@@ -18,12 +18,13 @@ const zoom = { rest: { scale: 1 }, hover: { scale: 1.05 } };
  */
 export function ServicesOverview() {
   return (
-    <section id="services-overview" aria-labelledby="services-overview-title" className="bg-bg-soft py-20 sm:py-28">
+    <section id="services-overview" aria-labelledby="services-overview-title" className="bg-bg-soft pt-20 pb-10 sm:pt-24 sm:pb-12">
       <div className="container-x">
         <SectionHeading
           id="services-overview-title"
           eyebrow="Our services"
           path="services/"
+          align="center"
           title="Seven Ways We Help Your Business Grow."
           description="Pick a service to see what it solves, what we deliver and the technology behind it."
         />

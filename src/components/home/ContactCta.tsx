@@ -21,7 +21,7 @@ type CtaLink = { label: string; href: string };
 export function ContactCta({
   headingLevel = "h2",
   eyebrow = "// LET'S BUILD WHAT COMES NEXT",
-  title = "Have an Idea? Let's Engineer What's Next.",
+  title = "Have an Idea? Let's Engineer What's Next?",
   highlight = ["What's Next."],
   text = "From your first concept to a production-ready digital product, we bring together strategy, design and engineering to turn your vision into technology that makes an impact. Whether you're building something new, modernizing existing systems or scaling your business, let's make it happen.",
   primary = { label: "Start a Project", href: "/contact" },

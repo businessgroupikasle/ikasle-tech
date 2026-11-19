@@ -1,12 +1,15 @@
 import { InlineText } from "@/components/blog/ArticleBody";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { ContactCta } from "@/components/home/ContactCta";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { faqs } from "@/content/faq";
 import { pageMetadata } from "@/lib/metadata";
+import { siteConfig, absoluteUrl } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "FAQ",
-  description: "Answers to common questions about IKASLE Technologies' software development services and how projects start.",
+  title: "Frequently Asked Questions | Software Engineering & Delivery",
+  description:
+    "Find answers to common questions about IKASLE Technologies' software engineering services, tech stack, international delivery, and project process.",
   path: "/faq",
 });
 
@@ -15,11 +18,21 @@ const plain = (answer: (typeof faqs)[number]["answer"]) =>
     .map((para) => para.map((c) => (typeof c === "string" ? c : "text" in c ? c.text : "code" in c ? c.code : c.strong)).join(""))
     .join(" ");
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: plain(f.answer) } })),
-};
+const faqJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: plain(f.answer) } })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "FAQ", item: absoluteUrl("/faq") },
+    ],
+  },
+];
 
 export default function FaqPage() {
   return (
@@ -30,6 +43,9 @@ export default function FaqPage() {
         <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_50%_0%,#000_10%,transparent_60%)]" aria-hidden="true" />
         <div className="container-x relative">
           <div className="mx-auto max-w-3xl">
+            <div className="mb-4">
+              <Breadcrumbs items={[{ label: "FAQ" }]} />
+            </div>
             <p className="font-mono text-[12.5px] tracking-wide text-accent-strong">{"// FREQUENTLY ASKED"}</p>
             <h1 id="faq-title" className="mt-4 text-[2.4rem] leading-[1.06] font-semibold tracking-[-0.035em] text-balance text-ink sm:text-[3.2rem]">
               Questions, Answered.

@@ -14,15 +14,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
     .filter(([, status]) => status === "approved")
     .map(([path]) => path!);
+  const now = new Date();
   const pages = ["/", "/about", "/services", "/clientele", ...(blogUnderMaintenance ? [] : ["/blog"]), "/contact", "/careers", "/faq", ...legal].map((path) => ({
     url: absoluteUrl(path),
-    changeFrequency: "monthly" as const,
-    priority: path === "/" ? 1 : 0.8,
+    lastModified: now,
+    changeFrequency: (path === "/" ? "weekly" : "monthly") as "weekly" | "monthly",
+    priority: path === "/" ? 1.0 : path === "/services" ? 0.9 : 0.8,
   }));
   const services = servicePages.map((s) => ({
     url: absoluteUrl(`/services/${s.slug}`),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
   }));
   // Published articles only — never drafts, even in a preview build.
   const articles = allPosts

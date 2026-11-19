@@ -15,6 +15,25 @@ const nextConfig: NextConfig = {
     // Policy for `next upgrade --agent` and the upgrade reminders shown by `next dev` / `next build`.
     agentUpgrade: "security",
   },
+  // Canonical 301 redirects: standardizes URLs, eliminates duplicate content, and preserves link equity.
+  async redirects() {
+    return [
+      { source: "/home", destination: "/", permanent: true },
+      { source: "/about-us", destination: "/about", permanent: true },
+      { source: "/contact-us", destination: "/contact", permanent: true },
+      { source: "/clients", destination: "/clientele", permanent: true },
+      { source: "/portfolio", destination: "/clientele", permanent: true },
+      { source: "/privacy", destination: "/privacy-policy", permanent: true },
+      { source: "/terms", destination: "/terms-and-conditions", permanent: true },
+      { source: "/services/custom-software", destination: "/services/custom-software-development", permanent: true },
+      { source: "/services/website", destination: "/services/website-development", permanent: true },
+      { source: "/services/web-apps", destination: "/services/web-application-development", permanent: true },
+      { source: "/services/mobile", destination: "/services/mobile-app-development", permanent: true },
+      { source: "/services/erp", destination: "/services/erp-business-automation", permanent: true },
+      { source: "/services/ai", destination: "/services/ai-intelligent-solutions", permanent: true },
+      { source: "/services/ui-ux", destination: "/services/ui-ux-product-design", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

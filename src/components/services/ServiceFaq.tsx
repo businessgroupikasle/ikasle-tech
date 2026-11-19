@@ -38,7 +38,7 @@ export function ServiceFaq({ idPrefix, faq, className = "pb-20 sm:pb-24" }: { id
           {faq.heading && (
             <p className="mt-5 text-[1.2rem] leading-snug font-semibold tracking-[-0.02em] text-balance text-ink sm:text-[1.3rem]">{faq.heading}</p>
           )}
-          <p className={cn("max-w-sm text-[16px] leading-relaxed text-ink-soft", faq.heading ? "mt-3" : "mt-5")}>
+          <p className={cn("max-w-sm text-justify text-[16px] leading-relaxed text-ink-soft", faq.heading ? "mt-3" : "mt-5")}>
             Can&apos;t find what you&apos;re looking for? Our team is happy to answer questions about your project.
           </p>
           <Link
@@ -56,7 +56,7 @@ export function ServiceFaq({ idPrefix, faq, className = "pb-20 sm:pb-24" }: { id
               id: `${idPrefix}-${i + 1}`,
               question: item.question,
               answer: paragraphs(item.answer).map((p, j) => (
-                <p key={j} className={j ? "mt-3" : undefined}>
+                <p key={j} className={cn("text-justify", j ? "mt-3" : undefined)}>
                   {typeof p === "string" ? (
                     p
                   ) : (

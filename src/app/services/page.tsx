@@ -36,17 +36,27 @@ const faqJsonLd = {
   mainEntity: servicesFaq.items.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: faqAnswerText(f.answer) } })),
 };
 
+const breadcrumbsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+    { "@type": "ListItem", position: 2, name: "Services", item: absoluteUrl("/services") },
+  ],
+};
+
 export default function ServicesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd).replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd).replace(/</g, "\\u003c") }} />
       <ServicesHero />
       {/* Seven cards only: each opens its own page at /services/[slug] (details live there, not here). */}
       <ServicesOverview />
       <ContactCta
         eyebrow="// have more questions?"
-        title="Every business has different technology requirements. Let's understand yours."
+        title="Every Business Has Different Technology Requirements. Let's Understand Yours."
         highlight={["understand", "yours."]}
         text=""
         primary={{ label: "Discuss Your Project", href: "/contact" }}

@@ -91,4 +91,13 @@ export const clients: Client[] = [
   { "slug": "krish-dental", "name": "Krish Dental Studio", "category": "Dental Care", "logo": "/images/clients/krish-dental.webp", "url": "https://www.krishdentalstudio.com/", "aspect": "horizontal" },
   { "slug": "sencirc", "name": "Sencirc", "category": "Sustainability", "logo": "/images/clients/sencirc.webp", "url": "https://sencirc.com/", "aspect": "horizontal" },
   { "slug": "shifters", "name": "Shifters", "category": "Automotive", "logo": "/images/clients/shifters.webp", "url": "https://shifters.in/", "aspect": "square" },
+  {
+    name: "Kiddos Foods",
+    slug: "kiddos-foods",
+    logo: "/images/clients/Kiddosfoods.webp",
+    category: "Food & Beverages",
+    tagline: "Authentic Traditional Food Products",
+    url: "https://kiddosfoods.com",
+    aspect: "horizontal",
+  },
 ];

@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { ButtonLink } from "@/components/ui/Button";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { AboutHeroArt } from "./AboutHeroArt";
 import "./about.css";
 
@@ -34,12 +35,15 @@ export function AboutHero() {
 
       <div className="container-x relative grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:gap-4">
         <div className="flex flex-col items-start">
+          <div className="mb-3">
+            <Breadcrumbs items={[{ label: "About" }]} />
+          </div>
           <p className="about-rise text-sm font-bold tracking-[0.06em] text-ink-deep uppercase sm:text-[15px]">
             About IKASLÉ
             <span className="about-bar mt-2.5 block h-0.75 w-14 rounded-full bg-accent" style={delay(0.25)} aria-hidden="true" />
           </p>
           <h1 className="about-rise mt-5 text-[2.125rem] leading-[1.08] font-bold tracking-[-0.03em] text-balance text-ink-deep xs:text-[2.6rem] sm:text-[3.25rem] lg:text-[2.75rem] xl:text-[3.5rem]" style={delay(0.08)}>
-            Where Ideas Become Intelligent Solutions.
+            Where Ideas Become <span className="text-gradient">Intelligent Solutions.</span>
           </h1>
           <p className="about-rise mt-5 max-w-xl text-justify text-base leading-relaxed text-ink-soft sm:text-[17px]" style={delay(0.18)}>
             Our journey began with one belief: technology and creativity can make a real difference.

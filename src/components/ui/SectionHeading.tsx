@@ -15,6 +15,8 @@ type Props = {
   id?: string;
   /** Replaces the default animated title element (e.g. a heading with its own animation). */
   heading?: ReactNode;
+  /** Words (exact match, punctuation included) to render in the blue accent gradient. */
+  highlight?: string[];
 };
 
 export function Eyebrow({ children, path }: { children: ReactNode; path?: string }) {
@@ -28,7 +30,7 @@ export function Eyebrow({ children, path }: { children: ReactNode; path?: string
   );
 }
 
-export function SectionHeading({ eyebrow, title, description, align = "left", as = "h2", className, descriptionClassName, path, id, heading }: Props) {
+export function SectionHeading({ eyebrow, title, description, align = "left", as = "h2", className, descriptionClassName, path, id, heading, highlight }: Props) {
   return (
     <div className={cn("flex flex-col gap-5", align === "center" ? "items-center text-center" : "items-start", className)}>
       {eyebrow && <Eyebrow path={path}>{eyebrow}</Eyebrow>}
@@ -38,6 +40,7 @@ export function SectionHeading({ eyebrow, title, description, align = "left", as
           id={id}
           immediate={as === "h1"}
           text={title}
+          highlight={highlight}
           className={cn(
             "text-balance font-semibold tracking-[-0.035em] text-ink",
             as === "h1"

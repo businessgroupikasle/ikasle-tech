@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ArticleBody } from "@/components/blog/ArticleBody";
 import { BlogCard, PostMeta } from "@/components/blog/BlogCard";
 import { ContactCta } from "@/components/home/ContactCta";
@@ -44,19 +45,30 @@ export default async function BlogArticlePage({ params }: Params) {
   // Structured data only for published articles, with fields we actually know.
   const jsonLd = post.draft
     ? null
-    : {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        headline: post.title,
-        description: post.description,
-        image: absoluteUrl(post.cover.src),
-        datePublished: post.publishedAt,
-        mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
-        articleSection: post.category,
-        keywords: post.tags.join(", "),
-        ...(post.author ? { author: { "@type": "Person", name: post.author } } : {}),
-        publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
-      };
+    : [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+            { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("/blog") },
+            { "@type": "ListItem", position: 3, name: post.title, item: absoluteUrl(`/blog/${post.slug}`) },
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.description,
+          image: absoluteUrl(post.cover.src),
+          datePublished: post.publishedAt,
+          mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+          articleSection: post.category,
+          keywords: post.tags.join(", "),
+          ...(post.author ? { author: { "@type": "Person", name: post.author } } : {}),
+          publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+        },
+      ];
 
   return (
     <>
@@ -64,6 +76,9 @@ export default async function BlogArticlePage({ params }: Params) {
       <article className="pt-[calc(var(--header-h)+40px)] pb-8 lg:pt-[calc(var(--header-h)+64px)]">
         <div className="container-x">
           <div className="mx-auto max-w-3xl">
+            <div className="mb-4">
+              <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: post.title }]} />
+            </div>
             <Link href="/blog" className="inline-flex items-center gap-2 text-[14.5px] font-medium text-ink-soft transition-colors hover:text-accent-strong">
               <ArrowLeft className="size-4" aria-hidden="true" />
               Back to Blogs

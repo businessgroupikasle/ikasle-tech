@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/ui/SectionHeading";
 import { FaqAccordion, type FaqItem } from "@/components/faq/FaqAccordion";
 import { Reveal } from "@/components/animations/Reveal";
 
-const HOME_FAQS: FaqItem[] = [
+export const HOME_FAQS: FaqItem[] = [
   {
     id: "what-we-do",
     question: "What does IKASLÉ Technologies do?",
@@ -81,7 +81,7 @@ const HOME_FAQS: FaqItem[] = [
 
 export function HomeFaqSection() {
   return (
-    <section aria-labelledby="home-faq-title" className="relative border-t border-line/60 bg-white pt-20 pb-0 sm:pt-24">
+    <section aria-labelledby="home-faq-title" className="relative border-t border-line/60 bg-white pt-16 pb-0 sm:pt-20">
       <div className="container-x">
         <Reveal className="flex flex-col items-center text-center">
           <Eyebrow>ANSWERS TO COMMON SOFTWARE DEVELOPMENT QUESTIONS</Eyebrow>
