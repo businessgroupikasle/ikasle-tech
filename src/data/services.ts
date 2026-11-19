@@ -8,7 +8,7 @@ export const services: Service[] = [
     title: "Custom Software Development",
     shortTitle: "Custom Software",
     icon: "code",
-    summary: "Business applications, scalable systems and integrations engineered around how your team actually works.",
+    summary: "When Standard Software Isn't Enough, Build What Your Business Needs.",
     description:
       "When off-the-shelf tools stop fitting, we design and build software around your processes — from internal tools and integrations to complete line-of-business systems with clean, maintainable code.",
     problems: [
@@ -17,6 +17,40 @@ export const services: Service[] = [
       "Manual data entry between applications",
       "Processes that no packaged software supports",
     ],
+    overview: {
+      eyebrow: "Software engineered around your requirements",
+      heading: "When Standard Software Isn't Enough, Build What Your Business Needs.",
+      paragraphs: [
+        "Off-the-shelf software can be useful, but it may not accommodate every business workflow, operational requirement or integration.",
+        "When existing tools become limitations, custom software offers a more flexible approach.",
+        "At IKASLÉ Technologies, we understand your business requirements, plan the technical architecture and develop applications around the way your organization operates.",
+        "Whether you need an internal management system, a business workflow application, a reporting platform or an integrated software solution, we focus on building reliable, maintainable technology that addresses the actual problem.",
+      ],
+      closing: "Our objective is simple: Build software that works for your business.",
+      challengesEyebrow: "Your business processes deserve better technology.",
+      challenges: [
+        {
+          title: "Disconnected Business Tools",
+          text: "When teams use multiple applications that don't communicate effectively, information becomes fragmented and operations become difficult to manage.",
+        },
+        {
+          title: "Spreadsheet-Driven Operations",
+          text: "Manual spreadsheets and repetitive data entry can create inconsistencies, delays and unnecessary administrative work.",
+        },
+        {
+          title: "Legacy Software Limitations",
+          text: "Older systems may become difficult to maintain, extend or integrate with modern business applications.",
+        },
+        {
+          title: "Repetitive Manual Workflows",
+          text: "Processes that require repeated human intervention can consume valuable time and increase the possibility of errors.",
+        },
+        {
+          title: "Software That Doesn't Fit Your Requirements",
+          text: "Standard applications may lack the specific features, workflows or integrations your business needs.",
+        },
+      ],
+    },
     capabilities: [
       "Domain modelling and system architecture",
       "REST and GraphQL API design",
@@ -24,6 +58,42 @@ export const services: Service[] = [
       "Role-based access control and audit trails",
       "Automated testing and CI/CD pipelines",
     ],
+    approach: {
+      eyebrow: "From business requirements to production-ready software",
+      heading: "How We Engineer Custom Software.",
+      intro:
+        "Every custom software project begins with understanding the business problem. We translate those requirements into a technical solution through structured planning, development and validation.",
+      steps: [
+        {
+          title: "Requirements Analysis & Domain Modelling",
+          text: "We understand your workflows, business rules, user roles and system requirements before defining the application structure.",
+        },
+        {
+          title: "System Architecture & Technical Planning",
+          text: "We establish the application architecture, data models, technology stack and integration requirements.",
+        },
+        {
+          title: "API & Integration Development",
+          text: "We develop REST and GraphQL APIs and integrate third-party services or existing systems where required.",
+        },
+        {
+          title: "Application Development",
+          text: "We build application functionality using maintainable code, structured components and appropriate development frameworks.",
+        },
+        {
+          title: "Security & Access Management",
+          text: "We implement role-based access control and audit trails according to the application's requirements.",
+        },
+        {
+          title: "Testing & Quality Assurance",
+          text: "We validate application functionality, integrations and reliability through structured testing and automated checks.",
+        },
+        {
+          title: "Deployment & Continuous Improvement",
+          text: "We prepare applications for deployment using CI/CD workflows and support ongoing improvements as requirements evolve.",
+        },
+      ],
+    },
     technologies: ["TypeScript", "Node.js", "PostgreSQL", "Prisma", "Docker", "GitHub Actions"],
     image: {
       src: "/images/services/custom-software-code-laptop.jpg",
@@ -50,6 +120,27 @@ export const services: Service[] = [
       "Weak online brand presentation",
       "Limited content management flexibility",
     ],
+    overview: {
+      heading: "Website Development Services Built Around Your Business",
+      paragraphs: [
+        "We create professional websites that communicate your brand, present your offerings clearly and make it easier for customers to connect with your business.",
+        "Every website is developed around its intended audience, business objectives, content requirements and future growth plans.",
+        "Whether you need a new business website or want to modernise an existing one, we help turn your requirements into a functional digital experience.",
+      ],
+      challengesIntro: [
+        "A poorly designed or outdated website can make it difficult for customers to understand your business and take the next step.",
+        "We help businesses address common website challenges:",
+      ],
+      challenges: [
+        { title: "Outdated website designs that no longer reflect the brand" },
+        { title: "Poor mobile responsiveness across different screen sizes" },
+        { title: "Slow-loading pages that affect user experience" },
+        { title: "Complicated navigation and unclear content structure" },
+        { title: "Weak presentation of products and services" },
+        { title: "Limited flexibility to update website content" },
+        { title: "Website structures that are difficult to maintain or expand" },
+      ],
+    },
     capabilities: [
       "Responsive, mobile-first implementation",
       "SEO-friendly semantic architecture",
@@ -57,6 +148,20 @@ export const services: Service[] = [
       "Performance and Core Web Vitals optimization",
       "Accessible, maintainable component systems",
     ],
+    approach: {
+      title: "How We Build Your Website",
+      intro: "Our website development process brings design, content structure and engineering together.",
+      steps: [
+        { title: "Discovery and Requirements", text: "Understand your business, audience, objectives and website requirements." },
+        { title: "Structure and Planning", text: "Organise pages, navigation, content hierarchy and website functionality." },
+        { title: "UI/UX Design", text: "Create layouts and interfaces aligned with your brand identity and user needs." },
+        { title: "Development", text: "Build responsive website components and implement the required functionality." },
+        { title: "Content and SEO Structure", text: "Organise page content, metadata, headings and internal navigation." },
+        { title: "Testing and Quality Assurance", text: "Check responsiveness, browser compatibility, functionality and usability." },
+        { title: "Launch and Deployment", text: "Prepare the website for launch and deployment." },
+        { title: "Ongoing Improvements", text: "Support future updates, enhancements and performance improvements where required." },
+      ],
+    },
     technologies: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
     image: {
       src: "/images/services/website-development-responsive.webp",
@@ -81,6 +186,26 @@ export const services: Service[] = [
       "Front-ends that are difficult to evolve",
       "No single place for customers or staff to self-serve",
     ],
+    overview: {
+      heading: "Web Application Development Services",
+      paragraphs: [
+        "We develop interactive, scalable and responsive web applications that go beyond traditional websites.",
+        "Our solutions help businesses connect users, manage information, automate activities and deliver services through intuitive digital platforms.",
+      ],
+      challengesIntro: [
+        "As businesses grow, basic websites and disconnected tools may no longer support their digital requirements.",
+        "We help address challenges such as:",
+      ],
+      challenges: [
+        { title: "Slow or outdated web experiences that affect user engagement" },
+        { title: "Digital products that do not work effectively on mobile devices" },
+        { title: "Disconnected systems and fragmented information" },
+        { title: "Manual processes that could be handled through online workflows" },
+        { title: "Front-end applications that are difficult to maintain or extend" },
+        { title: "Limited self-service options for customers and employees" },
+        { title: "Platforms that struggle to accommodate growing user requirements" },
+      ],
+    },
     capabilities: [
       "Next.js App Router and React Server Components",
       "SaaS architecture and multi-tenant design",
@@ -88,6 +213,19 @@ export const services: Service[] = [
       "Performance, SEO and Core Web Vitals optimisation",
       "Accessibility (WCAG) practices",
     ],
+    approach: {
+      title: "Our Web Application Development Process",
+      steps: [
+        { title: "Product Discovery", text: "Understand your users, business objectives, workflows and product requirements." },
+        { title: "Application Planning", text: "Define features, user roles, application structure and technical requirements." },
+        { title: "UI/UX Design", text: "Plan user journeys and create intuitive application interfaces." },
+        { title: "Architecture and Development", text: "Build the application using suitable front-end, backend and database technologies." },
+        { title: "Integration", text: "Connect required APIs, third-party services and business systems." },
+        { title: "Testing and Optimisation", text: "Validate functionality, responsiveness, performance and usability." },
+        { title: "Deployment", text: "Prepare and deploy the application in the selected hosting environment." },
+        { title: "Continuous Improvement", text: "Extend functionality and improve the platform as business needs evolve." },
+      ],
+    },
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Vercel"],
     image: {
       src: "/images/services/web-app-saas-dashboard.jpg",
@@ -112,6 +250,22 @@ export const services: Service[] = [
       "Paper-based check-ins, inspections or approvals",
       "Mobile apps disconnected from core business data",
     ],
+    overview: {
+      heading: "Mobile App Development Services",
+      paragraphs: [
+        "We develop mobile applications that help businesses connect with customers, support employees and deliver digital services through smartphones and tablets.",
+      ],
+      challengesIntro: ["Businesses need mobile applications that work reliably beyond the office environment.", "We help address common challenges such as:"],
+      challenges: [
+        { title: "Field teams without reliable digital tools while working on the move" },
+        { title: "Separate Android and iOS codebases that increase maintenance effort" },
+        { title: "Paper-based inspections, check-ins and approval processes" },
+        { title: "Mobile applications disconnected from core business systems" },
+        { title: "Difficult or confusing user experiences" },
+        { title: "Limited access to important business information outside the workplace" },
+        { title: "Applications that need improved functionality or modernisation" },
+      ],
+    },
     capabilities: [
       "Cross-platform development (React Native / Flutter)",
       "Location, geofencing and device APIs",
@@ -119,7 +273,21 @@ export const services: Service[] = [
       "Secure authentication and API integration",
       "App store release preparation",
     ],
-    technologies: ["React", "Expo", "Flutter", "TypeScript", "Firebase", "Node.js"],
+    approach: {
+      title: "How We Build Mobile Applications",
+      intro: "Our development approach brings together product planning, interface design, application engineering and quality assurance.",
+      steps: [
+        { title: "Product Discovery", text: "Understand your target users, business objectives and application requirements." },
+        { title: "Feature Planning", text: "Define application features, user roles, workflows and platform requirements." },
+        { title: "UI/UX Design", text: "Design intuitive mobile interfaces and user journeys." },
+        { title: "Application Development", text: "Build the application using a suitable cross-platform or platform-specific approach." },
+        { title: "Backend Integration", text: "Connect APIs, databases, authentication and required third-party services." },
+        { title: "Testing and Quality Assurance", text: "Validate functionality, responsiveness, device compatibility and application behaviour." },
+        { title: "Deployment Preparation", text: "Prepare application builds, store assets and release requirements." },
+        { title: "Launch and Improvements", text: "Support future updates, enhancements and maintenance according to the agreed scope." },
+      ],
+    },
+    technologies: ["React Native", "Expo", "Flutter", "TypeScript", "Firebase", "Node.js"],
     image: {
       src: "/images/services/mobile-app-phone-mockups.jpg",
       width: 1280,
@@ -143,6 +311,28 @@ export const services: Service[] = [
       "Production planning done by hand",
       "Reports that take days to compile",
     ],
+    overview: {
+      heading: "ERP Solutions Built Around Your Business",
+      paragraphs: [
+        "Every business has its own operational processes. Generic software may not always support the workflows, reporting requirements and integrations your organisation needs.",
+        "We develop and customise ERP systems that connect business functions, organise information and support day-to-day decision-making.",
+        "Our approach focuses on creating a connected operational platform where information can move between departments with greater consistency and visibility.",
+      ],
+      challengesIntro: [
+        "Disconnected systems and manual processes can make business operations difficult to manage as an organisation grows.",
+        "We help address common operational challenges:",
+      ],
+      challenges: [
+        { title: "Stock levels that do not match actual inventory" },
+        { title: "Purchasing and sales information spread across multiple tools" },
+        { title: "Manual production planning and tracking" },
+        { title: "Delays in order processing and approvals" },
+        { title: "Repeated data entry across departments" },
+        { title: "Reports that take too long to compile" },
+        { title: "Limited visibility into business performance" },
+        { title: "Operational workflows that depend heavily on spreadsheets" },
+      ],
+    },
     capabilities: [
       "Inventory and multi-location stock tracking",
       "Purchase and sales order workflows",
@@ -150,6 +340,20 @@ export const services: Service[] = [
       "Approval workflows and business automation",
       "Operational dashboards and reporting",
     ],
+    approach: {
+      title: "How We Build ERP Systems",
+      intro: "Our ERP development approach focuses on understanding your business before defining the software architecture.",
+      steps: [
+        { title: "Business Process Discovery", text: "Understand departments, workflows, operational challenges and reporting requirements." },
+        { title: "Requirements and Planning", text: "Identify required ERP modules, user roles, permissions and system integrations." },
+        { title: "System Architecture", text: "Design the application structure, database and relationships between business modules." },
+        { title: "Module Development", text: "Build inventory, purchasing, sales, production and other required modules." },
+        { title: "Integration and Automation", text: "Connect relevant business systems and implement workflow automation." },
+        { title: "Testing and Validation", text: "Test business workflows, data accuracy, access permissions and system functionality." },
+        { title: "Deployment and Implementation", text: "Prepare the ERP system for operational use and support the agreed deployment process." },
+        { title: "Enhancement and Support", text: "Improve and extend the system as business requirements evolve." },
+      ],
+    },
     technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Docker"],
     image: {
       src: "/images/services/erp-warehouse-inventory.jpg",
@@ -174,6 +378,26 @@ export const services: Service[] = [
       "Slow responses to routine requests",
       "Data that exists but isn't put to use",
     ],
+    overview: {
+      heading: "AI Integration and Automation Services",
+      paragraphs: [
+        "We help businesses identify suitable opportunities for AI integration and transform repetitive workflows into more intelligent digital processes.",
+      ],
+      challengesIntro: [
+        "Many businesses spend valuable time processing information and completing repetitive tasks manually.",
+        "We help address challenges such as:",
+      ],
+      challenges: [
+        { title: "Repetitive administrative work consuming employee time" },
+        { title: "Large volumes of documents requiring manual processing" },
+        { title: "Incoming emails and requests that need sorting and assignment" },
+        { title: "Slow responses to frequently asked questions" },
+        { title: "Business information spread across multiple documents and systems" },
+        { title: "Difficulty finding relevant information within internal knowledge resources" },
+        { title: "Workflows that depend on repeated manual data entry" },
+        { title: "Limited automation between existing business applications" },
+      ],
+    },
     capabilities: [
       "LLM integration and prompt engineering",
       "Document extraction and classification",
@@ -181,6 +405,21 @@ export const services: Service[] = [
       "Retrieval over your own knowledge base",
       "Human-in-the-loop review flows",
     ],
+    approach: {
+      title: "Our AI Development Approach",
+      intro:
+        "AI solutions require more than connecting a model to an application. They need suitable data, clearly defined workflows, testing and appropriate controls.",
+      steps: [
+        { title: "Business Discovery", text: "Understand the current workflow, repetitive tasks and business objectives." },
+        { title: "Automation Assessment", text: "Identify which activities are suitable for automation and where human review is required." },
+        { title: "Solution Architecture", text: "Select suitable AI services, models, integrations and data-processing methods." },
+        { title: "Development and Integration", text: "Connect AI capabilities with the required applications and business systems." },
+        { title: "Testing and Evaluation", text: "Assess output quality, accuracy, reliability and behaviour across relevant scenarios." },
+        { title: "Human Review Design", text: "Establish approval processes and exception handling where required." },
+        { title: "Deployment", text: "Integrate the solution into the intended business environment." },
+        { title: "Monitoring and Improvement", text: "Review performance and refine workflows as requirements evolve." },
+      ],
+    },
     technologies: ["Python", "TypeScript", "Node.js", "FastAPI", "PostgreSQL", "Redis"],
     image: {
       src: "/images/services/ai-workflow-automation-robot.jpg",
@@ -205,6 +444,24 @@ export const services: Service[] = [
       "Ideas that need validation before a build",
       "Design files that don't translate into code",
     ],
+    overview: {
+      heading: "UI/UX and Product Design Services",
+      paragraphs: ["We design digital experiences that connect user needs with business objectives and technical requirements."],
+      challengesIntro: [
+        "A digital product can have powerful functionality and still struggle if people find it difficult to use.",
+        "We help businesses address common design challenges:",
+      ],
+      challenges: [
+        { title: "Digital products that are difficult to understand or navigate" },
+        { title: "Inconsistent interfaces across different screens" },
+        { title: "Ideas that need validation before development" },
+        { title: "Complicated user journeys and unnecessary interactions" },
+        { title: "Websites and applications that do not reflect the brand" },
+        { title: "Design files that are difficult for developers to implement" },
+        { title: "Products that need a more consistent visual language" },
+        { title: "Existing interfaces that require usability improvements" },
+      ],
+    },
     capabilities: [
       "User research and journey mapping",
       "Wireframes and interactive prototypes",
@@ -212,6 +469,24 @@ export const services: Service[] = [
       "Design systems and tokens",
       "Usability reviews and iteration",
     ],
+    approach: {
+      title: "Our Product Design Process",
+      intro: "We bring research, design and engineering considerations together throughout the product design lifecycle.",
+      steps: [
+        { title: "Discovery and Understanding", text: "Understand your business objectives, target users, product requirements and existing challenges." },
+        { title: "User Research", text: "Explore user needs, expectations and behaviour to identify opportunities for improving the experience." },
+        { title: "Information Architecture", text: "Organise content, features and navigation into a structure that makes the product easier to understand." },
+        { title: "Wireframing", text: "Create early layouts that establish screen structure, content hierarchy and user interactions." },
+        {
+          title: "UI and Interaction Design",
+          text: "Develop visual interfaces, interaction patterns and responsive layouts aligned with your brand and product requirements.",
+        },
+        { title: "Interactive Prototyping", text: "Build clickable prototypes to demonstrate user journeys and evaluate design concepts before development." },
+        { title: "Design Systems", text: "Define reusable components, design tokens and interface guidelines to support consistency across screens." },
+        { title: "Developer Handoff", text: "Prepare organised design files, component specifications and implementation guidance for the engineering team." },
+        { title: "Usability Review and Iteration", text: "Review the experience, identify improvements and refine the design based on feedback and testing." },
+      ],
+    },
     technologies: ["Figma", "Framer", "Tailwind CSS", "React", "Rive", "GSAP"],
     image: {
       src: "/images/services/ui-ux-design-workstation.jpg",

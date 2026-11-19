@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ["lucide-react"],
+    // Policy for `next upgrade --agent` and the upgrade reminders shown by `next dev` / `next build`.
+    agentUpgrade: "security",
   },
   async headers() {
     return [

@@ -12,7 +12,8 @@ export type FaqItem = { id: string; question: string; answer: ReactNode };
  * regions. Items open independently. Motion animates height/opacity (reduced motion is respected through
  * the site's MotionConfig).
  */
-export function FaqAccordion({ items }: { items: FaqItem[] }) {
+export function FaqAccordion({ items, headingLevel = "h2" }: { items: FaqItem[]; headingLevel?: "h2" | "h3" }) {
+  const Heading = headingLevel;
   const [open, setOpen] = useState<Set<string>>(() => new Set());
   const toggle = (id: string) =>
     setOpen((prev) => {
@@ -30,7 +31,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
         const panelId = `faq-a-${item.id}`;
         return (
           <div key={item.id}>
-            <h2 className="m-0">
+            <Heading className="m-0">
               <button
                 id={buttonId}
                 type="button"
@@ -51,7 +52,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                   <ChevronDown className="size-4" />
                 </span>
               </button>
-            </h2>
+            </Heading>
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
