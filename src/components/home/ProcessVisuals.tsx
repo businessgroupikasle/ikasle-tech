@@ -587,13 +587,13 @@ function Scale() {
 }
 
 export const processSteps = [
-  { id: "discover", title: "Discover", summary: "We understand your business goals, users, challenges, and requirements to define a clear project roadmap.", Visual: Discover },
-  { id: "plan", title: "Plan & Architect", summary: "We define the system architecture, development roadmap, technology stack, and integration strategy.", Visual: PlanArchitect },
-  { id: "design", title: "Design", summary: "We create intuitive interfaces, wireframes, prototypes, and design systems focused on real user needs.", Visual: Design },
-  { id: "develop", title: "Develop", summary: "Our engineers build secure, scalable applications using modern frameworks, APIs, and maintainable code.", Visual: Develop },
-  { id: "automate", title: "Automate", summary: "We automate repetitive development tasks, configure CI workflows, and prepare automated quality checks to improve consistency and delivery speed.", Visual: Automate },
-  { id: "test", title: "Test & QA", summary: "We validate functionality, usability, integration, performance, and reliability through structured manual and automated testing.", Visual: Test },
-  { id: "deploy", title: "Deploy", summary: "We deploy applications using controlled release processes, environment configuration, and production checks.", Visual: Deploy },
-  { id: "monitor", title: "Monitor & Optimize", summary: "We monitor application health, identify bottlenecks, and continuously improve performance and reliability.", Visual: MonitorScene },
-  { id: "scale", title: "Scale & Support", summary: "We maintain, enhance, and scale your software as your users and business requirements grow.", Visual: Scale },
+  { id: "discover", title: "Discover", summary: "We understand your business goals, users, challenges and requirements to establish a clear project direction.", Visual: Discover },
+  { id: "plan", title: "Plan & Architect", summary: "We define the system architecture, technology stack, development roadmap and integration strategy.", Visual: PlanArchitect },
+  { id: "design", title: "Design", summary: "We transform requirements into intuitive interfaces, wireframes, prototypes and consistent design systems.", Visual: Design },
+  { id: "develop", title: "Develop", summary: "Our engineers build secure, scalable applications using modern frameworks, robust APIs and maintainable code.", Visual: Develop },
+  { id: "automate", title: "Automate", summary: "We automate repetitive workflows, configure CI/CD pipelines and streamline development and quality checks.", Visual: Automate },
+  { id: "test", title: "Test & QA", summary: "We validate functionality, usability, integrations, performance and reliability through structured testing.", Visual: Test },
+  { id: "deploy", title: "Deploy", summary: "We release applications through controlled deployment, environment configuration and production readiness checks.", Visual: Deploy },
+  { id: "monitor", title: "Monitor & Optimize", summary: "We track application health, identify performance bottlenecks and continuously improve system reliability.", Visual: MonitorScene },
+  { id: "scale", title: "Scale & Support", summary: "We maintain, enhance and expand your software as your users, operations and business needs evolve.", Visual: Scale },
 ] as const;

@@ -5,8 +5,12 @@ import { StackingSections } from "@/components/home/StackingSections";
 import { TechStack } from "@/components/home/TechStack";
 import { DevelopmentPhilosophy } from "@/components/home/DevelopmentPhilosophy";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
+import { IndustriesSection } from "@/components/home/IndustriesSection";
 import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { ArchitectureSection } from "@/components/home/ArchitectureSection";
+import { WhyUsSection } from "@/components/home/WhyUsSection";
+import { GlobalPortfolioSection } from "@/components/home/GlobalPortfolioSection";
+import { HomeFaqSection } from "@/components/home/HomeFaqSection";
 import { ContactCta } from "@/components/home/ContactCta";
 import { siteConfig } from "@/lib/site";
 
@@ -43,10 +47,22 @@ export default function HomePage() {
         </Suspense>
       </StackingSections>
       <Suspense>
+        <IndustriesSection />
+      </Suspense>
+      <Suspense>
         <ProcessTimeline />
       </Suspense>
       <Suspense>
         <ArchitectureSection />
+      </Suspense>
+      <Suspense>
+        <WhyUsSection />
+      </Suspense>
+      <Suspense>
+        <GlobalPortfolioSection />
+      </Suspense>
+      <Suspense>
+        <HomeFaqSection />
       </Suspense>
       <Suspense>
         <ContactCta />

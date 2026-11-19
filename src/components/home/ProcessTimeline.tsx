@@ -153,17 +153,22 @@ export function ProcessTimeline() {
           <Reveal>
             <SectionHeading
               id="process-title"
-              title="From Idea to Production."
-              description="A predictable delivery process with working software at every step — not a big reveal at the end."
+              align="center"
+              eyebrow="OUR ENGINEERING WORKFLOW"
+              title="From Idea to Production"
+              description="A structured software development process that delivers working software at every stage — with transparency, continuous validation and no last-minute surprises."
             />
           </Reveal>
 
           {/* Phase selector: pinned under the header below 1024px (with the phase label), inline on desktop. */}
           <div className="sticky top-[var(--header-h)] z-20 -mx-4 mt-10 border-b border-line/70 bg-bg-soft/90 px-4 py-2.5 backdrop-blur sm:-mx-6 sm:px-6 lg:static lg:mx-0 lg:mt-12 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+            <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-accent-strong lg:text-center">
+              {"// THE NINE DEVELOPMENT PHASES"}
+            </p>
             <p className="mb-2 font-mono text-[11.5px] text-ink-soft lg:hidden" aria-live="polite">
               {label}
             </p>
-            <ol ref={chipsRef} aria-label="Delivery phases" className="relative flex gap-2 overflow-x-auto font-mono text-[12.5px] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible [&::-webkit-scrollbar]:hidden">
+            <ol ref={chipsRef} aria-label="Delivery phases" className="relative flex gap-2 overflow-x-auto font-mono text-[12.5px] [scrollbar-width:none] lg:flex-wrap lg:justify-center lg:overflow-visible [&::-webkit-scrollbar]:hidden">
               {processSteps.map((s, i) => (
                 <li key={s.id} className="flex shrink-0 items-center gap-2">
                   <button
@@ -224,7 +229,7 @@ export function ProcessTimeline() {
                 const Visual = s.Visual;
                 const state = i < active ? "done" : i === active ? "current" : "upcoming";
                 return (
-                  <li key={s.id} data-step className="relative pl-14 lg:flex lg:min-h-[38vh] lg:items-center" aria-current={i === active ? "step" : undefined}>
+                  <li key={s.id} data-step className="relative pl-14 lg:flex lg:min-h-[24vh] lg:items-center" aria-current={i === active ? "step" : undefined}>
                     <span
                       ref={(el) => {
                         markerRefs.current[i] = el;
@@ -252,6 +257,11 @@ export function ProcessTimeline() {
               })}
             </ol>
           </div>
+
+          <p className="mt-14 text-center font-mono text-xs tracking-wide text-ink-soft sm:text-[13px]">
+            <span className="font-semibold text-accent" aria-hidden="true">{"// "}</span>
+            From the first conversation to continuous improvement, every phase moves your product forward.
+          </p>
         </div>
       </CursorGrid>
     </section>

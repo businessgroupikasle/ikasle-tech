@@ -31,9 +31,9 @@ function CardInner({ service, index }: { service: Service; index: number }) {
           <span className="font-mono text-[10px] text-ink-soft sm:text-[12px]">{String(index + 1).padStart(2, "0")}</span>
         </div>
         <h3 className="mt-2.5 text-sm leading-snug font-semibold tracking-tight text-ink sm:mt-3.5 sm:text-xl xl:text-lg">{service.title}</h3>
-        <p className="mt-2 hidden flex-1 text-[15px] leading-relaxed text-ink-soft sm:block xl:text-[14px]">{service.summary}</p>
+        <p className="mt-2 hidden flex-1 text-justify text-[15px] leading-relaxed text-ink-soft sm:block xl:text-[14px]">{service.summary}</p>
         <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium text-ink sm:mt-5 sm:gap-2 sm:text-sm">
-          <span className="hidden sm:inline">Explore service</span>
+          <span className="hidden sm:inline">Explore Service</span>
           <span className="inline-flex size-7 items-center justify-center rounded-full bg-bg-blue text-accent-strong transition-[background-color,color,transform] duration-300 group-hover/svc:translate-x-0.5 group-hover/svc:-translate-y-0.5 group-hover/svc:bg-accent-strong group-hover/svc:text-white">
             <ArrowUpRight className="size-3.5" aria-hidden="true" />
           </span>

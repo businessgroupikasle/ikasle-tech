@@ -20,12 +20,13 @@ type CtaLink = { label: string; href: string };
  */
 export function ContactCta({
   headingLevel = "h2",
-  eyebrow = "",
-  title = "Have an Idea? Let's Build Something Extraordinary.",
-  highlight = ["Extraordinary."],
-  text = "From your first concept to a scalable digital product, our team is ready to bring your vision to life.",
-  primary = { label: "Start Your Project", href: "/contact" },
-  secondary,
+  eyebrow = "// LET'S BUILD WHAT COMES NEXT",
+  title = "Have an Idea? Let's Engineer What's Next.",
+  highlight = ["What's Next."],
+  text = "From your first concept to a production-ready digital product, we bring together strategy, design and engineering to turn your vision into technology that makes an impact. Whether you're building something new, modernizing existing systems or scaling your business, let's make it happen.",
+  primary = { label: "Start a Project", href: "/contact" },
+  secondary = { label: "Talk to Our Team", href: "/contact" },
+  tagline = "Engineering Ideas Into Impact.",
 }: {
   headingLevel?: "h2" | "h3";
   eyebrow?: string;
@@ -34,6 +35,7 @@ export function ContactCta({
   text?: string;
   primary?: CtaLink;
   secondary?: CtaLink;
+  tagline?: string;
 }) {
   const rain = [...CODE_LINES, ...CODE_LINES, ...CODE_LINES, ...CODE_LINES].join("\n");
   return (
@@ -70,7 +72,7 @@ export function ContactCta({
                 highlight={highlight}
                 className="text-2xl leading-[1.15] font-semibold tracking-[-0.03em] text-balance text-white sm:text-3xl lg:text-[2rem]"
               />
-              <p className="hidden max-w-xl text-[15px] leading-relaxed text-[#B7CCDD] sm:block">
+              <p className="hidden max-w-xl text-[15px] leading-relaxed text-white/75 sm:block">
                 {text}
               </p>
             </div>
@@ -86,6 +88,14 @@ export function ContactCta({
             </div>
           </div>
         </Reveal>
+        {tagline && (
+          <div className="mt-8 text-center">
+            <p className="font-mono text-xs tracking-wide text-ink-soft sm:text-[13px]">
+              <span className="font-semibold text-accent" aria-hidden="true">{"// "}</span>
+              {tagline}
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

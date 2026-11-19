@@ -7,8 +7,8 @@ import { cn } from "@/lib/cn";
 
 const ACCENT_COLOR = "#009CFF";
 const WORDS = [
-  ...["Your", "Trusted", "Partner", "For", "Innovative"].map((w) => ({ w, accent: false })),
-  ...["Software", "Development", "Solutions"].map((w) => ({ w, accent: true })),
+  ...["Custom", "Software", "Development", "&"].map((w) => ({ w, accent: false })),
+  ...["Digital", "Product", "Engineering."].map((w) => ({ w, accent: true })),
 ];
 
 /** Delay between lines starting their intro, in ms. */
@@ -148,7 +148,7 @@ export function HeroHeadline({ id }: { id: string }) {
       >
         {/* Real text: visible until its line's canvas takes over, then faded. */}
         {WORDS.map(({ w, accent }, i) => (
-          <Fragment key={w}>
+          <Fragment key={`${w}-${i}`}>
             <span
               data-w
               className={cn(

@@ -34,7 +34,7 @@ export function ClientsSection() {
             Our Clients
           </h2>
 
-          <p className="mt-5 text-pretty text-base leading-relaxed text-ink-soft sm:text-lg">
+          <p className="mt-5 text-pretty text-base leading-relaxed text-ink-soft sm:text-[17px]">
             Proud to collaborate with businesses across industries, helping them build stronger
             digital experiences through technology.
           </p>

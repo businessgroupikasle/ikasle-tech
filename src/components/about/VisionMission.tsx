@@ -63,18 +63,29 @@ function RocketIcon({ timing }: IconProps) {
   );
 }
 
-const CARDS: { title: string; text: string; Icon: (props: IconProps) => ReactNode }[] = [
-  {
-    title: "Our Vision",
-    text: "To make technology accessible and impactful, helping businesses grow through thoughtful digital innovation.",
-    Icon: TargetIcon,
-  },
-  {
-    title: "Our Mission",
-    text: "To combine creative thinking, reliable engineering and close collaboration to build solutions that solve real business challenges.",
-    Icon: RocketIcon,
-  },
-];
+const CARDS: {
+  title: string;
+  subtitle: string;
+  paragraphs: string[];
+  Icon: (props: IconProps) => ReactNode;
+}[] = [
+    {
+      title: "Our Vision",
+      subtitle: "To Build Technology That Shapes the Future of Humanity.",
+      paragraphs: [
+        "To emerge as a global technology company, creating transformative products, intelligent platforms and innovations that redefine industries, empower people and advance the way the world lives and works.",
+      ],
+      Icon: TargetIcon,
+    },
+    {
+      title: "Our Mission",
+      subtitle: "Engineering Possibilities. Creating What Comes Next.",
+      paragraphs: [
+        "To turn ambitious ideas into impactful technology through world-class engineering, continuous innovation and bold thinking. We build software, intelligent systems and digital ecosystems that solve meaningful problems today while creating possibilities for tomorrow.",
+      ],
+      Icon: RocketIcon,
+    },
+  ];
 
 export function VisionMission() {
   const reduced = usePrefersReducedMotion();
@@ -84,7 +95,7 @@ export function VisionMission() {
   return (
     <section aria-label="Our vision and mission" className="bg-bg-soft py-10 sm:py-14">
       <div className="container-x grid gap-5 lg:grid-cols-2 lg:gap-6">
-        {CARDS.map(({ title, text, Icon }, index) => {
+        {CARDS.map(({ title, subtitle, paragraphs, Icon }, index) => {
           const start = index * 0.14;
           const iconTiming: IconProps["timing"] = (delay, transition) => timing(start + delay, transition);
           return (
@@ -95,12 +106,12 @@ export function VisionMission() {
               viewport={{ once: true, amount: 0.4 }}
               variants={{ hidden: { opacity: 0, y: 24 }, shown: { opacity: 1, y: 0 } }}
               transition={timing(start, { duration: 0.6, ease: EASE })}
-              className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4 shadow-[0_18px_40px_-30px_rgb(8_40_60/0.35)] transition-[translate,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_24px_46px_-26px_rgb(0_114_209/0.4)] motion-reduce:hover:translate-y-0 sm:gap-6 sm:p-6"
+              className="flex items-start gap-4 rounded-2xl border border-line bg-white p-5 shadow-[0_18px_40px_-30px_rgb(8_40_60/0.35)] transition-[translate,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_24px_46px_-26px_rgb(0_114_209/0.4)] motion-reduce:hover:translate-y-0 sm:gap-6 sm:p-7"
             >
               <motion.div
                 variants={{ hidden: { scale: 0.7, opacity: 0 }, shown: { scale: 1, opacity: 1 } }}
                 transition={timing(start + 0.15, { type: "spring", stiffness: 320, damping: 20 })}
-                className="grid size-16 shrink-0 place-items-center rounded-2xl bg-bg-blue sm:size-20"
+                className="grid size-14 shrink-0 place-items-center rounded-2xl bg-bg-blue sm:size-18"
               >
                 <Icon timing={iconTiming} />
               </motion.div>
@@ -113,10 +124,15 @@ export function VisionMission() {
               <motion.div
                 variants={{ hidden: { opacity: 0, x: 12 }, shown: { opacity: 1, x: 0 } }}
                 transition={timing(start + 0.3, { duration: 0.5, ease: EASE })}
-                className="min-w-0"
+                className="min-w-0 flex-1"
               >
                 <h2 className="text-xl font-bold tracking-[-0.015em] text-ink-deep sm:text-2xl">{title}</h2>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink sm:text-[15px]">{text}</p>
+                <p className="mt-1 font-semibold text-accent-strong text-sm sm:text-[15px]">{subtitle}</p>
+                <div className="mt-2.5 space-y-2 text-justify text-sm leading-relaxed text-ink-soft sm:text-[14.5px]">
+                  {paragraphs.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
               </motion.div>
             </motion.article>
           );

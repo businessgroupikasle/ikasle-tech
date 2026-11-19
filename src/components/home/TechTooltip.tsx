@@ -223,7 +223,7 @@ function TooltipInner({ info, onClose }: TooltipInnerProps) {
         </div>
 
         {/* Description */}
-        <p className="text-[11.5px] leading-relaxed text-[#5A6F82]">
+        <p className="text-[11.5px] leading-relaxed text-ink-soft">
           {info.description}
         </p>
       </div>

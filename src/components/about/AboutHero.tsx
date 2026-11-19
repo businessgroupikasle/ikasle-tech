@@ -39,12 +39,19 @@ export function AboutHero() {
             <span className="about-bar mt-2.5 block h-0.75 w-14 rounded-full bg-accent" style={delay(0.25)} aria-hidden="true" />
           </p>
           <h1 className="about-rise mt-5 text-[2.125rem] leading-[1.08] font-bold tracking-[-0.03em] text-balance text-ink-deep xs:text-[2.6rem] sm:text-[3.25rem] lg:text-[2.75rem] xl:text-[3.5rem]" style={delay(0.08)}>
-            Where ideas become intelligent solutions.
+            Where Ideas Become Intelligent Solutions.
           </h1>
-          <p className="about-rise mt-5 max-w-[26rem] text-base leading-relaxed text-ink sm:text-lg xl:text-xl" style={delay(0.18)}>
-            We bring creativity and technology together to help businesses move forward.
+          <p className="about-rise mt-5 max-w-xl text-justify text-base leading-relaxed text-ink-soft sm:text-[17px]" style={delay(0.18)}>
+            Our journey began with one belief: technology and creativity can make a real difference.
           </p>
-          <div className="about-rise mt-8" style={delay(0.28)}>
+          <p className="about-rise mt-3 max-w-xl text-justify text-base leading-relaxed text-ink-soft sm:text-[17px]" style={delay(0.24)}>
+            Since 2020, IKASLÉ has been learning, building and evolving into meaningful digital experiences.
+          </p>
+          <p className="about-rise mt-4 font-mono text-xs tracking-wide text-ink-soft sm:text-[13px]" style={delay(0.28)}>
+            <span className="font-semibold text-accent" aria-hidden="true">{"// "}</span>
+            Built on Curiosity. Driven by Purpose.
+          </p>
+          <div className="about-rise mt-8" style={delay(0.32)}>
             <ButtonLink href="#our-journey" size="lg" arrow className="rounded-lg!">
               Explore Our Journey
             </ButtonLink>

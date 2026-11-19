@@ -4,8 +4,6 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { siFacebook, siInstagram, siX } from "simple-icons";
 import { ScrollLink as Link } from "@/components/ui/ScrollLink";
 import { companyContact } from "@/data/company-contact";
-import { footerNav } from "@/data/navigation";
-import { services } from "@/data/services";
 import { companySocials } from "@/data/socials";
 import { FooterMetaBalls } from "./FooterMetaBalls";
 
@@ -19,6 +17,27 @@ const socialLinks = [
   { label: "LinkedIn", href: companySocials.linkedin, path: linkedInPath },
   { label: "Facebook", href: companySocials.facebook, path: siFacebook.path },
   { label: "X", href: companySocials.x, path: siX.path },
+];
+
+const exploreLinks = [
+  { label: "Home", href: "/#top" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Our Work", href: "/clientele" },
+  { label: "Industries", href: "/#industries-title" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+  { label: "Careers", href: "/careers" },
+];
+
+const serviceLinks = [
+  { label: "Custom Software Development", href: "/services/custom-software-development" },
+  { label: "Website Development", href: "/services/website-development" },
+  { label: "Web Application Development", href: "/services/web-application-development" },
+  { label: "Mobile App Development", href: "/services/mobile-app-development" },
+  { label: "ERP Solutions", href: "/services/erp-business-automation" },
+  { label: "AI & Automation", href: "/services/ai-intelligent-solutions" },
+  { label: "UI/UX & Product Design", href: "/services/ui-ux-product-design" },
 ];
 
 function SocialIcon({ path }: { path: string }) {
@@ -38,8 +57,6 @@ function SocialLink({ href, label, children }: { href: string; label: string; ch
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const quickLinks = footerNav.find((group) => group.title === "Quick Links")?.links ?? [];
-  const legalLinks = footerNav.find((group) => group.title === "Legal & Support")?.links ?? [];
 
   return (
     <footer className="site-footer relative overflow-hidden border-t border-line bg-bg-soft">
@@ -52,34 +69,111 @@ export function Footer() {
             <Link href="/#top" aria-label="IKASLE Technologies — home" className="inline-flex rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
               <Image src="/brand/ikasle-logo-flat.webp" alt="IKASLE Technologies" width={720} height={238} sizes="150px" className="h-auto w-37.5 select-none" draggable={false} />
             </Link>
-            <p className="mt-4 max-w-67.5 text-sm leading-6 text-ink-soft">Engineering intelligent digital solutions through code, creativity, and technology.</p>
+            <p className="mt-2.5 font-mono text-[11px] font-semibold tracking-wider text-accent-strong uppercase">
+              GLOBAL SOFTWARE ENGINEERING PARTNER
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+              We engineer custom software, SaaS platforms, enterprise applications and intelligent digital solutions that help businesses build, modernize and scale.
+            </p>
           </div>
 
-          <nav aria-label="Quick links">
-            <Heading>Quick Links</Heading>
-            <ul className="mt-3 space-y-0.5">{quickLinks.map((item) => <li key={item.href}><Link href={item.href} className={linkClass}>{item.label}</Link></li>)}</ul>
+          <nav aria-label="Explore links">
+            <Heading>Explore</Heading>
+            <ul className="mt-3 space-y-0.5">
+              {exploreLinks.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className={linkClass}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
 
           <nav aria-label="Our services">
             <Heading>Our Services</Heading>
-            <ul className="mt-3 space-y-0.5">{services.map((service) => <li key={service.slug}><Link href={`/services/${service.slug}`} className={linkClass}>{service.title}</Link></li>)}</ul>
+            <ul className="mt-3 space-y-0.5">
+              {serviceLinks.map((service) => (
+                <li key={service.label}>
+                  <Link href={service.href} className={linkClass}>
+                    {service.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
 
           <div className="col-span-2 sm:col-span-1">
-            <Heading>Contact &amp; Connect</Heading>
+            <Heading>Contact</Heading>
             <address className="mt-3 space-y-2 text-sm leading-6 text-ink not-italic">
-              {companyContact.phones.map((phone) => <a key={phone.tel} href={`tel:${phone.tel}`} className="flex items-center gap-2.5 transition-colors hover:text-accent-strong"><Phone className="size-4 shrink-0" aria-hidden="true" /><span>{phone.display}</span></a>)}
-              <a href={`mailto:${companyContact.email}`} className="flex min-w-0 items-center gap-2.5 transition-colors hover:text-accent-strong"><Mail className="size-4 shrink-0" aria-hidden="true" /><span className="break-all">{companyContact.email}</span></a>
-              <div className="flex items-start gap-2.5"><MapPin className="mt-1 size-4 shrink-0" aria-hidden="true" /><span>{companyContact.address.join(", ")}</span></div>
+              <a href="tel:+917845132962" className="flex items-center gap-2.5 transition-colors hover:text-accent-strong">
+                <Phone className="size-4 shrink-0 text-accent" aria-hidden="true" />
+                <span>Phone: +91 78451 32962</span>
+              </a>
+              <a href="mailto:business@ikasle.in" className="flex min-w-0 items-center gap-2.5 transition-colors hover:text-accent-strong">
+                <Mail className="size-4 shrink-0 text-accent" aria-hidden="true" />
+                <span className="break-all">Email: business@ikasle.in</span>
+              </a>
+              <div className="flex items-start gap-2.5">
+                <MapPin className="mt-1 size-4 shrink-0 text-accent" aria-hidden="true" />
+                <span>1639/A, 2nd Floor, Hopes, Peelamedu, Coimbatore, Tamil Nadu, India – 641004</span>
+              </div>
             </address>
-            <div className="mt-3 flex flex-wrap gap-2.5">{socialLinks.map(({ label, href, path }) => <SocialLink key={label} href={href} label={label}><SocialIcon path={path} /></SocialLink>)}</div>
+            <div className="mt-3 flex flex-wrap gap-2.5">
+              {socialLinks.map(({ label, href, path }) => (
+                <SocialLink key={label} href={href} label={label}>
+                  <SocialIcon path={path} />
+                </SocialLink>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* International Markets */}
+        <div className="mt-8 rounded-2xl border border-line bg-white/70 p-4 sm:p-5">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent-strong">
+                International Markets:
+              </span>
+              <span className="text-sm font-medium text-ink">
+                India · United Kingdom · United Arab Emirates
+              </span>
+            </div>
+            <p className="text-xs text-ink-soft">
+              Open to project enquiries from the USA, Saudi Arabia, Canada, Australia and New Zealand.
+            </p>
           </div>
         </div>
 
         <div className="mt-5 flex flex-col gap-2 border-t border-accent/30 pt-3 pr-16 sm:mt-6 sm:pt-4 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:pl-14 min-[1360px]:px-0">
-          <p className="text-[13px] text-ink-soft sm:text-sm">© {year} IKASLE Technologies. All rights reserved.</p>
+          <p className="text-[13px] text-ink-soft sm:text-sm">
+            © {year} IKASLÉ Technologies. All rights reserved.
+          </p>
           <nav aria-label="Legal and support">
-            <ul className="flex flex-wrap gap-y-1">{legalLinks.map((item, index) => <li key={item.href} className="flex items-center">{index > 0 && <span className="mx-2 h-4 w-px bg-accent/60 sm:mx-3" aria-hidden="true" />}<Link href={item.href} className={linkClass}>{item.label}</Link></li>)}</ul>
+            <ul className="flex flex-wrap items-center gap-y-1">
+              <li>
+                <Link href="/privacy-policy" className={linkClass}>
+                  Privacy Policy
+                </Link>
+              </li>
+              <li className="mx-2 text-ink-soft/50 sm:mx-3" aria-hidden="true">
+                |
+              </li>
+              <li>
+                <Link href="/terms-and-conditions" className={linkClass}>
+                  Terms &amp; Conditions
+                </Link>
+              </li>
+              <li className="mx-2 text-ink-soft/50 sm:mx-3" aria-hidden="true">
+                |
+              </li>
+              <li>
+                <Link href="/faq" className={linkClass}>
+                  FAQs
+                </Link>
+              </li>
+            </ul>
           </nav>
         </div>
       </div>

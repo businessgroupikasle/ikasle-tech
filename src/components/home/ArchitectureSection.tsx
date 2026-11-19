@@ -13,6 +13,14 @@ import { Reveal } from "@/components/animations/Reveal";
 
 const AUTO_ADVANCE_MS = 4000;
 
+const HOME_LAYER_DESCRIPTIONS: Record<string, string> = {
+  frontend: "The user-facing layer where people interact with your product. We build responsive, accessible interfaces that deliver smooth experiences across devices.",
+  api: "The communication gateway between your frontend and backend. It authenticates requests, validates input, applies rate limits and routes requests to the right services.",
+  services: "The application logic that powers your product. It handles business rules, processes workflows, manages integrations and delivers reliable functionality.",
+  database: "The data foundation of your application. We structure, store, secure and retrieve information efficiently to maintain data integrity and support growth.",
+  cloud: "The environment that keeps your application running. It manages hosting, deployment, networking, scalability, monitoring and infrastructure reliability.",
+};
+
 export function ArchitectureSection() {
   const [selected, setSelected] = useState(0);
   const reduced = usePrefersReducedMotion();
@@ -36,12 +44,14 @@ export function ArchitectureSection() {
   return (
     <section ref={sectionRef} aria-labelledby="arch-title" className="relative overflow-hidden py-20 sm:py-24">
       <div className="ambient opacity-60" aria-hidden="true" />
-      <div className="container-x relative grid items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
+      <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
         <Reveal className="flex min-w-0 flex-col gap-8">
           <SectionHeading
             id="arch-title"
+            eyebrow="BUILT WITH STRUCTURE. ENGINEERED FOR SCALE."
             title="Technology That Scales With Your Vision."
-            description="Every product we ship is built on clear, layered architecture. Select a layer to see what it does."
+            description="Every product we build follows a clear, layered architecture designed for performance, security, maintainability and future growth. Select a layer to explore how each part works together."
+            descriptionClassName="text-justify"
           />
 
           {/* Accessible layer selector — the source of truth for the diagram */}
@@ -92,8 +102,9 @@ export function ArchitectureSection() {
           <div id="arch-panel" role="tabpanel" aria-labelledby={`arch-tab-${layer.id}`} className="min-h-[124px]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div key={layer.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22 }}>
-                <p className="text-[16px] leading-relaxed text-ink-soft">
-                  <strong className="font-semibold text-ink">{layer.title}.</strong> {layer.description}
+                <p className="text-base leading-relaxed text-ink-soft text-justify sm:text-[17px]">
+                  <strong className="font-semibold text-ink">{layer.title}.</strong>{" "}
+                  {HOME_LAYER_DESCRIPTIONS[layer.id] ?? layer.description}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${layer.title} components`}>
                   {layer.modules.map((m) => (
@@ -126,6 +137,13 @@ export function ArchitectureSection() {
             {finePointer ? "Drag to rotate · click a layer to inspect" : "Tap a layer to inspect"}
           </p>
         </motion.div>
+      </div>
+
+      <div className="container-x relative mt-12 text-center">
+        <p className="font-mono text-xs tracking-wide text-ink-soft sm:text-[13px]">
+          <span className="font-semibold text-accent" aria-hidden="true">{"// "}</span>
+          Thoughtful architecture today. Room to grow tomorrow.
+        </p>
       </div>
     </section>
   );

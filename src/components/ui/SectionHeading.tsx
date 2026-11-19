@@ -9,6 +9,7 @@ type Props = {
   align?: "left" | "center";
   as?: "h1" | "h2";
   className?: string;
+  descriptionClassName?: string;
   /** Optional mono-styled "file path" label above the title. */
   path?: string;
   id?: string;
@@ -27,7 +28,7 @@ export function Eyebrow({ children, path }: { children: ReactNode; path?: string
   );
 }
 
-export function SectionHeading({ eyebrow, title, description, align = "left", as = "h2", className, path, id, heading }: Props) {
+export function SectionHeading({ eyebrow, title, description, align = "left", as = "h2", className, descriptionClassName, path, id, heading }: Props) {
   return (
     <div className={cn("flex flex-col gap-5", align === "center" ? "items-center text-center" : "items-start", className)}>
       {eyebrow && <Eyebrow path={path}>{eyebrow}</Eyebrow>}
@@ -47,7 +48,7 @@ export function SectionHeading({ eyebrow, title, description, align = "left", as
         />
       )}
       {description && (
-        <p className={cn("max-w-2xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg", align === "center" && "mx-auto")}>
+        <p className={cn("max-w-2xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg", align === "center" && "mx-auto", descriptionClassName)}>
           {description}
         </p>
       )}

@@ -495,7 +495,7 @@ export function TechGlobe() {
       {/* Status */}
       <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 text-center font-mono text-[11.5px] tracking-wide text-ink-soft">
         <span className="whitespace-nowrap">
-          <span className="text-accent-strong">{techUniverse.length}</span> technologies &amp; practices
+          <span className="text-accent-strong">{techUniverse.length}</span> Technologies &amp; Engineering Practices
         </span>
         <span className="text-line max-sm:hidden" aria-hidden="true">
           |
