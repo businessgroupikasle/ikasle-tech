@@ -130,8 +130,6 @@ export type ServicePage = {
     /** Shown as a connected graph of round icon nodes (BenefitsGraph). */
     items: { title: string; icon: DeliverIcon; text: string }[];
   };
-  /** Heading of the "other services" links. Default: "Explore Other Services". */
-  othersTitle?: string;
 };
 
 /** Optional copy under a section heading: small label, sub-heading and intro paragraph. */
@@ -328,7 +326,6 @@ At IKASLÉ Technologies, we design and develop modern, responsive and SEO-friend
         { title: "Room to Grow", icon: "sprout", text: "Create a website structure that can evolve as your business requirements change." },
       ],
     },
-    othersTitle: "Explore Our Other Technology Services",
     ctaSection: {
       title: "Have a Website Idea? Let's Build It.",
       highlight: ["Build", "It."],
@@ -466,7 +463,6 @@ Whether you are launching a new digital product or transforming an existing busi
         { title: "Long-Term Maintainability", icon: "shield", text: "Use structured development practices and reusable components to make future improvements easier." },
       ],
     },
-    othersTitle: "Explore Our Other Services",
     ctaSection: {
       title: "Have a Web Application Idea? Let's Build It.",
       highlight: ["Build", "It."],
@@ -610,7 +606,6 @@ At IKASLÉ Technologies, we design and develop mobile applications for Android a
         { title: "Build for Future Growth", icon: "sprout", text: "Create a maintainable application that can evolve as your users, features and business requirements grow." },
       ],
     },
-    othersTitle: "Explore Our Other Services",
     ctaSection: {
       title: "Have a Mobile App Idea? Let's Build It.",
       highlight: ["Build", "It."],
@@ -743,7 +738,6 @@ From inventory management and order processing to production planning and workfl
         { title: "A System That Can Evolve", icon: "refresh", text: "Extend modules and workflows as your business requirements change." },
       ],
     },
-    othersTitle: "Explore Our Other Services",
     ctaSection: {
       title: "Connect Your Business Operations.",
       highlight: ["Operations."],
@@ -895,7 +889,6 @@ From document processing and intelligent data extraction to AI-powered assistant
         },
       ],
     },
-    othersTitle: "Explore Our Other Services",
     ctaSection: {
       title: "Make Your Business Work Smarter.",
       highlight: ["Smarter."],
@@ -1045,7 +1038,6 @@ From early-stage product ideas and wireframes to interactive prototypes and comp
         { title: "Improved Product Adoption", icon: "users", text: "Make it easier for users to understand product functionality and complete important tasks." },
       ],
     },
-    othersTitle: "Explore Our Other Services",
     ctaSection: {
       title: "Have a Product Idea? Let's Design What's Next.",
       highlight: ["What's", "Next."],
