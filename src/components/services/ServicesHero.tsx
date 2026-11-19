@@ -39,12 +39,13 @@ export function ServicesHero() {
             as="h1"
             id="services-title"
             immediate
-            text="Technology Solutions Built Around Your Business."
+            text="Seven Ways We Help Your Business Grow."
             highlight={["Business."]}
             className="text-[2.4rem] leading-[1.04] font-semibold tracking-[-0.04em] text-balance text-ink sm:text-6xl lg:text-[3.6rem] xl:text-[4rem]"
           />
           <p className="enter-up max-w-xl text-lg leading-relaxed text-pretty text-ink-soft [animation-delay:150ms]">
-            From custom software and web applications to ERP systems and intelligent automation, we build practical digital solutions that help businesses work smarter and grow.
+            From your first digital product to complex business systems, our services cover the technology required to build, improve and scale your digital operations.
+            Explore our services to understand what each solution can achieve, what we deliver and how the right technology can support your business.
           </p>
           <div className="enter-up flex w-full flex-col gap-3 [animation-delay:250ms] xs:w-auto xs:flex-row">
             <MagneticButton className="flex">

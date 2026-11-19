@@ -70,9 +70,11 @@ export function ContactCta({
                 highlight={highlight}
                 className="text-2xl leading-[1.15] font-semibold tracking-[-0.03em] text-balance text-white sm:text-3xl lg:text-[2rem]"
               />
-              <p className="hidden max-w-xl text-[15px] leading-relaxed text-[#B7CCDD] sm:block">
-                {text}
-              </p>
+              {text && (
+                <p className="hidden max-w-xl text-[15px] leading-relaxed text-[#B7CCDD] sm:block">
+                  {text}
+                </p>
+              )}
             </div>
             <div className="flex w-full shrink-0 flex-col justify-center gap-3 xs:w-auto xs:flex-row">
               <ButtonLink href={primary.href} size="md" arrow>

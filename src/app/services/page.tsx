@@ -1,6 +1,9 @@
+import { ContactCta } from "@/components/home/ContactCta";
 import { ServicesHero } from "@/components/services/ServicesHero";
 import { ServicesOverview } from "@/components/services/ServicesOverview";
+import { faqAnswerText, ServiceFaq } from "@/components/services/ServiceFaq";
 import { servicePages } from "@/data/service-pages";
+import { servicesFaq } from "@/data/services-faq";
 import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
@@ -27,13 +30,29 @@ const servicesJsonLd = {
   })),
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: servicesFaq.items.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: faqAnswerText(f.answer) } })),
+};
+
 export default function ServicesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }} />
       <ServicesHero />
       {/* Seven cards only: each opens its own page at /services/[slug] (details live there, not here). */}
       <ServicesOverview />
+      <ContactCta
+        eyebrow="// have more questions?"
+        title="Every business has different technology requirements. Let's understand yours."
+        highlight={["understand", "yours."]}
+        text=""
+        primary={{ label: "Discuss Your Project", href: "/contact" }}
+      />
+      {/* After the CTA, as on the service pages: the CTA's padding spaces it, so the FAQ only pads the bottom. */}
+      <ServiceFaq idPrefix="services" faq={servicesFaq} />
     </>
   );
 }

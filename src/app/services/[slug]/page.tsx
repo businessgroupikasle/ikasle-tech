@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ServiceDetail } from "@/components/services/ServiceDetail";
 import { ContactCta } from "@/components/home/ContactCta";
+import { ServiceFaq } from "@/components/services/ServiceFaq";
 import { getServiceDetail, servicePages } from "@/data/service-pages";
 import { SERVICE_SLUGS } from "@/data/service-slugs";
 import { pageMetadata } from "@/lib/metadata";
@@ -35,6 +36,7 @@ export default async function ServicePage({ params }: Params) {
   if (!detail) notFound();
   const { page, service } = detail;
 
+  const cta = page.ctaSection;
   const url = absoluteUrl(`/services/${page.slug}`);
   const jsonLd = [
     {
@@ -54,6 +56,15 @@ export default async function ServicePage({ params }: Params) {
       url,
       provider: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     },
+    ...(page.faq
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: page.faq.items.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -61,13 +72,14 @@ export default async function ServicePage({ params }: Params) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <ServiceDetail slug={page.slug} />
       <ContactCta
-        eyebrow="// let's talk"
-        title="Have a Challenge? Let's Build the Solution."
-        highlight={["Solution."]}
-        text="Tell us what you want to achieve. We'll help you explore the right technology approach for your business."
-        primary={page.cta ?? { label: "Start a Project", href: `/contact?type=${encodeURIComponent(service.projectType)}` }}
-        secondary={{ label: "All Services", href: "/services" }}
+        eyebrow={cta?.eyebrow ?? "// let's talk"}
+        title={cta?.title ?? "Have a Challenge? Let's Build the Solution."}
+        highlight={cta?.highlight ?? ["Solution."]}
+        text={cta?.text ?? "Tell us what you want to achieve. We'll help you explore the right technology approach for your business."}
+        primary={page.cta ?? { label: cta?.primaryLabel ?? "Start a Project", href: `/contact?type=${encodeURIComponent(service.projectType)}` }}
+        secondary={cta?.secondary ?? { label: "All Services", href: "/services" }}
       />
+      {page.faq && <ServiceFaq idPrefix={page.slug} faq={page.faq} />}
     </>
   );
 }
