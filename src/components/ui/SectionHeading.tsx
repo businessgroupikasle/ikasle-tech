@@ -46,12 +46,12 @@ export function SectionHeading({ eyebrow, title, description, align = "left", as
             as === "h1"
               ? "text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.5rem]"
               : "text-[2rem] leading-[1.08] sm:text-5xl lg:text-[3.25rem]",
-            align === "center" && "mx-auto max-w-4xl",
+            align === "center" && "mx-auto max-w-4xl text-center",
           )}
         />
       )}
       {description && (
-        <p className={cn("max-w-2xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg", align === "center" && "mx-auto", descriptionClassName)}>
+        <p className={cn("max-w-2xl text-pretty text-base leading-relaxed text-ink-soft sm:text-lg", align === "center" && "mx-auto text-center", descriptionClassName)}>
           {description}
         </p>
       )}

@@ -8,10 +8,11 @@ import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "Services",
+  title: "Software Development Services in India | IKASLÉ Technologies",
   description:
-    "Custom software, business websites, web applications, mobile apps, ERP automation, AI solutions and UI/UX product design from IKASLE Technologies.",
+    "Explore IKASLÉ Technologies' software development services, including website development, mobile apps, custom ERP software, web applications and AI automation for businesses.",
   path: "/services",
+  absoluteTitle: true,
 });
 
 const servicesJsonLd = {

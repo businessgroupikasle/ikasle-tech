@@ -5,10 +5,11 @@ import { pageMetadata } from "@/lib/metadata";
 import { siteConfig, absoluteUrl } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "Clientele & Portfolio | Trusted by Leading Businesses",
+  title: "Client Portfolio & Our Clients | IKASLÉ Technologies",
   description:
-    "Discover the businesses and enterprise brands across India, the UK, UAE and worldwide that partner with IKASLE Technologies for custom software and digital products.",
+    "Explore IKASLÉ Technologies' client portfolio. Discover businesses across industries that partner with us for software development, digital solutions and technology services.",
   path: "/clientele",
+  absoluteTitle: true,
 });
 
 const clienteleJsonLd = [

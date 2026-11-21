@@ -10,6 +10,44 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
+const SERVICE_SEO: Record<string, { title: string; description: string }> = {
+  [SERVICE_SLUGS.customSoftware]: {
+    title: "Custom Software Development Company | IKASLÉ Technologies",
+    description:
+      "Discover custom software development by IKASLÉ Technologies. We build business applications, enterprise software and tailored digital solutions for businesses worldwide.",
+  },
+  [SERVICE_SLUGS.websiteDevelopment]: {
+    title: "Website Development Company | IKASLÉ Technologies",
+    description:
+      "Professional website development for businesses worldwide. Explore modern, responsive and SEO-friendly website solutions by IKASLÉ Technologies.",
+  },
+  [SERVICE_SLUGS.webApplications]: {
+    title: "Web Application Development Company | IKASLÉ Technologies",
+    description:
+      "Build SaaS platforms, business applications, customer portals and dashboards with web application development services from IKASLÉ Technologies.",
+  },
+  [SERVICE_SLUGS.mobileApps]: {
+    title: "Mobile App Development Company | IKASLÉ Technologies",
+    description:
+      "Develop Android, iOS and cross-platform mobile applications with IKASLÉ Technologies. Transform your business ideas into digital products.",
+  },
+  [SERVICE_SLUGS.erp]: {
+    title: "ERP Software Development Company | IKASLÉ Technologies",
+    description:
+      "Explore ERP solutions for inventory, sales, purchasing, manufacturing and business operations with IKASLÉ Technologies.",
+  },
+  [SERVICE_SLUGS.ai]: {
+    title: "AI & Business Automation Services | IKASLÉ Technologies",
+    description:
+      "Discover AI integrations, intelligent workflows and business automation solutions designed to simplify operations and improve productivity.",
+  },
+  [SERVICE_SLUGS.productDesign]: {
+    title: "UI/UX & Product Design Services | IKASLÉ Technologies",
+    description:
+      "Explore user research, UI/UX design, interactive prototyping and product design services for websites, applications and digital products.",
+  },
+};
+
 // Only the seven services exist; any other slug is a 404.
 export const dynamicParams = false;
 
@@ -22,10 +60,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const detail = getServiceDetail(slug);
   if (!detail) return {};
   const { page, service } = detail;
+  const seo = SERVICE_SEO[slug];
   return pageMetadata({
-    title: slug === SERVICE_SLUGS.websiteDevelopment ? "Website Development Company in Coimbatore" : page.name,
-    description: page.intro,
+    title: seo?.title ?? page.name,
+    description: seo?.description ?? page.intro,
     path: `/services/${page.slug}`,
+    absoluteTitle: true,
     image: { src: service.image.src, alt: service.image.alt, width: service.image.width, height: service.image.height },
   });
 }
@@ -35,6 +75,7 @@ export default async function ServicePage({ params }: Params) {
   const detail = getServiceDetail(slug);
   if (!detail) notFound();
   const { page, service } = detail;
+  const seo = SERVICE_SEO[page.slug];
 
   const cta = page.ctaSection;
   const url = absoluteUrl(`/services/${page.slug}`);
@@ -51,8 +92,8 @@ export default async function ServicePage({ params }: Params) {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: page.name,
-      description: page.intro,
+      name: seo?.title ?? page.name,
+      description: seo?.description ?? page.intro,
       url,
       provider: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     },

@@ -11,10 +11,11 @@ import { pageMetadata } from "@/lib/metadata";
 import { siteConfig, absoluteUrl } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "About Us | Software Engineering & Digital Products",
+  title: "About IKASLÉ Technologies | Software Engineering Company",
   description:
-    "Learn about IKASLE Technologies, our engineering journey from 2020 to autonomous systems, and how we engineer dependable custom software and digital products for businesses worldwide.",
+    "Get to know IKASLÉ Technologies, a software engineering company in Coimbatore, India, building business websites, mobile applications and custom ERP solutions for growing businesses worldwide.",
   path: "/about",
+  absoluteTitle: true,
 });
 
 const aboutJsonLd = [
@@ -23,9 +24,9 @@ const aboutJsonLd = [
     "@type": "AboutPage",
     "@id": `${siteConfig.url}/about#webpage`,
     url: `${siteConfig.url}/about`,
-    name: "About IKASLE Technologies",
+    name: "About IKASLÉ Technologies | Software Engineering Company",
     description:
-      "IKASLE Technologies is a software engineering company based in Coimbatore, India, engineering custom software, enterprise platforms and intelligent digital solutions for businesses worldwide.",
+      "Get to know IKASLÉ Technologies, a software engineering company in Coimbatore, India, building business websites, mobile applications and custom ERP solutions for growing businesses worldwide.",
     isPartOf: { "@id": `${siteConfig.url}/#website` },
     about: { "@id": `${siteConfig.url}/#organization` },
     breadcrumb: {

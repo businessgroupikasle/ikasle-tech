@@ -6,10 +6,11 @@ import { siteConfig, absoluteUrl } from "@/lib/site";
 import { ContactInfoCard } from "@/components/contact/ContactInfoCard";
 
 export const metadata = pageMetadata({
-  title: "Contact Us | Start Your Software Project",
+  title: "Contact IKASLÉ Technologies | Start Your Software Project",
   description:
-    "Contact IKASLE Technologies in Coimbatore, India. Tell us about your custom software, web app, mobile app, ERP or AI automation requirements. Fast response.",
+    "Contact IKASLÉ Technologies to discuss custom software, website development, mobile apps, ERP solutions and AI automation. Let's build your next digital solution.",
   path: "/contact",
+  absoluteTitle: true,
 });
 
 const contactJsonLd = [

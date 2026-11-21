@@ -11,10 +11,12 @@ type PageMetaInput = {
   image?: { src: string; alt: string; width: number; height: number };
   /** Keep the page out of search results (e.g. legal drafts awaiting approval). */
   noindex?: boolean;
+  /** Use the title exactly as written: no "| IKASLE Technologies" template suffix, and the same text in Open Graph and Twitter. */
+  absoluteTitle?: boolean;
 };
 
 /** Consistent per-page metadata: title, description, canonical and Open Graph. */
-export function pageMetadata({ title, description, path, article, image, noindex }: PageMetaInput): Metadata {
+export function pageMetadata({ title, description, path, article, image, noindex, absoluteTitle }: PageMetaInput): Metadata {
   const canonicalUrl = path.startsWith("http")
     ? path
     : `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
@@ -38,15 +40,16 @@ export function pageMetadata({ title, description, path, article, image, noindex
     : [defaultImage];
 
   const authors = article?.authors?.filter((a): a is string => Boolean(a));
+  const socialTitle = absoluteTitle ? title : `${title} | ${siteConfig.name}`;
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: { canonical: canonicalUrl },
     ...(noindex
       ? { robots: { index: false, follow: false } }
       : { robots: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } }),
     openGraph: {
-      title: `${title} | ${siteConfig.name}`,
+      title: socialTitle,
       description,
       url: canonicalUrl,
       siteName: siteConfig.name,
@@ -62,7 +65,7 @@ export function pageMetadata({ title, description, path, article, image, noindex
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${siteConfig.name}`,
+      title: socialTitle,
       description,
       images: ogImages.map((i) => i.url),
     },

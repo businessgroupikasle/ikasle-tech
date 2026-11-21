@@ -14,9 +14,9 @@ import { HomeFaqSection, HOME_FAQS } from "@/components/home/HomeFaqSection";
 import { ContactCta } from "@/components/home/ContactCta";
 import { siteConfig } from "@/lib/site";
 
-const title = `Software Development Company in Coimbatore | ${siteConfig.name}`;
+const title = "Software Development Company in India | IKASLÉ Technologies";
 const description =
-  "IKASLE Technologies is a software development company in Coimbatore, building custom software, web and mobile apps, ERP platforms and intelligent automation.";
+  "IKASLÉ Technologies is a global software engineering partner in India, delivering custom software, SaaS platforms, enterprise applications, web and mobile development, and AI-powered solutions.";
 
 export const metadata: Metadata = {
   title: { absolute: title },

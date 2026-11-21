@@ -100,4 +100,12 @@ export const clients: Client[] = [
     url: "https://kiddosfoods.com",
     aspect: "horizontal",
   },
+  {
+    name: "Aadhan Caterers",
+    slug: "aadhan-caterers",
+    logo: "/images/clients/aadhancaterers.jpeg",
+    category: "Catering & Hospitality",
+    tagline: "Quality Catering Services",
+    aspect: "square",
+  },
 ];
