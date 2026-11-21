@@ -24,28 +24,16 @@ function Accent({ kind }: { kind: ServiceAccent }) {
   switch (kind) {
     case "workflow":
       return (
-        <div className={cn(card, "border-editor-line bg-editor px-4 py-3 font-mono text-[11.5px] leading-relaxed")}>
-          <p className="tok-muted">{"// approvals, defined once"}</p>
-          <p>
-            <span className="tok-fn">workflow</span>
-            <span className="tok-punct">(</span>
-            <span className="tok-string">&quot;order.approved&quot;</span>
-            <span className="tok-punct">)</span>
-          </p>
-          <p className="pl-3">
-            <span className="tok-punct">.</span>
-            <span className="tok-fn">notify</span>
-            <span className="tok-punct">(</span>
-            <span className="tok-string">&quot;warehouse&quot;</span>
-            <span className="tok-punct">)</span>
-          </p>
+        <div className={cn(card, "flex items-center gap-2.5 border-line bg-white px-4 py-3 text-[12.5px] font-medium text-ink")}>
+          <span className="pulse-dot size-2 rounded-full bg-accent" />
+          <span>Automated Workflows · Enterprise Logic</span>
         </div>
       );
     case "server-render":
       return (
-        <div className={cn(card, "flex items-center gap-2.5 border-line bg-white px-4 py-3 font-mono text-[11.5px] text-ink")}>
+        <div className={cn(card, "flex items-center gap-2.5 border-line bg-white px-4 py-3 text-[12.5px] font-medium text-ink")}>
           <span className="pulse-dot size-2 rounded-full bg-success" />
-          app/dashboard/page.tsx <span className="text-ink-soft">· rendered on the server</span>
+          <span>High Performance · 99.9% Availability</span>
         </div>
       );
     case "platforms":
@@ -74,20 +62,9 @@ function Accent({ kind }: { kind: ServiceAccent }) {
       );
     case "ai-extract":
       return (
-        <div className={cn(card, "border-editor-line bg-editor px-4 py-3 font-mono text-[11.5px] leading-relaxed")}>
-          <p>
-            <span className="tok-plain">invoice.pdf</span> <span className="tok-muted">→</span> <span className="tok-fn">extract</span>
-            <span className="tok-punct">()</span>
-          </p>
-          <p>
-            <span className="tok-punct">{"{ "}</span>
-            <span className="tok-prop">total</span>
-            <span className="tok-punct">, </span>
-            <span className="tok-prop">dueDate</span>
-            <span className="tok-punct">, </span>
-            <span className="tok-prop">route</span>
-            <span className="tok-punct">{" }"}</span>
-          </p>
+        <div className={cn(card, "flex items-center gap-2.5 border-line bg-white px-4 py-3 text-[12.5px] font-medium text-ink")}>
+          <span className="pulse-dot size-2 rounded-full bg-accent" />
+          <span>Intelligent Extraction · Automated Workflows</span>
         </div>
       );
     case "tokens":

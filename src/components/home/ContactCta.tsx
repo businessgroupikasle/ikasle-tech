@@ -2,16 +2,6 @@ import { ButtonLink } from "@/components/ui/Button";
 import { AnimatedHeading } from "@/components/animations/AnimatedHeading";
 import { Reveal } from "@/components/animations/Reveal";
 
-const CODE_LINES = [
-  "const idea = await discover(goals);",
-  "const design = prototype(idea, users);",
-  "const product = build(design, { typed: true });",
-  "await test(product);",
-  "await deploy(product, 'production');",
-  "scale(product).forEver();",
-  "// your idea goes here",
-];
-
 type CtaLink = { label: string; href: string };
 
 /**
@@ -37,16 +27,10 @@ export function ContactCta({
   secondary?: CtaLink;
   tagline?: string;
 }) {
-  const rain = [...CODE_LINES, ...CODE_LINES, ...CODE_LINES, ...CODE_LINES].join("\n");
   return (
     <section aria-labelledby="cta-title" className="py-20 sm:py-24">
       <div className="container-x">
         <Reveal className="on-dark relative overflow-hidden rounded-3xl bg-editor px-6 py-8 text-center sm:px-10 sm:py-10 md:text-left lg:px-12">
-          {/* decorative code scroll */}
-          <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-70 [mask-image:radial-gradient(ellipse_at_center,transparent_25%,#000_80%)]" aria-hidden="true">
-            <pre className="code-rain absolute top-0 left-6 text-[#4db3ff]/20!">{rain}</pre>
-            <pre className="code-rain absolute top-0 right-6 hidden text-right text-[#4db3ff]/20! [animation-duration:55s] md:block">{rain}</pre>
-          </div>
           {/* network connection lines */}
           <svg className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
             <defs>

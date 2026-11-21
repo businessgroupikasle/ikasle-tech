@@ -13,7 +13,7 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
   {
     title: "Quick Links",
     links: [
-      { label: "Home", href: "/#top" },
+      { label: "Home", href: "/" },
       { label: "About", href: "/about" },
           { label: "Services", href: "/services" },
       { label: "Clientele", href: "/clientele" },

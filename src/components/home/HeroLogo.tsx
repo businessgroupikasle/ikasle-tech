@@ -291,9 +291,9 @@ export function HeroLogo() {
           <div className="hs-float-card" style={{ "--t": "7.5s", "--d": "-3s", "--r": "3deg" } as CSSProperties}>
             <div className="hs-card">
               <span className="hs-card-dots"><i /><i /><i /></span>
-              <span className="hs-card-code"><b>const</b> idea = vision();</span>
-              <span className="hs-card-code"><b>await</b> build(idea);</span>
-              <span className="hs-card-code">deploy()<span className="hs-caret" /></span>
+              <span className="hs-card-line" style={{ width: "85%", "--d": "-1.5s" } as CSSProperties} />
+              <span className="hs-card-line" style={{ width: "65%", "--d": "-3s" } as CSSProperties} />
+              <span className="hs-card-line" style={{ width: "45%", "--d": "-4.2s" } as CSSProperties} />
               <span className="hs-card-shine" style={{ "--d": "-4s" } as CSSProperties} />
             </div>
           </div>

@@ -20,11 +20,11 @@ const socialLinks = [
 ];
 
 const exploreLinks = [
-  { label: "Home", href: "/#top" },
+  { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Our Work", href: "/clientele" },
-  { label: "Industries", href: "/#industries-title" },
+  { label: "Industries", href: "/industries" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Careers", href: "/careers" },
@@ -66,7 +66,11 @@ export function Footer() {
       <div className="container-x relative pt-8 pb-18 sm:pt-10 sm:pb-20 lg:pb-5">
         <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-[1.15fr_0.7fr_1.25fr_1.35fr] lg:gap-8 xl:gap-12">
           <div className="col-span-2 sm:col-span-1">
-            <Link href="/#top" aria-label="IKASLE Technologies — home" className="inline-flex rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <Link
+              href="/"
+              aria-label="IKASLE Technologies — home"
+              className="inline-flex rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            >
               <Image src="/brand/ikasle-logo-flat.webp" alt="IKASLE Technologies" width={720} height={238} sizes="150px" className="h-auto w-37.5 select-none" draggable={false} />
             </Link>
             <p className="mt-2.5 font-mono text-[11px] font-semibold tracking-wider text-accent-strong uppercase">
@@ -171,6 +175,14 @@ export function Footer() {
               <li>
                 <Link href="/faq" className={linkClass}>
                   FAQs
+                </Link>
+              </li>
+              <li className="mx-2 text-ink-soft/50 sm:mx-3" aria-hidden="true">
+                |
+              </li>
+              <li>
+                <Link href="/sitemap" className={linkClass}>
+                  Sitemap
                 </Link>
               </li>
             </ul>

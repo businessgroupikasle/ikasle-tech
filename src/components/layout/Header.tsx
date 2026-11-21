@@ -62,6 +62,14 @@ export function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    // If user lands with #top in URL, strip it to keep the URL clean (https://www.ikasletechnologies.com)
+    if (typeof window !== "undefined" && window.location.hash === "#top") {
+      window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  }, []);
+
   useEffect(() => () => {
     if (servicesCloseTimer.current) clearTimeout(servicesCloseTimer.current);
   }, []);
@@ -136,7 +144,15 @@ export function Header() {
                     />
                   )}
                   <Link
-                    href={item.href === "/" ? "/#top" : item.href}
+                    href={item.href}
+                    onClick={
+                      item.href === "/" && pathname === "/"
+                        ? (e) => {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
+                        : undefined
+                    }
                     aria-current={active ? "page" : undefined}
                     aria-haspopup={isServices ? "true" : undefined}
                     aria-expanded={isServices ? servicesOpen : undefined}
@@ -237,7 +253,13 @@ export function Header() {
                         </>
                       ) : (
                         <Link
-                          href={item.href === "/" ? "/#top" : item.href}
+                          href={item.href}
+                          onClick={() => {
+                            setOpen(false);
+                            if (item.href === "/" && pathname === "/") {
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }
+                          }}
                           aria-current={active ? "page" : undefined}
                           className="flex items-center justify-between py-4 text-2xl font-semibold tracking-tight"
                         >

@@ -339,7 +339,7 @@ export function OurJourney() {
 
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev < PHASE_COUNT - 1 ? prev + 1 : 0));
-    }, 2000);
+    }, 7000);
 
     return () => clearInterval(timer);
   }, [isPaused, inView]);
@@ -348,10 +348,12 @@ export function OurJourney() {
   const Icon = current.icon;
 
   const nextPhase = () => {
+    setIsPaused(true);
     setActiveIndex((prev) => (prev < PHASE_COUNT - 1 ? prev + 1 : 0));
   };
 
   const prevPhase = () => {
+    setIsPaused(true);
     setActiveIndex((prev) => (prev > 0 ? prev - 1 : PHASE_COUNT - 1));
   };
 
@@ -362,6 +364,7 @@ export function OurJourney() {
       aria-labelledby="journey-title"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
       className="relative overflow-hidden bg-[radial-gradient(ellipse_at_50%_0%,#092640_0%,#051829_50%,#03101c_100%)] py-20 text-white sm:py-24 lg:py-28"
     >
       {/* Blueprint grid, faded toward the edges */}
@@ -418,7 +421,10 @@ export function OurJourney() {
                 <button
                   key={phase.year}
                   type="button"
-                  onClick={() => setActiveIndex(idx)}
+                  onClick={() => {
+                    setActiveIndex(idx);
+                    setIsPaused(true);
+                  }}
                   aria-label={`View milestone for year ${phase.year}`}
                   aria-pressed={isActive}
                   className="group relative z-10 flex flex-col items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#38bdf8]"

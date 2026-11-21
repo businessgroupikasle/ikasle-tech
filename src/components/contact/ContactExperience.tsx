@@ -1,83 +1,63 @@
 "use client";
 
-import { Suspense, useCallback, useState, type ReactNode } from "react";
-import type { ContactFormInput } from "@/lib/contact-schema";
+import { Suspense, type ReactNode } from "react";
 import { ContactForm } from "./ContactForm";
-import { WindowFrame } from "@/components/ui/Frames";
 
-const show = (v: unknown) => JSON.stringify(typeof v === "string" ? v.trim() : "");
-
-/** Code-themed illustration: the form's request payload, updating live as the visitor types. */
-function PayloadPreview({ values }: { values: Partial<ContactFormInput> }) {
-  const rows: [string, string | null][] = [
-    ["fullName", show(values.fullName)],
-    ["email", show(values.email)],
-    ["phone", show(values.phone)],
-    ["company", show(values.company)],
-    ["projectType", show(values.projectType)],
-    ["description", show(values.description)],
-  ];
+function ConsultationInfo() {
   return (
-    <WindowFrame dark title="POST /api/contact" className="shadow-soft">
-      <div className="code-surface p-5 text-[12.5px]" aria-hidden="true">
-        <p>
-          <span className="tok-keyword">await</span> <span className="tok-fn">fetch</span>
-          <span className="tok-punct">(</span>
-          <span className="tok-string">&quot;/api/contact&quot;</span>
-          <span className="tok-punct">, {"{"}</span>
-        </p>
-        <p className="pl-4">
-          <span className="tok-prop">method</span>
-          <span className="tok-punct">: </span>
-          <span className="tok-string">&quot;POST&quot;</span>
-          <span className="tok-punct">,</span>
-        </p>
-        <p className="pl-4">
-          <span className="tok-prop">body</span>
-          <span className="tok-punct">: </span>
-          <span className="tok-type">JSON</span>
-          <span className="tok-punct">.</span>
-          <span className="tok-fn">stringify</span>
-          <span className="tok-punct">({"{"}</span>
-        </p>
-        {rows.map(([k, v]) => (
-          <p key={k} className="truncate pl-8">
-            <span className="tok-prop">{k}</span>
-            <span className="tok-punct">: </span>
-            <span className="tok-string">{v}</span>
-            <span className="tok-punct">,</span>
-          </p>
-        ))}
-        <p className="pl-4">
-          <span className="tok-punct">{"}),"}</span>
-        </p>
-        <p>
-          <span className="tok-punct">{"});"}</span>
-          <span className="caret" />
-        </p>
-      </div>
-    </WindowFrame>
+    <div className="rounded-3xl border border-line bg-white p-6 shadow-soft sm:p-7">
+      <h2 className="text-lg font-semibold tracking-tight text-ink sm:text-xl">What to Expect</h2>
+      <ul className="mt-4 space-y-4">
+        <li className="flex items-start gap-3">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-bg-blue font-mono text-xs font-semibold text-accent-strong">
+            01
+          </span>
+          <div>
+            <h3 className="text-sm font-semibold text-ink">Prompt Initial Reply</h3>
+            <p className="mt-0.5 text-xs leading-relaxed text-ink-soft">
+              Our engineering team reviews your requirements and responds within 24 hours.
+            </p>
+          </div>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-bg-blue font-mono text-xs font-semibold text-accent-strong">
+            02
+          </span>
+          <div>
+            <h3 className="text-sm font-semibold text-ink">Technical Consultation</h3>
+            <p className="mt-0.5 text-xs leading-relaxed text-ink-soft">
+              We discuss architecture, milestones, integrations, and the right tech stack for your goals.
+            </p>
+          </div>
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-bg-blue font-mono text-xs font-semibold text-accent-strong">
+            03
+          </span>
+          <div>
+            <h3 className="text-sm font-semibold text-ink">Tailored Proposal</h3>
+            <p className="mt-0.5 text-xs leading-relaxed text-ink-soft">
+              Transparent project scope, timeline, and delivery roadmap with zero hidden commitments.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
   );
 }
 
-/** Request preview + company contact details (left), enquiry form (right; first on phones). */
+/** Company contact details + expectations (left), enquiry form (right; first on phones). */
 export function ContactExperience({ fallbackEmail, aside }: { fallbackEmail: string | null; aside?: ReactNode }) {
-  const [values, setValues] = useState<Partial<ContactFormInput>>({});
-  const onValuesChange = useCallback((v: Partial<ContactFormInput>) => setValues({ ...v }), []);
-
   return (
     <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
-      <div className="order-2 flex flex-col gap-8 lg:order-1">
-        <div>
-          <PayloadPreview values={values} />
-          <p className="mt-3 font-mono text-[11px] text-ink-soft">{"// live preview of the project details this form sends"}</p>
-        </div>
+      <div className="order-2 flex flex-col gap-6 lg:order-1">
         {aside}
+        <ConsultationInfo />
       </div>
       <div id="contact-form" className="order-1 scroll-mt-[calc(var(--header-h)+24px)] rounded-[28px] border border-line bg-white p-5 xs:p-6 shadow-float sm:p-9 lg:order-2">
         <h2 className="mb-8 text-2xl font-semibold tracking-tight text-ink">Tell us about your project</h2>
         <Suspense fallback={<div className="h-[640px] rounded-2xl shimmer" />}>
-          <ContactForm fallbackEmail={fallbackEmail} onValuesChange={onValuesChange} />
+          <ContactForm fallbackEmail={fallbackEmail} />
         </Suspense>
       </div>
     </div>
