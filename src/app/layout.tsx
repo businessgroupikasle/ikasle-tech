@@ -199,13 +199,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     // its reset to the top animates, gets stuck on a lower section, and new pages open part-way down.
     <html lang="en" data-scroll-behavior="smooth" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <body>
-        {/* Google Tag Manager (GTM-NPDMNWC5). beforeInteractive injects these into <head> so the tag loads early. */}
-        <Script id="gtm-init" strategy="beforeInteractive">
+        {/* Google Tag Manager (GTM-NPDMNWC5). afterInteractive loads after hydration so it never blocks paint. */}
+        <Script id="gtm-init" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());`}
         </Script>
-        <Script id="gtm-loader" src="https://www.googletagmanager.com/gtm.js?id=GTM-NPDMNWC5" strategy="beforeInteractive" />
+        <Script id="gtm-loader" src="https://www.googletagmanager.com/gtm.js?id=GTM-NPDMNWC5" strategy="afterInteractive" />
         <GoogleAnalytics />
         <div id="top" aria-hidden="true" />
         <script

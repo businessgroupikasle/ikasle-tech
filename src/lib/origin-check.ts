@@ -28,3 +28,4 @@ export function isAllowedOrigin(req: NextRequest): boolean {
 export function isCrossOrigin(req: NextRequest): boolean {
   return !isAllowedOrigin(req);
 }
+
