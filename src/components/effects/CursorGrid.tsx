@@ -139,4 +139,3 @@ export function CursorGrid({
   );
 }
 
-export default CursorGrid;

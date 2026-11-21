@@ -13,4 +13,3 @@ export const SERVICE_SLUGS = {
   productDesign: "ui-ux-product-design",
 } as const;
 
-export type ServiceSlug = (typeof SERVICE_SLUGS)[keyof typeof SERVICE_SLUGS];

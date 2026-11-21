@@ -1,7 +1,7 @@
 import type { RoleKind } from "@/data/careers";
 
 /** A role-specific link field in the Skills & Experience step. */
-export type RoleLink = { key: string; label: string; placeholder: string; required: boolean };
+type RoleLink = { key: string; label: string; placeholder: string; required: boolean };
 
 export type RoleFormConfig = {
   /** Heading for the role-specific skills chips (e.g. "Technical skills"). */

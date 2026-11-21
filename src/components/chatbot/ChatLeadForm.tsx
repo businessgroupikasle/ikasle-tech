@@ -4,6 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Check, LoaderCircle } from "lucide-react";
 import { PROJECT_TYPES, type ContactResponse } from "@/lib/contact-schema";
+import { allowDigitsOnly, blockDigits } from "@/lib/key-filters";
 
 type Lead = { projectType: string; description: string; fullName: string; email: string; phone: string; contactMethod: string };
 const initial: Lead = { projectType: "", description: "", fullName: "", email: "", phone: "", contactMethod: "" };
@@ -35,37 +36,13 @@ export function ChatLeadForm({ onClose }: { onClose: () => void }) {
     {!summary ? <><p className="mt-3 text-[14px] font-semibold text-ink">{questions[step]}</p><div className="mt-3" onFocus={() => { if (!startedAt.current) startedAt.current = Date.now(); }}>
       {step === 0 && <select value={lead.projectType} onChange={(e) => setLead({ ...lead, projectType: e.target.value })} className="w-full rounded-xl border border-line bg-white p-3 text-sm"><option value="">Select project type</option>{PROJECT_TYPES.map((value) => <option key={value}>{value}</option>)}</select>}
       {step === 1 && <textarea value={lead.description} onChange={(e) => setLead({ ...lead, description: e.target.value })} rows={3} maxLength={1500} placeholder="What should it do, and who is it for?" className="w-full resize-none rounded-xl border border-line p-3 text-sm" />}
-      {step === 2 && <input value={lead.fullName} onChange={(e) => setLead({ ...lead, fullName: e.target.value })} onKeyDown={(e) => { if (!e.ctrlKey && !e.metaKey && !e.altKey && /^[0-9]$/.test(e.key)) e.preventDefault(); }} autoComplete="name" className="w-full rounded-xl border border-line p-3 text-sm" />}
+      {step === 2 && <input value={lead.fullName} onChange={(e) => setLead({ ...lead, fullName: e.target.value })} onKeyDown={blockDigits} autoComplete="name" className="w-full rounded-xl border border-line p-3 text-sm" />}
       {step === 3 && <input value={lead.email} onChange={(e) => setLead({ ...lead, email: e.target.value })} type="email" autoComplete="email" className="w-full rounded-xl border border-line p-3 text-sm" />}
       {step === 4 && (
         <input
           value={lead.phone}
           onChange={(e) => setLead({ ...lead, phone: e.target.value.replace(/\D/g, "").slice(0, 10) })}
-          onKeyDown={(e) => {
-            if (
-              e.ctrlKey ||
-              e.metaKey ||
-              e.altKey ||
-              [
-                "Backspace",
-                "Delete",
-                "Tab",
-                "Enter",
-                "Escape",
-                "ArrowLeft",
-                "ArrowRight",
-                "ArrowUp",
-                "ArrowDown",
-                "Home",
-                "End",
-              ].includes(e.key)
-            ) {
-              return;
-            }
-            if (!/^[0-9]$/.test(e.key)) {
-              e.preventDefault();
-            }
-          }}
+          onKeyDown={allowDigitsOnly}
           type="tel"
           autoComplete="tel"
           inputMode="numeric"

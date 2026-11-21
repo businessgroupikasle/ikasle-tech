@@ -1,7 +1,7 @@
 import { allPosts } from "@/content/blog";
-import { blogCategories, type Block, type BlogCategory, type BlogPost, type Inline } from "@/content/blog/types";
+import { blogCategories, type Block, type BlogPost, type Inline } from "@/content/blog/types";
 
-export { blogCategories, type BlogCategory, type BlogPost };
+export { type BlogPost };
 
 /**
  * Maintenance switch: while true, /blog shows the "under maintenance" page, no article routes exist (404),
@@ -59,7 +59,7 @@ const blockText = (b: Block): string => {
 };
 
 /** Reading time at ~200 words per minute (code counts as text), at least one minute. */
-export const readingMinutes = (post: BlogPost) => {
+const readingMinutes = (post: BlogPost) => {
   const words = post.body.map(blockText).join(" ").split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 200));
 };

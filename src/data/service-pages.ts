@@ -3,7 +3,7 @@ import { SERVICE_SLUGS } from "./service-slugs";
 import { getService } from "./services";
 
 /** A real project to point to from a service: a live product (external) or a case study (internal). */
-export type RelatedWork = { label: string; href: string; external?: boolean };
+type RelatedWork = { label: string; href: string; external?: boolean };
 
 /** Small decorative technical detail drawn over a service photo (never the main content). */
 export type ServiceAccent = "workflow" | "server-render" | "platforms" | "erp-sync" | "ai-extract" | "tokens";

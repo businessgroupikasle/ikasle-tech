@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 import { trackEvent } from "@/lib/analytics";
+import { allowDigitsOnly, blockDigits } from "@/lib/key-filters";
 
 type Status =
   | { state: "idle" }
@@ -189,11 +190,7 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
               {...reg("fullName")}
               autoComplete="name"
               className={fieldBase}
-              onKeyDown={(e) => {
-                if (!e.ctrlKey && !e.metaKey && !e.altKey && /^[0-9]$/.test(e.key)) {
-                  e.preventDefault();
-                }
-              }}
+              onKeyDown={blockDigits}
             />
           )}
         </Field>
@@ -213,31 +210,7 @@ export function ContactForm({ fallbackEmail, onValuesChange }: { fallbackEmail: 
                 pattern="[0-9]*"
                 maxLength={10}
                 className={fieldBase}
-                onKeyDown={(e) => {
-                  if (
-                    e.ctrlKey ||
-                    e.metaKey ||
-                    e.altKey ||
-                    [
-                      "Backspace",
-                      "Delete",
-                      "Tab",
-                      "Enter",
-                      "Escape",
-                      "ArrowLeft",
-                      "ArrowRight",
-                      "ArrowUp",
-                      "ArrowDown",
-                      "Home",
-                      "End",
-                    ].includes(e.key)
-                  ) {
-                    return;
-                  }
-                  if (!/^[0-9]$/.test(e.key)) {
-                    e.preventDefault();
-                  }
-                }}
+                onKeyDown={allowDigitsOnly}
                 onChange={(e) => {
                   const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
                   e.target.value = cleaned;

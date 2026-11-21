@@ -126,7 +126,7 @@ export async function createApplication(values: ApplicationValues) {
 
 // ---------- Admin ----------
 
-export type ApplicationListRow = {
+type ApplicationListRow = {
   id: string;
   reference: string;
   job_slug: string;

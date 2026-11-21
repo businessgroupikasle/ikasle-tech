@@ -1,7 +1,7 @@
 import { statusLabels, type ApplicationStatus } from "@/lib/careers/application-schema";
 import { cn } from "@/lib/cn";
 
-export const statusTones: Record<ApplicationStatus, string> = {
+const statusTones: Record<ApplicationStatus, string> = {
   new: "bg-sky-50 text-sky-700 ring-sky-200",
   under_review: "bg-amber-50 text-amber-700 ring-amber-200",
   shortlisted: "bg-indigo-50 text-indigo-700 ring-indigo-200",

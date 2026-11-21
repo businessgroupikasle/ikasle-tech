@@ -39,7 +39,7 @@ const isUrl = (v: string) => {
 };
 const optionalUrl = optional(300).refine((v) => !v || isUrl(v), "Please enter a full link starting with https://");
 
-export const fileRefSchema = z.object({ id: z.uuid(), name: z.string().max(200), size: z.number().int().nonnegative() });
+const fileRefSchema = z.object({ id: z.uuid(), name: z.string().max(200), size: z.number().int().nonnegative() });
 export type FileRef = z.infer<typeof fileRefSchema>;
 
 const currentYear = new Date().getFullYear();

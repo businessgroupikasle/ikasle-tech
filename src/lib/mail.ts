@@ -37,8 +37,17 @@ function smtpConfig(): SmtpConfig | null {
   };
 }
 
-export function isMailConfigured(): boolean {
-  return smtpConfig() !== null;
+/** One SMTP connection per send, with timeouts so a slow server can't hang the request. */
+function createTransporter(config: SmtpConfig) {
+  return nodemailer.createTransport({
+    host: config.host,
+    port: config.port,
+    secure: config.secure,
+    auth: { user: config.user, pass: config.password },
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
+  });
 }
 
 function enquiryContent(data: ContactFormValues) {
@@ -94,15 +103,7 @@ export async function sendTeamNotification(message: {
 }): Promise<MailResult> {
   const config = smtpConfig();
   if (!config) return { status: "not_configured" };
-  const transporter = nodemailer.createTransport({
-    host: config.host,
-    port: config.port,
-    secure: config.secure,
-    auth: { user: config.user, pass: config.password },
-    connectionTimeout: 10_000,
-    greetingTimeout: 10_000,
-    socketTimeout: 15_000,
-  });
+  const transporter = createTransporter(config);
   try {
     const team = message.to?.length ? message.to : config.to;
     await Promise.all([
@@ -125,16 +126,7 @@ export { escapeHtml };
 export async function sendContactEmail(data: ContactFormValues): Promise<MailResult> {
   const config = smtpConfig();
   if (!config) return { status: "not_configured" };
-
-  const transporter = nodemailer.createTransport({
-    host: config.host,
-    port: config.port,
-    secure: config.secure,
-    auth: { user: config.user, pass: config.password },
-    connectionTimeout: 10_000,
-    greetingTimeout: 10_000,
-    socketTimeout: 15_000,
-  });
+  const transporter = createTransporter(config);
 
   try {
     await Promise.all([

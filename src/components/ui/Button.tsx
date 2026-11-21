@@ -32,7 +32,7 @@ type CommonProps = {
   className?: string;
 };
 
-export function buttonClasses({ variant = "primary", size = "md", className }: Omit<CommonProps, "children" | "arrow">) {
+function buttonClasses({ variant = "primary", size = "md", className }: Omit<CommonProps, "children" | "arrow">) {
   return cn(base, variants[variant], sizes[size], className);
 }
 

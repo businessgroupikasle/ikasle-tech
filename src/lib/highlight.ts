@@ -1,4 +1,4 @@
-export type TokenClass = "keyword" | "type" | "string" | "fn" | "prop" | "punct" | "comment" | "plain" | "success" | "muted";
+type TokenClass = "keyword" | "type" | "string" | "fn" | "prop" | "punct" | "comment" | "plain" | "success" | "muted";
 export type Token = { text: string; cls: TokenClass };
 
 const KEYWORDS = new Set([
@@ -46,17 +46,4 @@ export function tokenize(code: string): Token[] {
     }
   }
   return tokens;
-}
-
-/** Splits tokens into lines, preserving token classes across line breaks. */
-export function toLines(tokens: Token[]): Token[][] {
-  const lines: Token[][] = [[]];
-  for (const tok of tokens) {
-    const parts = tok.text.split("\n");
-    parts.forEach((part, i) => {
-      if (i > 0) lines.push([]);
-      if (part) lines[lines.length - 1]!.push({ text: part, cls: tok.cls });
-    });
-  }
-  return lines;
 }

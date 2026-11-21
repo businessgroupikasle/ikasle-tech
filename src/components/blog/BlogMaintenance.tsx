@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 
 /** Shown at /blog while the blog is switched off (see `blogUnderMaintenance` in src/lib/blog.ts). */

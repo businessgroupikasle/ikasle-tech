@@ -4,7 +4,7 @@ import type { Block, Inline } from "@/content/blog/types";
 import { tokenize } from "@/lib/highlight";
 import { CopyButton } from "./CopyButton";
 
-export const headingId = (text: string) =>
+const headingId = (text: string) =>
   text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")

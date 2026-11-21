@@ -15,6 +15,13 @@ const eslintConfig = [
       "@next/next/no-img-element": "off",
     },
   },
+  {
+    // Node test scripts run as CommonJS (`node --test scripts/*.cjs`), where require() is the module system.
+    files: ["scripts/**/*.cjs"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

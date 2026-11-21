@@ -16,7 +16,7 @@ type Props = {
   heading?: ReactNode;
 };
 
-export function Eyebrow({ children, path }: { children: ReactNode; path?: string }) {
+function Eyebrow({ children, path }: { children: ReactNode; path?: string }) {
   return (
     <p className="inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-3 py-1 font-mono text-[12px] tracking-wide text-ink-soft shadow-sm">
       <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />

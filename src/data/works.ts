@@ -1,7 +1,7 @@
 import { brand } from "@/lib/brand";
 import type { ProjectCategory } from "@/types";
 
-export type WorkShot = {
+type WorkShot = {
   src: string;
   alt: string;
   /** Which part of the screenshot each folder page shows (CSS object-position). */

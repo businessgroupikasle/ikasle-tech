@@ -21,7 +21,6 @@ import {
   stepTitles,
   YES_NO,
   type ApplicationValues,
-  type FileRef,
   type SubmitResponse,
 } from "@/lib/careers/application-schema";
 import { internshipTracks, roleFormConfig } from "@/lib/careers/form-config";
@@ -494,4 +493,3 @@ export function ApplicationForm({ initialPosition, positionFromLink, contactEmai
   );
 }
 
-export type { FileRef };

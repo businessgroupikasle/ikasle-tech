@@ -27,7 +27,7 @@ export type IconName =
   | "file"
   | "clock";
 
-export type ServiceImage = {
+type ServiceImage = {
   src: string;
   alt: string;
   /** CSS object-position, tuned per photo so the key device/screen stays in frame when cropped. */
@@ -90,34 +90,3 @@ export type ProjectCategory =
   | "Web Applications"
   | "Mobile Applications"
   | "Business Automation";
-
-export type MockupKind = "erp";
-
-export type Feature = {
-  title: string;
-  description: string;
-  icon: IconName;
-};
-
-/**
- * Case-study content. Fields marked `pending` are editable placeholders:
- * fill them in src/data/projects.ts once details are confirmed with the client.
- */
-export type Project = {
-  slug: string;
-  title: string;
-  kicker: string;
-  summary: string;
-  categories: ProjectCategory[];
-  mockup: MockupKind;
-  overview: string;
-  challenge: string;
-  solution: string;
-  features: Feature[];
-  stack: string[];
-  /** Not yet confirmed — rendered with a visible "to be confirmed" note. */
-  outcome: { pending: true; note: string } | { pending: false; text: string };
-  client: { pending: true } | { pending: false; name: string };
-  year: string | null;
-  screens: { kind: "erp-dashboard" | "erp-inventory" | "erp-production"; caption: string }[];
-};

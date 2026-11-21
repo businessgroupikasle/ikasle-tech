@@ -164,7 +164,7 @@ export function ReviewStep({
           <input type="checkbox" className="mt-1 size-4.5 shrink-0 accent-accent-strong" aria-invalid={Boolean(err("privacyConsent"))} {...register("privacyConsent")} />
           <span>
             I agree that IKASLÉ Technologies may store and process the information and documents in this application for recruitment purposes, as described in the{" "}
-            <Link href="/privacy-policy" className="font-semibold text-accent-strong underline-offset-4 hover:underline" target="_blank">
+            <Link href="/privacy-policy" className="font-semibold text-accent-strong underline-offset-4 hover:underline" target="_blank" rel="noopener">
               Privacy Policy
             </Link>
             .<span className="text-red-500" aria-hidden="true"> *</span>

@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { contactSchema, type ContactFormValues, type ContactResponse } from "@/lib/contact-schema";
 import { rateLimit } from "@/lib/rate-limit";
 import { sendContactEmail } from "@/lib/mail";
+import { clientIp, isCrossOrigin } from "@/lib/request";
 
 export const runtime = "nodejs";
 
@@ -12,14 +13,8 @@ const MAX_FORM_AGE_MS = 24 * 60 * 60_000;
 
 const json = (body: ContactResponse, status: number, headers?: HeadersInit) => NextResponse.json(body, { status, headers });
 
-function clientIp(req: NextRequest) {
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
-}
-
 export async function POST(req: NextRequest) {
-  // Same-origin check: browsers always send Origin on cross-site POSTs.
-  const origin = req.headers.get("origin");
-  if (origin && origin !== req.nextUrl.origin) {
+  if (isCrossOrigin(req)) {
     return json({ ok: false, code: "bad_request", message: "Cross-origin requests are not allowed." }, 403);
   }
 

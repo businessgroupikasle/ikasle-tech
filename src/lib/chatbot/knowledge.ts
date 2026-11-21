@@ -4,7 +4,7 @@ import { services } from "@/data/services";
 import { works } from "@/data/works";
 import { processSteps } from "@/components/home/ProcessVisuals";
 
-export const chatbotKnowledge = {
+const chatbotKnowledge = {
   company: "IKASLE Technologies is a software development and technology solutions company based in Coimbatore.",
   services: servicePages.map((page) => {
     const service = services.find((item) => item.slug === page.slug)!;

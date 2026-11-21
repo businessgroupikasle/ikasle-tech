@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const MAX_CHAT_MESSAGE = 1200;
-export const MAX_CONVERSATION_MESSAGES = 16;
+const MAX_CONVERSATION_MESSAGES = 16;
 
 export const chatRequestSchema = z.object({
   messages: z

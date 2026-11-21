@@ -8,7 +8,7 @@ import { inputClass } from "./input-class";
 type FieldShellProps = { label: string; required?: boolean; hint?: ReactNode; error?: string; className?: string; children: (ids: { id: string; describedBy?: string }) => ReactNode };
 
 /** Label, control, hint and error with the right ARIA wiring. */
-export function Field({ label, required, hint, error, className, children }: FieldShellProps) {
+function Field({ label, required, hint, error, className, children }: FieldShellProps) {
   const id = useId();
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = error ? `${id}-error` : undefined;

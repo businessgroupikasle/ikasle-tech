@@ -6,7 +6,7 @@ import { ADMIN_COOKIE, isValidSessionToken, SESSION_SECONDS } from "./session-to
  * session cookie (signed with CAREERS_SESSION_SECRET, at least 32 characters). Sessions last 8 hours.
  * Token logic is in session-token.ts so src/proxy.ts can use it too.
  */
-export { ADMIN_COOKIE, createSessionToken, isAdminConfigured, isValidSessionToken, passwordMatches, SESSION_SECONDS } from "./session-token";
+export { ADMIN_COOKIE, createSessionToken, isAdminConfigured, passwordMatches } from "./session-token";
 
 /** True when the current request carries a valid admin session (server components and route handlers). */
 export async function isAdmin(): Promise<boolean> {

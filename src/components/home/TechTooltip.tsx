@@ -30,10 +30,8 @@ export type OrbitTooltipInfo = {
   name: string;
   category: string;
   description: string;
-  /** data URI from logo tile */
-  logoSrc?: string;
-  /** Rendered instead of `logoSrc` when given (e.g. an inline SVG mark or line icon). */
-  logo?: ReactNode;
+  /** The technology's mark (an inline SVG badge). */
+  logo: ReactNode;
   /** Brand hex colour (e.g. "#007ACC") */
   hex: string;
 };
@@ -191,17 +189,7 @@ function TooltipInner({ info, onClose }: TooltipInnerProps) {
       <div className="flex flex-col gap-2">
         {/* Header: Brand logo + Tech name + Category pill */}
         <div className="flex items-center gap-2.5">
-          {info.logo ?? (
-            <img
-              src={info.logoSrc}
-              alt=""
-              aria-hidden="true"
-              width={30}
-              height={30}
-              className="h-[30px] w-[30px] shrink-0 rounded-lg border border-[#E8EFF5] bg-white object-contain p-0.5 shadow-sm"
-              draggable={false}
-            />
-          )}
+          {info.logo}
           <div className="min-w-0 flex-1">
             <div className="truncate text-[13.5px] font-semibold leading-tight text-[#082B45]">
               {info.name}

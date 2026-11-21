@@ -57,7 +57,7 @@ export const contactSchema = z.object({
 export type ContactFormInput = z.input<typeof contactSchema>;
 export type ContactFormValues = z.output<typeof contactSchema>;
 
-export type ContactErrorCode =
+type ContactErrorCode =
   | "validation"
   | "rate_limited"
   | "not_configured"

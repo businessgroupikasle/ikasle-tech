@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { ArrowRight, Clock } from "lucide-react";
 import type { BlogSummary } from "@/lib/blog";
 
-export function DraftBadge() {
+function DraftBadge() {
   return (
     <span className="rounded-full border border-warning/40 bg-warning/10 px-2 py-0.5 font-mono text-[10.5px] tracking-wide text-[#7a4b00] uppercase">
       Draft · not published

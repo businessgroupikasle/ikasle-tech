@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          // Browsers ignore HSTS on plain-HTTP localhost, so this only takes effect on the HTTPS site.
+          { key: "Strict-Transport-Security", value: "max-age=31536000" },
+          // Deliberately minimal CSP: these directives can't break scripts, styles or analytics. A full
+          // script/style policy needs nonces and testing with GA and the animation libraries first.
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'" },
         ],
       },
     ];

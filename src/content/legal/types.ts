@@ -1,6 +1,6 @@
 import type { Inline } from "@/content/blog/types";
 
-export type LegalSection = {
+type LegalSection = {
   id: string;
   title: string;
   /** Paragraphs and bullet lists, in order. */
