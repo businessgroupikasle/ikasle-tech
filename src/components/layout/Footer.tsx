@@ -24,7 +24,6 @@ const exploreLinks = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Our Work", href: "/clientele" },
-  { label: "Industries", href: "/industries" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Careers", href: "/careers" },

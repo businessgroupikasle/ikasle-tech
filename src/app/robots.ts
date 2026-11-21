@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        disallow: ["/api/", "/_next/", "/static/", "/admin/", "/careers/apply", "/careers/application-success"],
       },
       {
         userAgent: [
@@ -20,7 +20,7 @@ export default function robots(): MetadataRoute.Robots {
           "YandexBot",
         ],
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin/", "/careers/apply", "/careers/application-success"],
       },
       {
         userAgent: [
@@ -31,7 +31,7 @@ export default function robots(): MetadataRoute.Robots {
           "Applebot-Extended",
         ],
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin/", "/careers/apply", "/careers/application-success"],
       },
     ],
     sitemap: [absoluteUrl("/sitemap.xml"), absoluteUrl("/sitemap-images.xml")],

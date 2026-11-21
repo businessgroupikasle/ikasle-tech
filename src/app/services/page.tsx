@@ -58,7 +58,7 @@ export default function ServicesPage() {
       <ContactCta
         eyebrow="// have more questions?"
         title="Every Business Has Different Technology Requirements. Let's Understand Yours."
-        highlight={["understand", "yours."]}
+        highlight={["Understand", "Yours."]}
         text=""
         primary={{ label: "Discuss Your Project", href: "/contact" }}
       />

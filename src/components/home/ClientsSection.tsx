@@ -1,5 +1,4 @@
-import { clients } from "@/data/clients";
-import { ClientCard } from "./ClientCard";
+import { ClientsFilter } from "./ClientsFilter";
 
 export function ClientsSection() {
   return (
@@ -39,11 +38,7 @@ export function ClientsSection() {
             digital experiences through technology.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-          {clients.map((client) => (
-            <ClientCard key={client.slug} client={client} />
-          ))}
-        </div>
+        <ClientsFilter />
       </div>
     </section>
   );

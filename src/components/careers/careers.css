@@ -1,0 +1,104 @@
+/* Careers portal animations. Everything decorative stops under prefers-reduced-motion. */
+
+/* Hero: floating cards around the workspace visual (each card sets its own duration/delay inline). */
+@keyframes careers-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -12px;
+  }
+}
+.careers-float {
+  animation: careers-float 6s ease-in-out infinite;
+}
+@keyframes careers-orbit {
+  to {
+    rotate: 360deg;
+  }
+}
+.careers-orbit {
+  animation: careers-orbit 40s linear infinite;
+}
+.careers-orbit-reverse {
+  animation: careers-orbit 28s linear infinite reverse;
+}
+@keyframes careers-pulse {
+  0% {
+    scale: 1;
+    opacity: 0.6;
+  }
+  100% {
+    scale: 2.4;
+    opacity: 0;
+  }
+}
+.careers-pulse {
+  animation: careers-pulse 1.8s ease-out infinite;
+}
+
+/* Hiring timeline: the line draws, then each step loads in turn (--d is the step's delay). */
+.careers-timeline-line {
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+.careers-timeline-step {
+  opacity: 0;
+  translate: 0 14px;
+  transition:
+    opacity 0.55s ease var(--d, 0s),
+    translate 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s);
+}
+.careers-timeline-node {
+  scale: 0.4;
+  transition: scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0s);
+}
+.is-loaded .careers-timeline-line {
+  scale: 1 1;
+}
+.is-loaded .careers-timeline-step {
+  opacity: 1;
+  translate: 0 0;
+}
+.is-loaded .careers-timeline-node {
+  scale: 1;
+}
+@keyframes careers-flow {
+  to {
+    background-position: 18px 0;
+  }
+}
+.careers-timeline-flow {
+  background: repeating-linear-gradient(90deg, var(--accent) 0 7px, transparent 7px 18px);
+  animation: careers-flow 1.2s linear infinite;
+}
+@keyframes careers-flow-y {
+  to {
+    background-position: 0 18px;
+  }
+}
+.careers-timeline-flow-y {
+  background: repeating-linear-gradient(180deg, var(--accent) 0 7px, transparent 7px 18px);
+  animation: careers-flow-y 1.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .careers-float,
+  .careers-orbit,
+  .careers-orbit-reverse,
+  .careers-pulse,
+  .careers-timeline-flow,
+  .careers-timeline-flow-y {
+    animation: none;
+  }
+  .careers-timeline-line,
+  .careers-timeline-step,
+  .careers-timeline-node {
+    scale: 1;
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+}

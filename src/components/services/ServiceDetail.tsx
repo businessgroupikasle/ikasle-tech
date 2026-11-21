@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Building2, Check, ChevronRight, CircleAlert, Cpu, Rocket, Store, TrendingUp, type LucideIcon } from "lucide-react";
+import { Building2, Check, ChevronRight, CircleAlert, Cpu, Rocket, Store, TrendingUp, type LucideIcon } from "lucide-react";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { ButtonLink } from "@/components/ui/Button";
 import { MagneticButton } from "@/components/animations/MagneticButton";
@@ -130,7 +130,6 @@ function Visual({ page }: { page: ServicePage }) {
 }
 
 const h2 = "text-[1.75rem] leading-[1.15] font-semibold tracking-[-0.03em] text-balance text-ink sm:text-[2.1rem]";
-const h3 = "text-[1.3rem] leading-tight font-semibold tracking-[-0.02em] text-ink";
 const eyebrow = "mt-2 font-mono text-[12px] tracking-wide text-accent-strong uppercase";
 const subheading = "text-[1.25rem] leading-snug font-semibold tracking-[-0.02em] text-balance text-ink sm:text-[1.4rem]";
 /** Card rows that centre a short last row (e.g. 7 cards → 3 + 3 + 1 centred) instead of leaving a gap. */
@@ -293,7 +292,6 @@ export function ServiceDetail({ slug }: { slug: string }) {
   const index = servicePages.indexOf(page);
   const contactHref = page.cta?.href ?? `/contact?type=${encodeURIComponent(service.projectType)}`;
   const contactLabel = page.cta?.label ?? "Start a Project";
-  const others = servicePages.filter((p) => p.slug !== slug);
 
   useGSAP(
     () => {
@@ -526,31 +524,6 @@ export function ServiceDetail({ slug }: { slug: string }) {
       </section>
 
       {page.audiences && <AudiencesSection audiences={page.audiences} />}
-
-      {/* ---------- Other services ---------- */}
-      <nav aria-labelledby="other-services" className="py-16 sm:py-20">
-        <div className="container-x">
-          <h2 id="other-services" data-reveal className={h3}>
-            {page.othersTitle ?? "Explore Other Services"}
-          </h2>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {others.map((o) => (
-              <li key={o.slug} data-reveal>
-                <Link
-                  href={`/services/${o.slug}`}
-                  className="group flex h-full items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3.5 text-[14px] font-medium text-ink transition-colors hover:border-accent/40 hover:text-accent-strong"
-                >
-                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-bg-blue text-accent-strong">
-                    <Icon name={o.icon} className="size-4" />
-                  </span>
-                  <span className="min-w-0 flex-1 leading-snug">{o.name}</span>
-                  <ArrowRight className="size-4 shrink-0 text-ink-soft transition-transform group-hover:translate-x-0.5 group-hover:text-accent-strong" aria-hidden="true" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
     </div>
   );
 }

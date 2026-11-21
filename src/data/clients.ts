@@ -1,8 +1,26 @@
+/** Industry filters on the Clientele page, in display order (after "All"). */
+export const clientIndustries = [
+  "Healthcare",
+  "Construction & Infrastructure",
+  "Food & Beverages",
+  "Energy & Sustainability",
+  "Consumer Products",
+  "Events & Media",
+  "Education",
+  "Agriculture",
+  "Automotive",
+] as const;
+
+export type ClientIndustry = (typeof clientIndustries)[number];
+
 export type Client = {
   name: string;
   slug: string;
   logo: string;
+  /** Specific line of business, shown on the card. */
   category: string;
+  /** Broad industry the Clientele page filters by. */
+  industry: ClientIndustry;
   /** Live verified website URL if officially available */
   url?: string;
   /** Slogan or subtext from official branding */
@@ -14,7 +32,7 @@ export type Client = {
 export const clients: Client[] = [
   {
     name: "ACME Bricks & Blocks",
-    slug: "acme-bricks",
+    slug: "acme-bricks", industry: "Construction & Infrastructure",
     logo: "/images/clients/acme-bricks.webp",
     category: "Construction & Infrastructure",
     tagline: "Quality Construction Materials",
@@ -23,7 +41,7 @@ export const clients: Client[] = [
   },
   {
     name: "Uzhavar Connect",
-    slug: "uzhavar-connect",
+    slug: "uzhavar-connect", industry: "Agriculture",
     logo: "/images/clients/uzhavar-connect.webp",
     category: "AgriTech & Farm Development",
     tagline: "Grow Your Land. Grow Your Future.",
@@ -32,7 +50,7 @@ export const clients: Client[] = [
   },
   {
     name: "Rent-O-Mate",
-    slug: "rent-o-mate",
+    slug: "rent-o-mate", industry: "Consumer Products",
     logo: "/images/clients/rent-o-mate.png",
     category: "Smart Appliance Rentals",
     tagline: "Water Purifiers On Rent",
@@ -41,7 +59,7 @@ export const clients: Client[] = [
   },
   {
     name: "GET Events",
-    slug: "get-events",
+    slug: "get-events", industry: "Events & Media",
     logo: "/images/clients/get-events-logo.jpeg",
     category: "Event Management & Celebrations",
     tagline: "Hub of Memories & Celebration",
@@ -50,7 +68,7 @@ export const clients: Client[] = [
   },
   {
     name: "Giftery",
-    slug: "giftery",
+    slug: "giftery", industry: "Consumer Products",
     logo: "/images/clients/giftery-logo.png",
     category: "Corporate Gifting & Merchandise",
     tagline: "Creating Memories For Brand",
@@ -59,7 +77,7 @@ export const clients: Client[] = [
   },
   {
     name: "AKVINZ",
-    slug: "akvinz",
+    slug: "akvinz", industry: "Consumer Products",
     logo: "/images/clients/akvinz.png",
     category: "Water Purification Systems",
     tagline: "Be Pure, Live Fresh",
@@ -67,7 +85,7 @@ export const clients: Client[] = [
     aspect: "wide",
   },
   {
-    slug: "teta",
+    slug: "teta", industry: "Energy & Sustainability",
     name: "TETA",
     category: "Business",
     logo: "/images/clients/teta-logo.png",
@@ -75,25 +93,26 @@ export const clients: Client[] = [
     aspect: "horizontal",
   },
   {
-    slug: "zeste-energy",
+    slug: "zeste-energy", industry: "Energy & Sustainability",
     name: "Zeste Energy",
     category: "Energy",
     logo: "/images/clients/zeste-energy.webp",
     url: "https://zeste.energy/",
     aspect: "horizontal"
   },
-  { "slug": "saravana-videos", "name": "Saravana Videos", "category": "Video Production", "logo": "/images/clients/saravana-videos.webp", "url": "https://saravanavideos.in/", "aspect": "horizontal" },
-  { "slug": "linga-construction", "name": "Linga Construction", "category": "Construction & Infrastructure", "logo": "/images/clients/linga-construction.webp", "url": "https://lingadevelopers.com/", "aspect": "horizontal" },
-  { "slug": "chimp", "name": "Chimp Premium Soda", "category": "Food & Beverages", "logo": "/images/clients/chimp.webp", "url": "https://chimpsoda.com/", "aspect": "horizontal" },
-  { "slug": "mahil-pharmacy", "name": "Mahil Pharmacy", "category": "Pharmacy & Healthcare", "logo": "/images/clients/mahil-pharmacy.webp", "url": "https://mahilpharrmacy.com/", "aspect": "horizontal" },
-  { "slug": "bananza", "name": "Bananza", "category": "Food & Beverages", "logo": "/images/clients/bananza.webp", "url": "https://bananza.in/", "aspect": "horizontal" },
-  { "slug": "dream-cadd", "name": "Dream CADD", "category": "Training & Education", "logo": "/images/clients/dream-cadd.webp", "url": "https://www.dreamcadd.com/", "aspect": "horizontal" },
-  { "slug": "krish-dental", "name": "Krish Dental Studio", "category": "Dental Care", "logo": "/images/clients/krish-dental.webp", "url": "https://www.krishdentalstudio.com/", "aspect": "horizontal" },
-  { "slug": "sencirc", "name": "Sencirc", "category": "Sustainability", "logo": "/images/clients/sencirc.webp", "url": "https://sencirc.com/", "aspect": "horizontal" },
-  { "slug": "shifters", "name": "Shifters", "category": "Automotive", "logo": "/images/clients/shifters.webp", "url": "https://shifters.in/", "aspect": "square" },
+  { "slug": "saravana-videos", industry: "Events & Media", "name": "Saravana Videos", "category": "Video Production", "logo": "/images/clients/saravana-videos.webp", "url": "https://saravanavideos.in/", "aspect": "horizontal" },
+  { "slug": "linga-construction", industry: "Construction & Infrastructure", "name": "Linga Construction", "category": "Construction & Infrastructure", "logo": "/images/clients/linga-construction.webp", "url": "https://lingadevelopers.com/", "aspect": "horizontal" },
+  { "slug": "chimp", industry: "Food & Beverages", "name": "Chimp Premium Soda", "category": "Food & Beverages", "logo": "/images/clients/chimp.webp", "url": "https://chimpsoda.com/", "aspect": "horizontal" },
+  { "slug": "mahil-pharmacy", industry: "Healthcare", "name": "Mahil Pharmacy", "category": "Pharmacy & Healthcare", "logo": "/images/clients/mahil-pharmacy.webp", "url": "https://mahilpharrmacy.com/", "aspect": "horizontal" },
+  { "slug": "bananza", industry: "Food & Beverages", "name": "Bananza", "category": "Food & Beverages", "logo": "/images/clients/bananza.webp", "url": "https://bananza.in/", "aspect": "horizontal" },
+  { "slug": "dream-cadd", industry: "Education", "name": "Dream CADD", "category": "Training & Education", "logo": "/images/clients/dream-cadd.webp", "url": "https://www.dreamcadd.com/", "aspect": "horizontal" },
+  { "slug": "krish-dental", industry: "Healthcare", "name": "Krish Dental Studio", "category": "Dental Care", "logo": "/images/clients/krish-dental.webp", "url": "https://www.krishdentalstudio.com/", "aspect": "horizontal" },
+  { "slug": "sencirc", industry: "Energy & Sustainability", "name": "Sencirc", "category": "Sustainability", "logo": "/images/clients/sencirc.webp", "url": "https://sencirc.com/", "aspect": "horizontal" },
+  { "slug": "shifters", industry: "Automotive", "name": "Shifters", "category": "Automotive", "logo": "/images/clients/shifters.webp", "url": "https://shifters.in/", "aspect": "square" },
   {
     name: "Kiddos Foods",
     slug: "kiddos-foods",
+    industry: "Food & Beverages",
     logo: "/images/clients/Kiddosfoods.webp",
     category: "Food & Beverages",
     tagline: "Authentic Traditional Food Products",
@@ -103,6 +122,7 @@ export const clients: Client[] = [
   {
     name: "Aadhan Caterers",
     slug: "aadhan-caterers",
+    industry: "Food & Beverages",
     logo: "/images/clients/aadhancaterers.jpeg",
     category: "Catering & Hospitality",
     tagline: "Quality Catering Services",
