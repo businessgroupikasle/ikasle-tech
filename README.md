@@ -29,6 +29,11 @@ Requires Node.js 20.9 or newer.
 | `/services` | Service explorer with a sticky navigator |
 | `/products` | IKASLE-owned products with tabbed details |
 | `/contact` | Contact form → `POST /api/contact` |
+| `/careers` | Careers landing: hero, why join, openings (filter + search), hiring process, culture, CTA |
+| `/careers/[slug]` | Job details for each opening in `src/data/careers.ts` |
+| `/careers/apply?position=<slug>` | 7-step application form (no `position` = general application) |
+| `/careers/application-success` | Confirmation with the application reference |
+| `/admin/login`, `/admin/careers`, `/admin/careers/[id]` | Careers dashboard: applications, documents, status and notes (password protected) |
 | `/sitemap.xml`, `/robots.txt`, `/opengraph-image` | SEO |
 
 ## Environment variables
@@ -46,7 +51,22 @@ See `.env.example`.
 | `CONTACT_TO_EMAIL` | server | Inbox(es) that receive enquiries (comma-separated) |
 | `CONTACT_FROM_EMAIL` | server | Verified sender; defaults to `SMTP_USER` |
 
+| `SUPABASE_URL` | server | Supabase project URL for the careers portal |
+| `SUPABASE_SECRET_KEY` | server | Supabase secret key (`sb_secret_...`). **Server only** — never prefix with `NEXT_PUBLIC_` |
+| `SUPABASE_PUBLISHABLE_KEY` | server | Supabase publishable key (`sb_publishable_...`); not used by the careers portal yet |
+| `CAREERS_ADMIN_PASSWORD` | server | Password for `/admin/login` |
+| `CAREERS_SESSION_SECRET` | server | 32+ random characters that sign admin sessions |
+| `CAREERS_TO_EMAIL` | server | Optional inbox(es) for new-application emails; defaults to `CONTACT_TO_EMAIL` |
+
 If the required SMTP server variables are not all set, the form does **not** pretend to send: the API returns `503 not_configured`, and the form shows an honest message (plus `NEXT_PUBLIC_CONTACT_EMAIL` if one is set).
+
+## Careers portal
+
+- **Openings** live in `src/data/careers.ts` (one entry per job: copy, skills, assessment…). The role's `roleKind` picks the role-specific form questions in `src/lib/careers/form-config.ts`.
+- **Storage: Supabase.** Run `supabase/migrations/20261120000000_careers_portal.sql` once (Supabase dashboard → SQL Editor → paste → Run, or `supabase db push`). It creates the three tables (`career_applications`, `career_application_files`, `career_status_history`), the database functions that submit and update applications atomically, and the private `career-documents` Storage bucket. RLS is on with no public policies, so only the server (secret key, via `@supabase/server`'s `createAdminClient`) can read or write. Without `SUPABASE_URL` / `SUPABASE_SECRET_KEY`, the form shows an honest "not available" message with the email fallback.
+- **Uploads** go one file per request to `POST /api/careers/uploads` (PDF/DOC/DOCX/images/ZIP by kind, 4 MB max — under Vercel's ~4.5 MB request limit). Content is checked by file signature, stored in the private bucket, and only downloadable through the admin dashboard. Uploads from unsubmitted forms are deleted after 24 hours.
+- **Applications** are validated with the same Zod schema on the client and in `POST /api/careers/applications`, rate-limited, saved with a reference such as `IKT-2611-7F3K9Q`, and emailed to the team (plus an acknowledgement to the candidate) when SMTP is configured.
+- **Admin:** log in at `/admin/login` with `CAREERS_ADMIN_PASSWORD`. The dashboard lists, searches and filters applications; each application shows every answer, downloadable documents, status (New → Under Review → Shortlisted → Interview Scheduled → Selected / Rejected), notes and status history.
 
 ## Analytics and search setup
 

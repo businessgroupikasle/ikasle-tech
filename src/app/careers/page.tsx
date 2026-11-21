@@ -1,20 +1,47 @@
-import { PageHero } from "@/components/ui/PageHero";
-import { ButtonLink } from "@/components/ui/Button";
-import { companyContact } from "@/data/company-contact";
+import { CareersHero } from "@/components/careers/CareersHero";
+import { CultureGallery } from "@/components/careers/CultureGallery";
+import { HiringTimeline } from "@/components/careers/HiringTimeline";
+import { JobBoard } from "@/components/careers/JobBoard";
+import { WhyJoin } from "@/components/careers/WhyJoin";
+import { ContactCta } from "@/components/home/ContactCta";
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = pageMetadata({ title: "Careers", description: "Explore jobs and internships at IKASLE Technologies.", path: "/careers" });
+export const metadata = pageMetadata({
+  title: "Careers",
+  description: "Join IKASLÉ Technologies in Coimbatore. Explore openings for developers, video editors, designers, content creators, social media managers and internships.",
+  path: "/careers",
+});
 
 export default function CareersPage() {
-  return <>
-    <PageHero eyebrow="Careers" path="/careers" title="Build your future with us." description="Explore career and internship opportunities at IKASLE Technologies." />
-    <section className="container-x pb-20 sm:pb-24">
-      <div className="rounded-3xl border border-line bg-bg-soft p-6 sm:p-10">
-        <h2 className="text-2xl font-semibold text-ink">No Current Openings</h2>
-        <p className="mt-3 max-w-2xl text-ink-soft">There are currently no listed job or internship opportunities. You can still send your resume for future consideration.</p>
-        <p className="mt-3 mb-6 text-ink-soft">Include your preferred role or internship, a short introduction, and your resume as an attachment in your email.</p>
-        <ButtonLink href={`mailto:${companyContact.email}?subject=Career%20or%20Internship%20Application`} arrow>Submit your resume</ButtonLink>
-      </div>
-    </section>
-  </>;
+  return (
+    <>
+      <CareersHero />
+      <WhyJoin />
+      <JobBoard />
+
+      <section aria-labelledby="process-title" className="border-t border-line py-20 sm:py-24">
+        <div className="container-x">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-mono text-[12px] tracking-wide text-accent-strong uppercase">How we hire</p>
+            <h2 id="process-title" className="mt-3 text-[2rem] leading-[1.1] font-semibold tracking-[-0.035em] text-balance text-ink sm:text-[2.6rem]">
+              Our Hiring Process
+            </h2>
+            <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">Five clear steps, so you always know where your application stands.</p>
+          </div>
+          <HiringTimeline className="mt-14" />
+        </div>
+      </section>
+
+      <CultureGallery />
+
+      <ContactCta
+        eyebrow="// we're hiring"
+        title="Your Next Opportunity Starts Here."
+        highlight={["Starts", "Here."]}
+        text="Have the skills and passion to make a difference? We would love to hear from you."
+        primary={{ label: "Explore Opportunities", href: "#openings" }}
+        secondary={{ label: "Submit Your Resume", href: "/careers/apply" }}
+      />
+    </>
+  );
 }

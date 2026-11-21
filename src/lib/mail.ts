@@ -80,6 +80,47 @@ function acknowledgementContent(data: ContactFormValues) {
   };
 }
 
+/**
+ * Sends a notification to the team inbox (CONTACT_TO_EMAIL, or CAREERS_TO_EMAIL when set) and, optionally, an
+ * acknowledgement to the person who submitted. Used by the careers portal for new applications.
+ */
+export async function sendTeamNotification(message: {
+  subject: string;
+  text: string;
+  html: string;
+  replyTo?: string;
+  to?: string[];
+  acknowledgement?: { to: string; subject: string; text: string; html: string };
+}): Promise<MailResult> {
+  const config = smtpConfig();
+  if (!config) return { status: "not_configured" };
+  const transporter = nodemailer.createTransport({
+    host: config.host,
+    port: config.port,
+    secure: config.secure,
+    auth: { user: config.user, pass: config.password },
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
+  });
+  try {
+    const team = message.to?.length ? message.to : config.to;
+    await Promise.all([
+      transporter.sendMail({ from: config.from, to: team, replyTo: message.replyTo, subject: message.subject, text: message.text, html: message.html }),
+      message.acknowledgement
+        ? transporter.sendMail({ from: config.from, replyTo: team[0], ...message.acknowledgement })
+        : Promise.resolve(),
+    ]);
+    return { status: "sent" };
+  } catch (error) {
+    return { status: "failed", detail: error instanceof Error ? error.message : "Unknown SMTP error" };
+  } finally {
+    transporter.close();
+  }
+}
+
+export { escapeHtml };
+
 /** Sends the enquiry and submitter acknowledgement through server-side SMTP. */
 export async function sendContactEmail(data: ContactFormValues): Promise<MailResult> {
   const config = smtpConfig();

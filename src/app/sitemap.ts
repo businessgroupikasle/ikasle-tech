@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { servicePages } from "@/data/service-pages";
+import { jobs } from "@/data/careers";
 import { allPosts } from "@/content/blog";
 import { blogUnderMaintenance } from "@/lib/blog";
 import { privacyPolicy } from "@/content/legal/privacy";
@@ -33,5 +34,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly" as const,
       priority: 0.6,
     }));
-  return [...pages, ...services, ...articles];
+  const careers = jobs.map((job) => ({
+    url: absoluteUrl(`/careers/${job.slug}`),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+  return [...pages, ...services, ...careers, ...articles];
 }
