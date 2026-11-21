@@ -4,10 +4,10 @@ import { pageMetadata } from "@/lib/metadata";
 import { siteConfig, absoluteUrl } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "Privacy Policy | IKASLE Technologies",
-  description: "Learn how IKASLE Technologies collects, uses and protects personal information and client data.",
+  title: "IKASLÉ Technologies Privacy Policy | Data Protection & Privacy",
+  description:
+    "Learn how IKASLÉ Technologies collects, uses, protects and manages personal information submitted through our website, contact forms and digital services.",
   path: "/privacy-policy",
-  // Draft: kept out of search results until approved.
   noindex: privacyPolicy.status === "draft",
 });
 

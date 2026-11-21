@@ -4,10 +4,10 @@ import { pageMetadata } from "@/lib/metadata";
 import { siteConfig, absoluteUrl } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "Terms & Conditions | IKASLE Technologies",
-  description: "Terms and conditions governing the use of IKASLE Technologies website, services, and digital offerings.",
+  title: "IKASLÉ Technologies Terms & Conditions | Website Usage",
+  description:
+    "Read the Terms and Conditions of IKASLÉ Technologies covering website usage, software development services, intellectual property, user responsibilities and legal terms.",
   path: "/terms-and-conditions",
-  // Draft: kept out of search results until approved.
   noindex: termsAndConditions.status === "draft",
 });
 
