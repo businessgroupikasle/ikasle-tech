@@ -3,6 +3,7 @@ import { rateLimit } from "@/lib/rate-limit";
 import { chatbotConfig, createProviderResponse } from "@/lib/chatbot/provider";
 import { localAnswer } from "@/lib/chatbot/knowledge";
 import { chatRequestSchema } from "@/lib/chatbot/validation";
+import { isAllowedOrigin } from "@/lib/origin-check";
 
 export const runtime = "nodejs";
 const MAX_BODY_BYTES = 24_000;
@@ -19,8 +20,7 @@ export function GET() {
 export async function POST(req: NextRequest) {
   const config = chatbotConfig();
   if (!config.enabled) return NextResponse.json({ error: "The assistant is currently unavailable." }, { status: 503 });
-  const origin = req.headers.get("origin");
-  if (origin && origin !== req.nextUrl.origin) return NextResponse.json({ error: "Cross-origin requests are not allowed." }, { status: 403 });
+  if (!isAllowedOrigin(req)) return NextResponse.json({ error: "Cross-origin requests are not allowed." }, { status: 403 });
   if (Number(req.headers.get("content-length") ?? 0) > MAX_BODY_BYTES) return NextResponse.json({ error: "Request is too large." }, { status: 413 });
   const limit = rateLimit(`chat:${ip(req)}`, 20, 10 * 60_000);
   if (!limit.allowed) return NextResponse.json({ error: "Too many messages. Please try again later." }, { status: 429, headers: { "Retry-After": String(limit.retryAfter) } });

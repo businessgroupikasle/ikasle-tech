@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { contactSchema, type ContactFormValues, type ContactResponse } from "@/lib/contact-schema";
 import { rateLimit } from "@/lib/rate-limit";
 import { sendContactEmail } from "@/lib/mail";
+import { isAllowedOrigin } from "@/lib/origin-check";
 
 export const runtime = "nodejs";
 
@@ -18,8 +19,7 @@ function clientIp(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   // Same-origin check: browsers always send Origin on cross-site POSTs.
-  const origin = req.headers.get("origin");
-  if (origin && origin !== req.nextUrl.origin) {
+  if (!isAllowedOrigin(req)) {
     return json({ ok: false, code: "bad_request", message: "Cross-origin requests are not allowed." }, 403);
   }
 
