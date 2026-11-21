@@ -74,7 +74,7 @@ export function ContactExperience({ fallbackEmail, aside }: { fallbackEmail: str
         </div>
         {aside}
       </div>
-      <div id="contact-form" className="order-1 scroll-mt-[calc(var(--header-h)+24px)] rounded-[28px] border border-line bg-white p-6 shadow-float sm:p-9 lg:order-2">
+      <div id="contact-form" className="order-1 scroll-mt-[calc(var(--header-h)+24px)] rounded-[28px] border border-line bg-white p-5 xs:p-6 shadow-float sm:p-9 lg:order-2">
         <h2 className="mb-8 text-2xl font-semibold tracking-tight text-ink">Tell us about your project</h2>
         <Suspense fallback={<div className="h-[640px] rounded-2xl shimmer" />}>
           <ContactForm fallbackEmail={fallbackEmail} onValuesChange={onValuesChange} />

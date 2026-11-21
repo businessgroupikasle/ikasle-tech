@@ -55,49 +55,75 @@ export function ProcessTimeline() {
       if (!list || !track || !fill) return;
       const setFill = gsap.quickSetter(fill, "scaleY");
 
-      const measure = () => {
+      let markerOffsets: number[] = [];
+      let span = 0;
+      let firstRel = 0;
+
+      const updateLayout = () => {
         const markers = markerRefs.current.filter((m): m is HTMLSpanElement => m !== null);
         if (markers.length < 2) return;
-        const centres = markers.map((m) => {
+        const listTop = list.getBoundingClientRect().top + window.scrollY;
+        markerOffsets = markers.map((m) => {
           const r = m.getBoundingClientRect();
-          return r.top + r.height / 2;
+          return r.top + window.scrollY + r.height / 2 - listTop;
         });
-        const first = centres[0]!;
-        const last = centres[centres.length - 1]!;
-        const line = window.innerHeight * READING_LINE;
-
-        let index = 0;
-        centres.forEach((c, i) => {
-          if (c <= line) index = i;
-        });
-        setActive((prev) => (prev === index ? prev : index));
-
-        // Track spans marker centre to marker centre, positioned relative to the list.
-        const listTop = list.getBoundingClientRect().top;
-        const span = Math.max(0, last - first);
+        firstRel = markerOffsets[0]!;
+        const lastRel = markerOffsets[markerOffsets.length - 1]!;
+        span = Math.max(0, lastRel - firstRel);
         for (const el of [track, fill]) {
-          el.style.top = `${first - listTop}px`;
+          el.style.top = `${firstRel}px`;
           el.style.height = `${span}px`;
         }
-        setFill(span > 0 ? gsap.utils.clamp(0, 1, (line - first) / span) : 0);
       };
+
+      const updateProgress = () => {
+        if (!span || markerOffsets.length < 2) return;
+        const listRect = list.getBoundingClientRect();
+        const line = window.innerHeight * READING_LINE;
+        const relLine = line - listRect.top;
+
+        let index = 0;
+        for (let i = 0; i < markerOffsets.length; i++) {
+          if (markerOffsets[i]! <= relLine) index = i;
+        }
+        setActive((prev) => (prev === index ? prev : index));
+        setFill(span > 0 ? gsap.utils.clamp(0, 1, (relLine - firstRel) / span) : 0);
+      };
+
+      let rafId: number | null = null;
+      const onScrollUpdate = () => {
+        if (rafId !== null) return;
+        rafId = requestAnimationFrame(() => {
+          updateProgress();
+          rafId = null;
+        });
+      };
+
+      updateLayout();
+      updateProgress();
 
       const trigger = ScrollTrigger.create({
         trigger: list,
         start: "top bottom",
         end: "bottom top",
-        onUpdate: measure,
-        onRefresh: measure,
+        onUpdate: onScrollUpdate,
+        onRefresh: () => {
+          updateLayout();
+          updateProgress();
+        },
       });
-      // Re-measure when the steps (or anything above them) change size without a scroll.
-      const resize = new ResizeObserver(measure);
+
+      // Re-measure layout when the steps change size without a scroll.
+      const resize = new ResizeObserver(() => {
+        updateLayout();
+        updateProgress();
+      });
       resize.observe(list);
-      resize.observe(document.body);
-      measure();
 
       return () => {
         trigger.kill();
         resize.disconnect();
+        if (rafId !== null) cancelAnimationFrame(rafId);
       };
     },
     { scope: root },

@@ -90,6 +90,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
+  width: 100%;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
   text-rendering: optimizeLegibility;
 }
 
@@ -298,7 +301,17 @@ body {
   border-radius: 9999px;
   filter: blur(80px);
   opacity: 0.45;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
   animation: ambient-drift 22s ease-in-out infinite alternate;
+}
+@media (max-width: 767px) {
+  .ambient::before,
+  .ambient::after {
+    filter: blur(40px);
+    width: 36vmax;
+    height: 36vmax;
+  }
 }
 .ambient::before {
   background: radial-gradient(circle, rgb(77 179 255 / 0.35), transparent 65%);
@@ -445,11 +458,13 @@ body {
 [data-stack-layer="0"] { --stick: var(--stick-0); }
 [data-stack-layer="1"] { --stick: var(--stick-1); }
 [data-stack-layer="2"] { --stick: var(--stick-2); }
-@media (prefers-reduced-motion: no-preference) {
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .stack-sticky {
     position: sticky;
     top: var(--stick, -100000px);
   }
+}
+@media (prefers-reduced-motion: no-preference) {
   .stack-sheet {
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;

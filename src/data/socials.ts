@@ -8,8 +8,8 @@
  */
 export const companySocials = {
   instagram: "https://www.instagram.com/ikasletechnologies",
-  linkedin: "https://www.linkedin.com/company/ikasleinnovations",
-  facebook: "https://www.facebook.com/ikasleinnovations",
-  x: "https://x.com/ikaslegroup",
+  linkedin: "https://www.linkedin.com/company/ikasletechnologies",
+  facebook: "https://www.facebook.com/ikasletechnologies",
+  x: "https://x.com/ikasletech",
   email: "",
 };

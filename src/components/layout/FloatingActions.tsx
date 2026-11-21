@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
@@ -11,10 +11,23 @@ export function FloatingActions() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
-    const updateVisibility = () => setShowBackToTop(window.scrollY > 320);
+    let ticking = false;
+    let rafId: number | null = null;
+    const updateVisibility = () => {
+      if (!ticking) {
+        ticking = true;
+        rafId = requestAnimationFrame(() => {
+          setShowBackToTop(window.scrollY > 320);
+          ticking = false;
+        });
+      }
+    };
     updateVisibility();
     window.addEventListener("scroll", updateVisibility, { passive: true });
-    return () => window.removeEventListener("scroll", updateVisibility);
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const scrollToTop = () => {

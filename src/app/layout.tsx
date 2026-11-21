@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/layout/Providers";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { siteConfig } from "@/lib/site";
+import { companySocials } from "@/data/socials";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -128,7 +129,13 @@ const rootSchemaGraph = {
           availableLanguage: ["English", "Tamil"],
         },
       ],
-      sameAs: [siteConfig.social.linkedin, siteConfig.social.github].filter(Boolean),
+      sameAs: [
+        companySocials.linkedin,
+        companySocials.facebook,
+        companySocials.x,
+        companySocials.instagram,
+        siteConfig.social.github,
+      ].filter(Boolean),
     },
     {
       "@type": "ProfessionalService",

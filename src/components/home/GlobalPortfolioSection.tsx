@@ -245,7 +245,7 @@ export function GlobalPortfolioSection() {
         </div>
 
         {/* Worldwide Collaboration Banner (Rich Gradient Command Showcase) */}
-        <Reveal className="mt-12 overflow-hidden rounded-[32px] border border-accent/30 bg-gradient-to-br from-[#0c395c] via-[#072d4c] to-[#041c30] p-8 text-white shadow-lg sm:p-12 lg:p-14">
+        <Reveal className="mt-12 overflow-hidden rounded-[32px] border border-accent/30 bg-gradient-to-br from-[#0c395c] via-[#072d4c] to-[#041c30] p-5 xs:p-8 text-white shadow-lg sm:p-12 lg:p-14">
           <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
             {/* Left Content */}
             <div className="max-w-xl">
@@ -302,13 +302,13 @@ export function GlobalPortfolioSection() {
                 ))}
               </div>
 
-              <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-5">
+              <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 xs:flex-row xs:items-center xs:justify-between">
                 <span className="text-xs text-white/70">Ready to consult on your timezone?</span>
                 <ButtonLink
                   href="/contact"
                   variant="secondary"
                   arrow
-                  className="shrink-0 font-semibold !text-ink !bg-white hover:!bg-white/90"
+                  className="w-full justify-center shrink-0 font-semibold !text-ink !bg-white hover:!bg-white/90 xs:w-auto"
                 >
                   Get in Touch
                 </ButtonLink>
@@ -331,7 +331,7 @@ export function GlobalPortfolioSection() {
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {/* Model 1: Project-Based */}
             <Reveal>
-              <div className="group relative flex h-full flex-col justify-between rounded-3xl border border-line/80 bg-white p-7 shadow-sm transition-all duration-300 hover:border-accent/40 hover:shadow-soft sm:p-8">
+              <div className="group relative flex h-full flex-col justify-between rounded-3xl border border-line/80 bg-white p-5 xs:p-7 sm:p-8 shadow-sm transition-all duration-300 hover:border-accent/40 hover:shadow-soft">
                 <div>
                   <div className="flex items-center gap-3">
                     <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-accent/[0.08] text-accent-strong">
@@ -370,7 +370,7 @@ export function GlobalPortfolioSection() {
 
             {/* Model 2: Dedicated Partnership */}
             <Reveal>
-              <div className="group relative flex h-full flex-col justify-between rounded-3xl border border-line/80 bg-white p-7 shadow-sm transition-all duration-300 hover:border-accent/40 hover:shadow-soft sm:p-8">
+              <div className="group relative flex h-full flex-col justify-between rounded-3xl border border-line/80 bg-white p-5 xs:p-7 sm:p-8 shadow-sm transition-all duration-300 hover:border-accent/40 hover:shadow-soft">
                 <div>
                   <div className="flex items-center gap-3">
                     <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-accent/[0.08] text-accent-strong">

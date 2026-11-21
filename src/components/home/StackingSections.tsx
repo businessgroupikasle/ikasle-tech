@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useRef, useState, type ReactNode } from "react";
-import { ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
 const CoveredContext = createContext<readonly boolean[]>([]);
 
@@ -33,53 +33,62 @@ export function StackingSections({ children }: { children: ReactNode }) {
     () => {
       const el = root.current;
       if (!el) return;
-      const layers = [...el.children].filter((c): c is HTMLElement => c instanceof HTMLElement && c.hasAttribute("data-stack-layer"));
-      if (layers.length < 2) return;
 
-      const fit = () => {
-        layers.slice(0, -1).forEach((layer, i) => {
-          el.style.setProperty(`--stick-${i}`, `${Math.min(0, window.innerHeight - layer.offsetHeight)}px`);
-        });
-      };
-      fit();
-      // Layer heights change without a window resize (fonts, images, folders), which moves the trigger points.
-      const ro = new ResizeObserver(() => {
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+        const layers = [...el.children].filter((c): c is HTMLElement => c instanceof HTMLElement && c.hasAttribute("data-stack-layer"));
+        if (layers.length < 2) return;
+
+        const fit = () => {
+          layers.slice(0, -1).forEach((layer, i) => {
+            el.style.setProperty(`--stick-${i}`, `${Math.min(0, window.innerHeight - layer.offsetHeight)}px`);
+          });
+        };
         fit();
-        ScrollTrigger.refresh();
-      });
-      layers.forEach((layer) => ro.observe(layer));
-      window.addEventListener("resize", fit);
-
-      const state = layers.map(() => false);
-      layers.slice(1).forEach((next, i) => {
-        ScrollTrigger.create({
-          trigger: next,
-          // 1px early: at exactly "top top" the trigger isn't active yet, though the layer is already covered.
-          start: "top top+=1",
-          end: "max",
-          onToggle: (self) => {
-            state[i] = self.isActive;
-            setCovered([...state]);
-          },
+        // Layer heights change without a window resize (fonts, images, folders), which moves the trigger points.
+        const ro = new ResizeObserver(() => {
+          fit();
+          ScrollTrigger.refresh();
         });
+        layers.forEach((layer) => ro.observe(layer));
+        window.addEventListener("resize", fit);
+
+        const state = layers.map(() => false);
+        layers.slice(1).forEach((next, i) => {
+          ScrollTrigger.create({
+            trigger: next,
+            // 1px early: at exactly "top top" the trigger isn't active yet, though the layer is already covered.
+            start: "top top+=1",
+            end: "max",
+            onToggle: (self) => {
+              state[i] = self.isActive;
+              setCovered([...state]);
+            },
+          });
+        });
+
+        const flowTop = (k: number) => el.getBoundingClientRect().top + window.scrollY + layers.slice(0, k).reduce((sum, l) => sum + l.offsetHeight, 0);
+        const onFocus = (e: FocusEvent) => {
+          const target = e.target as HTMLElement;
+          const i = layers.findIndex((layer) => layer.contains(target));
+          const next = layers[i + 1];
+          if (i < 0 || !next || target.getBoundingClientRect().bottom <= next.getBoundingClientRect().top) return;
+          const within = target.getBoundingClientRect().top - layers[i]!.getBoundingClientRect().top;
+          window.scrollTo({ top: Math.max(0, Math.min(flowTop(i) + within - window.innerHeight / 3, flowTop(i + 1) - window.innerHeight)) });
+        };
+        el.addEventListener("focusin", onFocus);
+
+        return () => {
+          ro.disconnect();
+          window.removeEventListener("resize", fit);
+          el.removeEventListener("focusin", onFocus);
+          layers.slice(0, -1).forEach((_, i) => {
+            el.style.removeProperty(`--stick-${i}`);
+          });
+        };
       });
 
-      const flowTop = (k: number) => el.getBoundingClientRect().top + window.scrollY + layers.slice(0, k).reduce((sum, l) => sum + l.offsetHeight, 0);
-      const onFocus = (e: FocusEvent) => {
-        const target = e.target as HTMLElement;
-        const i = layers.findIndex((layer) => layer.contains(target));
-        const next = layers[i + 1];
-        if (i < 0 || !next || target.getBoundingClientRect().bottom <= next.getBoundingClientRect().top) return;
-        const within = target.getBoundingClientRect().top - layers[i]!.getBoundingClientRect().top;
-        window.scrollTo({ top: Math.max(0, Math.min(flowTop(i) + within - window.innerHeight / 3, flowTop(i + 1) - window.innerHeight)) });
-      };
-      el.addEventListener("focusin", onFocus);
-
-      return () => {
-        ro.disconnect();
-        window.removeEventListener("resize", fit);
-        el.removeEventListener("focusin", onFocus);
-      };
+      return () => mm.revert();
     },
     { scope: root },
   );
